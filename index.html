@@ -44,6 +44,11 @@
   <span><img class="la63" src="assets/la63.svg" alt="">1706 Highway 63 · Clinton, LA 70722</span>
 </div></div>
 
+<section class="band events-band"><div class="wrap">
+  <div class="sec-h"><div><div class="eye">Gather with us</div><h2>This week at the Creek</h2></div><a class="textlink" href="times.html">See the full rhythm →</a></div>
+  <div class="event-feed" data-events-feed="3"><article class="event-row"><time datetime="2026-09-06"><span>Sun</span>6</time><div><h3>Sunday School</h3><p>9:00a · Fellowship Building</p></div></article><article class="event-row"><time datetime="2026-09-06"><span>Sun</span>6</time><div><h3>Sunday Worship</h3><p>10:15a · Sanctuary</p></div></article><article class="event-row"><time datetime="2026-09-06"><span>Sun</span>6</time><div><h3>Youth discipleship</h3><p>5:30p · Fellowship Building</p></div></article></div>
+</div></section>
+
 <section class="band"><div class="wrap split">
   <div><div class="eye">For His glory and for our goodness</div><h2 class="big">We exist to glorify God and enjoy Him forever.</h2><img class="creek" src="assets/creek-gold.png" alt="" style="width:120px;margin-top:6px"></div>
   <div class="prose"><p>Bluff Creek is a traditional Southern Baptist church at the corner of Highways 959 and 63. On a normal Sunday you'll hear theologically rich hymns, a word for the kids (with treats), and thirty or forty minutes of preaching straight from the text — and then we hang out until somebody turns the lights off.</p><p>We're rooted in the Word, and we take the Great Commission personally: across our campus, across the street, across the country, and across the world.</p><a class="textlink" href="about.html">Who we are →</a></div>
@@ -94,5 +99,14 @@
     <div class="fine"><span>1706 Highway 63 · Clinton, Louisiana 70722 · <a href="tel:+12252187902" style="display:inline;padding:0">(225) 218-7902</a> · <a href="mailto:bluffcreekbaptist@gmail.com" style="display:inline;padding:0">bluffcreekbaptist@gmail.com</a></span><span>© 2026 Bluff Creek Baptist Church · "Go therefore and make disciples of all nations." Matthew 28:19</span></div>
   </div>
 </footer>
+<script>
+(function(){
+  var feeds=Array.prototype.slice.call(document.querySelectorAll('[data-events-feed]'));if(!feeds.length)return;
+  var esc=function(s){var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML};
+  var valid=function(e){return e&&/^\d{4}-\d{2}-\d{2}$/.test(e.when)&&e.time&&e.title&&e.where&&['Weekly','Monthly','Special'].indexOf(e.tag)>-1};
+  var row=function(e){var d=new Date(e.when+'T12:00:00');return '<article class="event-row"><time datetime="'+esc(e.when)+'"><span>'+esc(d.toLocaleDateString('en-US',{weekday:'short'}))+'</span>'+esc(d.getDate())+'</time><div><h3>'+esc(e.title)+'</h3><p>'+esc(e.time)+' · '+esc(e.where)+'</p></div></article>'};
+  fetch('https://app.bluffcreekbaptistchurch.org/events.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('Events feed unavailable');return r.json()}).then(function(data){if(!data||!Array.isArray(data.events))throw new Error('Events feed invalid');var now=new Date();now.setHours(0,0,0,0);var events=data.events.filter(valid).filter(function(e){return new Date(e.when+'T12:00:00')>=now}).sort(function(a,b){return a.when.localeCompare(b.when)});feeds.forEach(function(feed){var limit=parseInt(feed.getAttribute('data-events-feed'),10)||3;feed.innerHTML=events.slice(0,limit).map(row).join('')})}).catch(function(){/* build-time fallback remains visible */});
+})();
+</script>
 </body>
 </html>
