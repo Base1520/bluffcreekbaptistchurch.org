@@ -352,6 +352,7 @@ PAGES["contact"] = ("Contact", "Find and contact Bluff Creek Baptist Church — 
       <div class="ok" id="cok">Your email app should be open — tap Send and it's on its way. Thank you!</div>
     </div>
   </div>
+  <div style="margin-top:22px"><iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=1706+Highway+63,+Clinton,+LA+70722&amp;output=embed" title="Map to Bluff Creek Baptist Church"></iframe></div>
 </section>
 <script>
 document.getElementById('cform').addEventListener('submit',function(e){{e.preventDefault();var n=document.getElementById('cn').value.trim(),c=document.getElementById('ce').value.trim(),m=document.getElementById('cm').value.trim();if(!n||!c||!m){{alert('Please fill in your name, a way to reach you, and a message.');return;}}var body='From: '+n+'\\nContact: '+c+'\\n\\n'+m;location.href='mailto:{EMAIL}?subject='+encodeURIComponent('Hello from the website — '+n)+'&body='+encodeURIComponent(body);this.style.display='none';document.getElementById('cok').classList.add('on');}});
