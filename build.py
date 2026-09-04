@@ -7,16 +7,48 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://www.bluffcreekbaptistchurch.org"
 APP = "https://app.bluffcreekbaptistchurch.org/"
 GIVE = "https://buy.stripe.com/9B600j6Q68IFgK8h13bo400"
-WATCH = "https://www.facebook.com/bluffcreekbaptist"  # live stream is on Facebook (no YouTube channel yet)
+YT_CHANNEL_ID = ""   # ← paste the new Bluff Creek YouTube channel ID (UC…); Watch switches to YouTube automatically
+FACEBOOK = "https://www.facebook.com/bluffcreekbaptist"
+WATCH = (f"https://www.youtube.com/channel/{YT_CHANNEL_ID}/live" if YT_CHANNEL_ID else FACEBOOK)
 EMAIL = "bluffcreekbaptist@gmail.com"
 PHONE = "(225) 218-7902"; PHONE_TEL = "+12252187902"
 YEAR = datetime.date.today().year
+EVENTS_URL = "https://app.bluffcreekbaptistchurch.org/events.json"
+EVENTS_FALLBACK = [
+    {"when":"2026-09-06","time":"9:00a","title":"Sunday School","where":"Fellowship Building","tag":"Weekly"},
+    {"when":"2026-09-06","time":"10:15a","title":"Sunday Worship","where":"Sanctuary","tag":"Weekly"},
+    {"when":"2026-09-06","time":"5:30p","title":"Youth discipleship","where":"Fellowship Building","tag":"Weekly"},
+    {"when":"2026-09-06","time":"6:00p","title":"Evening service","where":"Sanctuary","tag":"Weekly"},
+    {"when":"2026-09-07","time":"6:30p","title":"Women’s Bible study","where":"Contact church office for location","tag":"Weekly"},
+    {"when":"2026-09-08","time":"5:00p","title":"Yoga @ the Creek","where":"Fellowship Building","tag":"Weekly"},
+    {"when":"2026-09-09","time":"6:00p","title":"Prayer meeting","where":"Sanctuary","tag":"Weekly"},
+    {"when":"2026-09-09","time":"6:00p","title":"Youth @ the Creek — MDWK","where":"Fellowship Building","tag":"Weekly"},
+    {"when":"2026-09-10","time":"5:00p","title":"Yoga @ the Creek","where":"Fellowship Building","tag":"Weekly"},
+]
 
 NAV = [("visit","Plan a Visit"),("about","Who We Are"),("ministries","Ministries"),("missions","Missions"),
        ("times","When We Meet"),("give","Give"),("watch","Watch"),("contact","Contact")]
 
+def event_rows(events=EVENTS_FALLBACK, limit=3):
+    rows = []
+    for event in events[:limit]:
+        date = datetime.date.fromisoformat(event["when"])
+        rows.append(f'''<article class="event-row"><time datetime="{event['when']}"><span>{date.strftime('%a')}</span>{date.day}</time><div><h3>{html.escape(event['title'])}</h3><p>{html.escape(event['time'])} · {html.escape(event['where'])}</p></div></article>''')
+    return "".join(rows)
+
+EVENTS_SCRIPT = f'''<script>
+(function(){{
+  var feeds=Array.prototype.slice.call(document.querySelectorAll('[data-events-feed]'));if(!feeds.length)return;
+  var esc=function(s){{var d=document.createElement('div');d.textContent=String(s||'');return d.innerHTML}};
+  var valid=function(e){{return e&&/^\\d{{4}}-\\d{{2}}-\\d{{2}}$/.test(e.when)&&e.time&&e.title&&e.where&&['Weekly','Monthly','Special'].indexOf(e.tag)>-1}};
+  var row=function(e){{var d=new Date(e.when+'T12:00:00');return '<article class="event-row"><time datetime="'+esc(e.when)+'"><span>'+esc(d.toLocaleDateString('en-US',{{weekday:'short'}}))+'</span>'+esc(d.getDate())+'</time><div><h3>'+esc(e.title)+'</h3><p>'+esc(e.time)+' · '+esc(e.where)+'</p></div></article>'}};
+  fetch('{EVENTS_URL}',{{cache:'no-cache'}}).then(function(r){{if(!r.ok)throw new Error('Events feed unavailable');return r.json()}}).then(function(data){{if(!data||!Array.isArray(data.events))throw new Error('Events feed invalid');var now=new Date();now.setHours(0,0,0,0);var events=data.events.filter(valid).filter(function(e){{return new Date(e.when+'T12:00:00')>=now}}).sort(function(a,b){{return a.when.localeCompare(b.when)}});feeds.forEach(function(feed){{var limit=parseInt(feed.getAttribute('data-events-feed'),10)||3;feed.innerHTML=events.slice(0,limit).map(row).join('')}})}}).catch(function(){{/* build-time fallback remains visible */}});
+}})();
+</script>'''
+
 def layout(slug, title, desc, body, extra_head=""):
     nav = "".join(f'<a href="{s}.html"{" aria-current=\"page\"" if s==slug else ""}>{t}</a>' for s,t in NAV)
+    events_script = EVENTS_SCRIPT + "\n" if 'data-events-feed' in body else ''
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -59,7 +91,7 @@ def layout(slug, title, desc, body, extra_head=""):
     <div class="fine"><span>1706 Highway 63 · Clinton, Louisiana 70722 · <a href="tel:{PHONE_TEL}" style="display:inline;padding:0">{PHONE}</a> · <a href="mailto:{EMAIL}" style="display:inline;padding:0">{EMAIL}</a></span><span>© {YEAR} Bluff Creek Baptist Church · "Go therefore and make disciples of all nations." Matthew 28:19</span></div>
   </div>
 </footer>
-</body>
+{events_script}</body>
 </html>
 """
 
@@ -87,6 +119,11 @@ PAGES["index"] = ("Welcome home to the Creek", "Bluff Creek Baptist Church in Cl
   <span><b>Wednesdays</b> Prayer &amp; Youth @ the Creek · 6:00p</span>
   <span><img class="la63" src="assets/la63.svg" alt="">1706 Highway 63 · Clinton, LA 70722</span>
 </div></div>
+
+<section class="band events-band"><div class="wrap">
+  <div class="sec-h"><div><div class="eye">Gather with us</div><h2>This week at the Creek</h2></div><a class="textlink" href="times.html">See the full rhythm →</a></div>
+  <div class="event-feed" data-events-feed="3">{event_rows()}</div>
+</div></section>
 
 <section class="band"><div class="wrap split">
   <div><div class="eye">For His glory and for our goodness</div><h2 class="big">We exist to glorify God and enjoy Him forever.</h2><img class="creek" src="assets/creek-gold.png" alt="" style="width:120px;margin-top:6px"></div>
@@ -235,6 +272,10 @@ PAGES["times"] = ("When We Meet", "Service and meeting times at Bluff Creek Bapt
     <tr><th>Wednesday</th><td><b>6:00–6:30p</b> Prayer meeting (sanctuary)<br><b>6:00–8:00p</b> Youth @ the Creek — MDWK (fellowship building) · <span class="chip gold">6 on the 63</span></td></tr>
     <tr><th>Thursday</th><td><b>5:00–5:45p</b> Yoga @ the Creek (fellowship building)</td></tr>
   </table></div>
+  <div class="events-inline">
+    <div class="sec-h"><div><div class="eye">Coming up</div><h2>This week at the Creek</h2></div></div>
+    <div class="event-feed" data-events-feed="3">{event_rows()}</div>
+  </div>
   <div class="grid g2" style="margin-top:22px">
     <div class="card"><div class="eye">In your pocket</div><h3>The week, in the app</h3><p>This week's schedule and events, updated as they change — plus prayer, giving, and a way to connect.</p><p><a href="{APP}">Open Home @ the Creek →</a></p></div>
     <div class="card"><div class="eye">On your calendar</div><h3>Subscribe to the church calendar</h3><p>Every service, meeting, and event — straight into the calendar on your phone or computer, updated automatically.</p><p><a href="webcal://p24-caldav.icloud.com/published/2/MjgxNDIwMTA5MjgxNDIwMZkrrqg7P_e_uOJSEuneGS4QT-quA4OE5lbjyAKZifNVcV3yYLBvdcwT4okvZF-44VCzkvYBgUEuOzihC5igIm4">Subscribe →</a> · <a href="visit.html">Plan a visit →</a></p></div>
@@ -316,13 +357,14 @@ PAGES["give"] = ("Give", "Give to Bluff Creek Baptist Church online, in person, 
 """)
 
 # ---------------- WATCH ----------------
-PAGES["watch"] = ("Watch", "Watch Bluff Creek Baptist Church online — Sunday worship live on YouTube.", f"""
+PAGES["watch"] = ("Watch", "Watch Bluff Creek Baptist Church online — Sunday worship live.", f"""
 <section class="sec">
   <div class="eye">Can't make it in person?</div>
   <h1>Watch the Creek.</h1>
   <p class="lead">Sunday morning worship streams live at <b>10:15a</b>, and past services are there any time.</p>
+  {('<div class="embed" style="margin-top:20px"><iframe src="https://www.youtube.com/embed/live_stream?channel='+YT_CHANNEL_ID+'&autoplay=0" title="Bluff Creek Baptist Church — live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>') if YT_CHANNEL_ID else ''}
   <div class="grid g2" style="margin-top:20px">
-    <div class="panel"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Live &amp; on demand</div><h3>Bluff Creek live on Facebook</h3><p>Sunday morning worship streams live on our Facebook page, and past services are there any time. Follow the page so Sunday finds you wherever you are.</p><a class="btn" href="{WATCH}" target="_blank" rel="noopener">Watch on Facebook</a></div>
+    <div class="panel"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Live &amp; on demand</div><h3>{"Bluff Creek on YouTube" if YT_CHANNEL_ID else "Bluff Creek live on Facebook"}</h3><p>{"Subscribe and turn on notifications so Sunday finds you wherever you are." if YT_CHANNEL_ID else "Sunday morning worship streams live on our Facebook page, and past services are there any time. Follow the page so Sunday finds you wherever you are."}</p><a class="btn" href="{WATCH}" target="_blank" rel="noopener">{"Watch on YouTube" if YT_CHANNEL_ID else "Watch on Facebook"}</a>{('<p class="small" style="margin-top:12px"><a href="'+FACEBOOK+'" target="_blank" rel="noopener" style="color:#e5c76f">Also on Facebook →</a></p>') if YT_CHANNEL_ID else ''}</div>
     <div class="card"><h3>What you'll hear</h3><p>Theologically rich hymns, prayer, a word for the kids, and a 30–40 minute expositional message straight from the text — the same service we have in the room.</p><p><a href="visit.html">Then come see us in person →</a></p></div>
   </div>
 </section>
