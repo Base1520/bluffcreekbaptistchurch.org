@@ -73,40 +73,46 @@ main,header,footer,.hero-full,.page-hero,.infobar{position:relative;z-index:1}
    legible. Layout untouched.
    ============================================================================ */
 
-/* ---------- hero: let the church actually show ---------- */
+/* ---------- hero: photograph recedes, type carries ---------- */
+/* Cole's call: images should sit BACK. Near-monochrome, pine-washed, deep —
+   atmosphere behind the words, not a photograph competing with them. */
 .hero-full .shot img{
   object-position:center 40%;
-  filter:brightness(1.30) contrast(1.16) saturate(1.14);
+  filter:grayscale(.58) brightness(.82) contrast(1.10) saturate(.62);
 }
 .hero-full::after{
   background:
-    linear-gradient(180deg,rgba(14,20,16,.34) 0%,rgba(14,20,16,0) 26%,rgba(14,20,16,.20) 54%,rgba(14,20,16,.86) 100%),
-    linear-gradient(72deg,rgba(14,20,16,.74) 0%,rgba(14,20,16,.30) 44%,rgba(14,20,16,0) 74%),
-    radial-gradient(1000px 520px at 76% 22%,rgba(255,241,214,.10),transparent 62%);
+    linear-gradient(180deg,rgba(10,15,12,.56) 0%,rgba(10,15,12,.30) 28%,rgba(10,15,12,.50) 60%,rgba(10,15,12,.92) 100%),
+    linear-gradient(72deg,rgba(10,15,12,.80) 0%,rgba(10,15,12,.48) 48%,rgba(10,15,12,.20) 80%),
+    linear-gradient(0deg,rgba(46,70,54,.38),rgba(46,70,54,.38));
 }
-/* warm rim of light along the horizon */
-.hero-full .wrap{text-shadow:0 1px 30px rgba(0,0,0,.35)}
-.hero-full h1{text-shadow:0 2px 4px rgba(0,0,0,.35),0 18px 50px rgba(0,0,0,.5)}
-.hero-full .lead-l{text-shadow:0 1px 18px rgba(0,0,0,.55)}
-.hero-full .wm{opacity:.06}
+.hero-full .wrap{text-shadow:0 1px 30px rgba(0,0,0,.3)}
+.hero-full h1{color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.45),0 20px 56px rgba(0,0,0,.55)}
+.hero-full .lead-l{color:rgba(255,255,255,.94);text-shadow:0 1px 16px rgba(0,0,0,.6)}
+.hero-full .eye{color:#e9d9ac}
+.hero-full .wm{opacity:.05}
 
-/* ---------- interior page heroes: same lift, gentler ---------- */
-.page-hero .shot img{filter:brightness(1.24) contrast(1.12) saturate(1.10)}
+/* ---------- interior page heroes ---------- */
+.page-hero .shot img{filter:grayscale(.56) brightness(.80) contrast(1.08) saturate(.60)}
 .page-hero::after{
   background:
-    linear-gradient(180deg,rgba(14,20,16,.44) 0%,rgba(14,20,16,.10) 30%,rgba(14,20,16,.44) 64%,rgba(14,20,16,.90) 100%),
-    linear-gradient(78deg,rgba(14,20,16,.72) 0%,rgba(14,20,16,.26) 46%,rgba(14,20,16,.02) 78%);
+    linear-gradient(180deg,rgba(10,15,12,.70) 0%,rgba(10,15,12,.48) 30%,rgba(10,15,12,.68) 64%,rgba(10,15,12,.96) 100%),
+    linear-gradient(78deg,rgba(10,15,12,.86) 0%,rgba(10,15,12,.56) 48%,rgba(10,15,12,.34) 80%),
+    linear-gradient(0deg,rgba(46,70,54,.42),rgba(46,70,54,.42));
 }
-.page-hero h1{text-shadow:0 2px 4px rgba(0,0,0,.32),0 16px 44px rgba(0,0,0,.45)}
+.page-hero h1{color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.42),0 18px 48px rgba(0,0,0,.5)}
+.page-hero .lead,.page-hero .lead-l{color:rgba(255,255,255,.92)}
 
-/* ---------- full-bleed photo bands (the Scripture band) ---------- */
-.band.photo .shot img{filter:brightness(1.18) contrast(1.10) saturate(1.06)}
+/* ---------- full-bleed photo bands (Scripture) ---------- */
+.band.photo .shot img{filter:grayscale(.62) brightness(.74) contrast(1.06) saturate(.56)}
 .band.photo::after{
   background:
-    linear-gradient(180deg,rgba(14,20,16,.70),rgba(14,20,16,.50) 50%,rgba(14,20,16,.78)),
-    linear-gradient(90deg,rgba(14,20,16,.42),rgba(14,20,16,.06) 62%);
+    linear-gradient(180deg,rgba(10,15,12,.86),rgba(10,15,12,.70) 50%,rgba(10,15,12,.90)),
+    linear-gradient(90deg,rgba(10,15,12,.62),rgba(10,15,12,.30) 64%),
+    linear-gradient(0deg,rgba(46,70,54,.40),rgba(46,70,54,.40));
 }
-.band.photo.verse blockquote,.band.photo.tall h2{text-shadow:0 2px 30px rgba(0,0,0,.55)}
+.band.photo p{color:rgba(255,255,255,.9)}
+.band.photo.verse blockquote,.band.photo.tall h2{color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.6)}
 
 /* ---------- editorial figures: paper mount + gold caption rule ---------- */
 .figure img{
@@ -142,3 +148,94 @@ main,header,footer,.hero-full,.page-hero,.infobar{position:relative;z-index:1}
   .page-hero .shot img{object-position:center 46%}
   .hero-full{min-height:clamp(560px,86svh,860px)}
 }
+
+/* ============================================================================
+   POLISH v3 — interface pass (Claude lane)
+   Nav state, pull quotes, cards, links, footer. No layout changes.
+   ============================================================================ */
+
+/* ---------- nav: gold underline for the current page, not a grey pill ---------- */
+nav.main a{position:relative;transition:color .18s ease,background .18s ease}
+nav.main a[aria-current]{background:transparent!important;color:#fff}
+nav.main a[aria-current]::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--wheat);border-radius:2px}
+nav.main a:not(.cta):hover{background:rgba(255,255,255,.12)}
+.top.solid nav.main a[aria-current]{color:var(--pine)}
+.top.solid nav.main a[aria-current]::after{background:var(--wheat)}
+.top.solid nav.main a:not(.cta):hover{background:var(--pine-tint)}
+.top.solid{box-shadow:0 1px 0 rgba(176,134,54,.22),0 1px 24px rgba(40,33,20,.06)}
+@media (max-width:900px){
+  nav.main a[aria-current]{background:var(--pine-tint)!important;color:var(--pine)}
+  nav.main a[aria-current]::after{display:none}
+  nav.main a:not(.cta):hover{background:var(--pine-tint)}
+}
+
+/* ---------- Scripture pull-quote: give it the weight it deserves ---------- */
+.word{
+  position:relative;max-width:74ch;margin-left:auto;margin-right:auto;
+  padding:34px 0 0;border-top:2px solid rgba(176,134,54,.55);border-left:0;text-align:center;
+}
+.word blockquote{
+  font-family:"Bitter",Georgia,serif;font-size:clamp(19px,1.9vw,25px);line-height:1.5;
+  font-style:italic;color:var(--ink);letter-spacing:-.005em;margin:0 0 14px;
+}
+.word cite{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--wheat-deep,#8d6a25)}
+.band.photo .word{border-top-color:rgba(229,199,111,.5)}
+.band.photo .word blockquote{color:#fff}
+.band.photo .word cite{color:#e5c76f}
+
+/* ---------- cards: even, warm, quietly interactive ---------- */
+.card{
+  border-radius:6px;
+  box-shadow:0 1px 2px rgba(40,33,20,.05),0 16px 38px -24px rgba(40,33,20,.3);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(40,33,20,.06),0 26px 52px -24px rgba(40,33,20,.36)}
+.card h3{letter-spacing:-.01em}
+
+/* ---------- links ---------- */
+.textlink{position:relative;padding-bottom:2px;text-decoration:none}
+.textlink::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:currentColor;opacity:.45;transform:scaleX(1);transform-origin:left;transition:opacity .2s ease,transform .28s var(--ease,ease)}
+.textlink:hover::after{opacity:1}
+
+/* ---------- footer ---------- */
+footer a{transition:color .16s ease}
+footer a:hover{color:#fff}
+footer h4,footer .fine b{letter-spacing:.16em}
+footer .fine{border-top:1px solid rgba(176,134,54,.26);padding-top:22px}
+footer .tex{opacity:.055}
+
+/* ---------- FAQ / details ---------- */
+.faq details,details.qa{border-radius:8px;transition:box-shadow .2s ease,border-color .2s ease}
+.faq details[open],details.qa[open]{border-color:rgba(176,134,54,.45);box-shadow:0 18px 40px -26px rgba(40,33,20,.4)}
+.faq summary:hover,details.qa summary:hover{color:var(--pine)}
+
+/* ---------- schedule table ---------- */
+.sched tr:hover td{background:var(--surface2)}
+.sched th{letter-spacing:.14em}
+
+@media (prefers-reduced-motion:reduce){
+  .card,.card:hover,.textlink::after,footer a{transition:none;transform:none}
+}
+
+/* ---------- FIX: staff portraits ----------------------------------------
+   The redesign renders <div class="ph"><img></div> but site.css styles .ph
+   as if it were the <img> (width/height/object-fit/border-radius). Result:
+   the inner image has no size, so portraits collapse to thumbnails floating
+   mid-card and the initials avatars render as bare text. Repaired here in
+   CSS only — no markup change, so the generator stays in the other lane. */
+.person{align-items:flex-start;gap:18px}
+.person .ph{
+  width:92px;height:92px;flex:0 0 auto;border-radius:50%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(60px 40px at 34% 26%,rgba(255,255,255,.7),transparent 62%),var(--pine-tint);
+  box-shadow:0 12px 26px -14px rgba(30,24,12,.55);
+  outline:1px solid rgba(34,31,26,.08);outline-offset:-1px;
+}
+.person .ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) contrast(1.02);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.person:hover .ph img{transform:scale(1.05)}
+.person .ph .init{font-family:"Bitter",Georgia,serif;font-size:27px;font-weight:700;color:var(--pine);line-height:1}
+.person .ph.tall img{object-position:center 26%}
+.person>div:last-child{min-width:0}
+.person b{display:block;font-size:19px;letter-spacing:-.01em;margin-bottom:2px}
+@media (prefers-reduced-motion:reduce){.person .ph img,.person:hover .ph img{transition:none;transform:none}}
