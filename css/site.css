@@ -154,7 +154,7 @@ body{overflow-x:hidden}
 .band.alt{background:var(--surface)}
 .band.pine{background:linear-gradient(160deg,var(--pine-deep),var(--pine) 88%);color:#f4efe2;position:relative;overflow:hidden}
 .band.pine h2,.band.pine h3{color:#fff}.band.pine p{color:#e6ddc7}.band.pine .eye{color:#d9c896}
-.hero-full{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--pine-deep),var(--pine) 88%);color:#f4efe2;padding:clamp(72px,10vw,128px) 0 clamp(64px,8vw,104px);margin-top:0}
+.hero-full{width:100vw;margin-left:calc(50% - 50vw);position:relative;overflow:hidden;background:linear-gradient(160deg,var(--pine-deep),var(--pine) 88%);color:#f4efe2;padding:clamp(72px,10vw,128px) 0 clamp(64px,8vw,104px);margin-top:0}
 .hero-full .wm{position:absolute;right:-.05em;bottom:-.34em;font-family:"Bitter",serif;font-weight:700;font-size:clamp(260px,36vw,560px);line-height:1;color:#f4efe2;opacity:.05;letter-spacing:-.04em;pointer-events:none}
 .hero-full .eye{color:#d9c896}
 .hero-full h1{font-size:clamp(46px,6.6vw,78px);color:#fff;max-width:12ch;margin-bottom:.35em}
@@ -169,6 +169,7 @@ body{overflow-x:hidden}
 .hero-full .actions{margin-top:0;align-items:center}
 .infobar{width:100vw;margin-left:calc(50% - 50vw);background:var(--surface);border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
 .infobar .wrap{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between;align-items:center;min-height:66px;font-size:14.5px;color:var(--ink2);padding-top:10px;padding-bottom:10px}
+.infobar .wrap span{display:inline-flex;align-items:center;white-space:nowrap}
 .infobar b{color:var(--ink);font-family:"Bitter",serif;font-weight:600;margin-right:8px}
 .infobar .la63{width:22px;vertical-align:middle;margin-right:8px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
