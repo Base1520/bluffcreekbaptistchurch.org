@@ -2,7 +2,7 @@
 """Bluff Creek Baptist Church — static site generator (Homestead kit).
 Run:  python3 build.py   → writes *.html into this folder. Content lives below; layout is shared.
 """
-import os, html, datetime
+import os, html, datetime, re
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://www.bluffcreekbaptistchurch.org"
 APP = "https://app.bluffcreekbaptistchurch.org/"
@@ -46,8 +46,49 @@ EVENTS_SCRIPT = f'''<script>
 }})();
 </script>'''
 
+# Every page opens on a photograph. slug -> (file, alt, object-position)
+HEROES = {
+    "visit":      ("photos/sign.jpg",        "The brick sign at the road with the sanctuary behind it", "center 22%"),
+    "about":      ("photos/sky.jpg",         "The church under a wide Louisiana sky on a work day",     "center 62%"),
+    "beliefs":    ("photos/land-sunset.jpg", "Sunset through the pines off Highway 63",                 "center 52%"),
+    "times":      ("photos/gathered.jpg",    "The congregation standing together in worship",           "center 46%"),
+    "ministries": ("photos/vbs.jpg",         "The fellowship building decorated for Vacation Bible School", "center 50%"),
+    "missions":   ("photos/road.jpg",        "Trucks and volunteers on the church grounds",             "center 50%"),
+    "membership": ("photos/land-pink.jpg",   "Pink winter light over the fields near Bluff Creek",      "center 52%"),
+    "give":       ("photos/land-snow.jpg",   "Snow and sunset over the treeline in East Feliciana Parish", "center 55%"),
+    "watch":      ("photos/hero-marquee.jpg","The lit church marquee at dusk: Let everything that has breath praise the Lord", "72% 34%"),
+    "contact":    ("photos/sign.jpg",        "The brick sign at 1706 Highway 63",                       "center 26%"),
+    "404":        ("photos/road.jpg",        "A gravel lot off Highway 63",                             "center 50%"),
+}
+
+HEAD_RE = re.compile(
+    r'\s*<section class="sec">\s*<div class="eye">(?P<eye>.*?)</div>\s*<h1>(?P<h1>.*?)</h1>\s*'
+    r'(?:<p class="lead">(?P<lead>.*?)</p>\s*)?', re.S)
+
+def page_hero(slug, body):
+    """Lift the eyebrow/h1/lead of an interior page into a full-bleed photo hero."""
+    if slug not in HEROES:
+        return "", body
+    m = HEAD_RE.match(body)
+    if not m:
+        return "", body
+    img, alt, pos = HEROES[slug]
+    lead = f'<p class="lead">{m.group("lead")}</p>' if m.group("lead") else ""
+    hero = f"""<section class="page-hero">
+  <div class="shot"><img src="assets/{img}" alt="{html.escape(alt)}" style="object-position:{pos}" fetchpriority="high"></div>
+  <div class="wm" aria-hidden="true">63</div>
+  <div class="wrap">
+    <div class="eye">{m.group('eye')}</div>
+    <h1>{m.group('h1')}</h1>
+    {lead}
+  </div>
+</section>
+"""
+    return hero, '<section class="sec">' + body[m.end():]
+
 def layout(slug, title, desc, body, extra_head=""):
     nav = "".join(f'<a href="{s}.html"{" aria-current=\"page\"" if s==slug else ""}>{t}</a>' for s,t in NAV)
+    hero, body = page_hero(slug, body)
     events_script = EVENTS_SCRIPT + "\n" if 'data-events-feed' in body else ''
     return f"""<!doctype html>
 <html lang="en">
@@ -58,7 +99,13 @@ def layout(slug, title, desc, body, extra_head=""):
 <meta name="description" content="{html.escape(desc)}">
 <meta property="og:title" content="{html.escape(title)} — Bluff Creek Baptist Church">
 <meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:image" content="{SITE}/assets/icon-512.png">
+<meta property="og:image" content="{SITE}/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{SITE}/{'' if slug=='index' else slug+'.html'}">
+<meta property="og:site_name" content="Bluff Creek Baptist Church">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#3C5A45">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -69,12 +116,17 @@ def layout(slug, title, desc, body, extra_head=""):
 {extra_head}
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="index.html"><img src="assets/logo.png" alt="Bluff Creek Baptist Church"></a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top"><div class="wrap">
+  <a class="brand" href="index.html">
+    <img class="lg-light" src="assets/logo-white.png" alt="Bluff Creek Baptist Church">
+    <img class="lg-dark" src="assets/logo.png" alt="" aria-hidden="true">
+  </a>
   <button class="burger" aria-label="Menu" aria-expanded="false" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="main" id="nav" aria-label="Primary">{nav}<a class="cta" href="{APP}">Get the app</a></nav>
 </div></header>
-<main class="wrap">
+{hero}
+<main class="wrap" id="main">
 {body}
 </main>
 <footer>
@@ -91,6 +143,19 @@ def layout(slug, title, desc, body, extra_head=""):
     <div class="fine"><span>1706 Highway 63 · Clinton, Louisiana 70722 · <a href="tel:{PHONE_TEL}" style="display:inline;padding:0">{PHONE}</a> · <a href="mailto:{EMAIL}" style="display:inline;padding:0">{EMAIL}</a></span><span>© {YEAR} Bluff Creek Baptist Church · "Go therefore and make disciples of all nations." Matthew 28:19</span></div>
   </div>
 </footer>
+<script>
+(function(){{
+  var top=document.getElementById('top');
+  var onScroll=function(){{ (window.scrollY>28) ? top.classList.add('solid') : top.classList.remove('solid'); }};
+  onScroll(); addEventListener('scroll',onScroll,{{passive:true}});
+  var els=[].slice.call(document.querySelectorAll('[data-rv]'));
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){{
+    els.forEach(function(e){{e.classList.add('in')}}); return;
+  }}
+  var io=new IntersectionObserver(function(en){{en.forEach(function(x){{ if(x.isIntersecting){{x.target.classList.add('in');io.unobserve(x.target);}} }})}},{{rootMargin:'0px 0px -12% 0px',threshold:.08}});
+  els.forEach(function(e){{io.observe(e)}});
+}})();
+</script>
 {events_script}</body>
 </html>
 """
@@ -103,61 +168,99 @@ PAGES = {}
 # ---------------- HOME ----------------
 PAGES["index"] = ("Welcome home to the Creek", "Bluff Creek Baptist Church in Clinton, Louisiana — a country church on Highway 63. Come as you are. Sunday School 9:00, worship 10:15.", f"""
 <section class="hero-full">
+  <div class="shot"><img src="assets/photos/hero-church.jpg" alt="The Bluff Creek Baptist Church sanctuary and steeple at dusk beneath a rising moon" fetchpriority="high"></div>
   <div class="wm" aria-hidden="true">63</div>
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eye">Bluff Creek Baptist Church · Clinton, Louisiana</div>
-      <h1>Welcome home to the Creek.</h1>
-      <p class="lead-l">A country church on Highway 63 that loves the Word, loves its people, and would love to know you. However you found us — come as you are.</p>
-      <div class="actions"><a class="btn" href="visit.html">Plan a visit</a><a class="textlink" href="watch.html">Watch online →</a></div>
-    </div>
-    <div class="hero-art" aria-hidden="true"><img class="creek-big" src="assets/creek-ivory.png" alt=""></div>
+  <div class="wrap">
+    <div class="eye">Bluff Creek Baptist Church · Clinton, Louisiana</div>
+    <h1>Welcome home to the Creek.</h1>
+    <p class="lead-l">A country church on Highway 63 that loves the Word, loves its people, and would love to know you. However you found us — come as you are.</p>
+    <div class="actions"><a class="btn" href="visit.html">Plan a visit</a><a class="btn ghost" href="watch.html">Watch a service</a></div>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
 </section>
+
 <div class="infobar"><div class="wrap">
   <span><b>Sundays</b> Sunday School 9:00a · Worship 10:15a · Evening 6:00p</span>
   <span><b>Wednesdays</b> Prayer &amp; Youth @ the Creek · 6:00p</span>
-  <span><img class="la63" src="assets/la63.svg" alt="">1706 Highway 63 · Clinton, LA 70722</span>
+  <span><img class="la63" src="assets/la63.svg" alt="Louisiana Highway 63 route marker">1706 Highway 63 · Clinton, LA 70722</span>
 </div></div>
 
-<section class="band events-band"><div class="wrap">
-  <div class="sec-h"><div><div class="eye">Gather with us</div><h2>This week at the Creek</h2></div><a class="textlink" href="times.html">See the full rhythm →</a></div>
-  <div class="event-feed" data-events-feed="3">{event_rows()}</div>
-</div></section>
-
 <section class="band"><div class="wrap split">
-  <div><div class="eye">For His glory and for our goodness</div><h2 class="big">We exist to glorify God and enjoy Him forever.</h2><img class="creek" src="assets/creek-gold.png" alt="" style="width:120px;margin-top:6px"></div>
-  <div class="prose"><p>Bluff Creek is a traditional Southern Baptist church at the corner of Highways 959 and 63. On a normal Sunday you'll hear theologically rich hymns, a word for the kids (with treats), and thirty or forty minutes of preaching straight from the text — and then we hang out until somebody turns the lights off.</p><p>We're rooted in the Word, and we take the Great Commission personally: across our campus, across the street, across the country, and across the world.</p><a class="textlink" href="about.html">Who we are →</a></div>
+  <div data-rv>
+    <div class="eye">For His glory and for our goodness</div>
+    <h2 class="big">We exist to glorify God and enjoy Him forever.</h2>
+    <img class="creek" src="assets/creek-gold.png" alt="" style="width:130px;margin:2px 0 26px">
+    <div class="prose">
+      <p>Bluff Creek is a traditional Southern Baptist church at the corner of Highways 959 and 63. On a normal Sunday you'll hear theologically rich hymns, a word for the kids (with treats), and thirty or forty minutes of preaching straight from the text — and then we hang out until somebody turns the lights off.</p>
+      <p>We're rooted in the Word, and we take the Great Commission personally: across our campus, across the street, across the country, and across the world.</p>
+    </div>
+    <a class="textlink" href="about.html">Who we are →</a>
+  </div>
+  <figure class="figure" data-rv data-d="1">
+    <img src="assets/photos/sign.jpg" alt="The brick Bluff Creek Baptist Church sign at the road, with the sanctuary behind it" loading="lazy">
+    <span class="tag">1706 · LA 63</span>
+  </figure>
 </div></section>
 
-<section class="band alt"><div class="wrap">
-  <div class="sec-h"><div><div class="eye">One church, one family</div><h2>Ministries @ the Creek</h2></div><a class="textlink" href="ministries.html">All ministries →</a></div>
+<section class="band tint"><div class="wrap">
+  <div class="sec-h" data-rv><div><div class="eye">Gather with us</div><h2>This week at the Creek</h2></div><a class="textlink" href="times.html">See the full rhythm →</a></div>
+  <div class="event-feed" data-events-feed="4" data-rv data-d="1">{event_rows(limit=4)}</div>
+</div></section>
+
+<section class="band photo tall verse">
+  <div class="shot"><img src="assets/photos/land-sunset.jpg" alt="Sunset burning pink and orange through the pines off Highway 63" loading="lazy"></div>
+  <div class="wrap" data-rv>
+    <blockquote>Go therefore and make disciples of all nations.</blockquote>
+    <cite>Matthew 28:19</cite>
+  </div>
+</section>
+
+<section class="band"><div class="wrap">
+  <div class="sec-h" data-rv><div><div class="eye">One church, one family</div><h2>Ministries @ the Creek</h2></div><a class="textlink" href="ministries.html">All ministries →</a></div>
   <div class="cols3 lines">
-    <div>{lock("Kidz")}<p>Birth through 5th grade — Sunday School at 9:00, a nursery for the littlest ones, VBS, the fall festival, and a safe, loving place every single week.</p><a class="textlink" href="ministries.html#kidz">Kidz @ the Creek →</a></div>
-    <div>{lock("Youth")}<p>6th–12th grade. Sunday mornings at 9:00, Sunday nights at 5:30, and MDWK every Wednesday at 6:00 — <b>6 on the 63</b>. Camp, DNOW, and the fall retreat.</p><a class="textlink" href="ministries.html#youth">Youth @ the Creek →</a></div>
-    <div>{lock("Adults")}<p>Sunday School classes for every age, a women's Monday-night study, Yoga @ the Creek, WMU, and a Wednesday prayer meeting that's the heartbeat of the week.</p><a class="textlink" href="ministries.html#adults">Adults @ the Creek →</a></div>
+    <div data-rv>{lock("Kidz")}<p>Birth through 5th grade — Sunday School at 9:00, a nursery for the littlest ones, VBS, the fall festival, and a safe, loving place every single week.</p><a class="textlink" href="ministries.html#kidz">Kidz @ the Creek →</a></div>
+    <div data-rv data-d="1">{lock("Youth")}<p>6th–12th grade. Sunday mornings at 9:00, Sunday nights at 5:30, and MDWK every Wednesday at 6:00 — <b>6 on the 63</b>. Camp, DNOW, and the fall retreat.</p><a class="textlink" href="ministries.html#youth">Youth @ the Creek →</a></div>
+    <div data-rv data-d="2">{lock("Adults")}<p>Sunday School classes for every age, a women's Monday-night study, Yoga @ the Creek, WMU, and a Wednesday prayer meeting that's the heartbeat of the week.</p><a class="textlink" href="ministries.html#adults">Adults @ the Creek →</a></div>
   </div>
 </div></section>
 
-<section class="band"><div class="wrap split photo">
-  <img class="ph" src="assets/photos/cole-permenter.jpg" alt="Pastor Cole Permenter with his wife Rikki and their daughters">
-  <div class="prose"><div class="eye">From Pastor Cole</div><h2 class="big">Come as you are. We mean it.</h2><p>Suit or Wranglers, overalls off the tractor or camo off the stand — you'll fit right in. Bring your kids into the service or use the nursery; either way, nobody's going to give you a look we haven't earned ourselves.</p><p>If you fill out a contact card, I'll reach out during the week. I'd rather sit across a table from you with a cup of coffee than talk at you from a stage, and our family would love to share a meal with yours.</p><p class="sig">— Cole Permenter, Pastor</p><a class="btn pine" href="visit.html">Plan your first Sunday</a></div>
+<section class="band tint"><div class="wrap split rev">
+  <div class="prose" data-rv data-d="1">
+    <div class="eye">From Pastor Cole</div>
+    <h2 class="big">Come as you are. We mean it.</h2>
+    <p>Suit or Wranglers, overalls off the tractor or camo off the stand — you'll fit right in. Bring your kids into the service or use the nursery; either way, nobody's going to give you a look we haven't earned ourselves.</p>
+    <p>If you fill out a contact card, I'll reach out during the week. I'd rather sit across a table from you with a cup of coffee than talk at you from a stage, and our family would love to share a meal with yours.</p>
+    <p class="sig">— Cole Permenter, Pastor</p>
+    <a class="btn pine" href="visit.html">Plan your first Sunday</a>
+  </div>
+  <figure class="figure tall" data-rv>
+    <img src="assets/photos/cole-permenter.jpg" alt="Pastor Cole Permenter with his wife Rikki and their daughters" loading="lazy">
+  </figure>
 </div></section>
 
-<section class="band pine"><div class="wm" aria-hidden="true" style="position:absolute;right:-.05em;top:-.3em;font-family:Bitter,serif;font-weight:700;font-size:clamp(200px,28vw,420px);line-height:1;color:#f4efe2;opacity:.05;letter-spacing:-.04em">63</div><div class="wrap split" style="position:relative">
-  <div><div class="eye">First stop on the 63</div><h2 class="big">Your first Sunday, answered.</h2><p>Where do I park? What do I do with my kids? Do I need to dress up? We wrote it all down so nothing about your first visit feels like a guess.</p><a class="btn" href="visit.html">Plan a visit</a></div>
-  <div class="qa-list"><a href="visit.html">Where do I park?<span>→</span></a><a href="visit.html">What time do I arrive?<span>→</span></a><a href="visit.html">Where do I go?<span>→</span></a><a href="visit.html">What do I do with my kids?<span>→</span></a><a href="visit.html">Do I need to dress up?<span>→</span></a><a href="visit.html">What is the service like?<span>→</span></a></div>
-</div></section>
+<section class="band photo">
+  <div class="shot"><img src="assets/photos/gathered.jpg" alt="The congregation standing together during a Sunday service" loading="lazy"></div>
+  <div class="wrap split">
+    <div data-rv>
+      <div class="eye">First stop on the 63</div>
+      <h2 class="big">Your first Sunday, answered.</h2>
+      <p>Where do I park? What do I do with my kids? Do I need to dress up? We wrote it all down so nothing about your first visit feels like a guess.</p>
+      <a class="btn" href="visit.html">Plan a visit</a>
+    </div>
+    <div class="qa-list ghostlinks" data-rv data-d="1">
+      <a href="visit.html">Where do I park?<span>→</span></a>
+      <a href="visit.html">What time do I arrive?<span>→</span></a>
+      <a href="visit.html">What do I do with my kids?<span>→</span></a>
+      <a href="visit.html">Do I need to dress up?<span>→</span></a>
+      <a href="visit.html">What is the service like?<span>→</span></a>
+    </div>
+  </div>
+</section>
 
-<section class="band alt"><div class="wrap cols3 lines">
-  <div><div class="eye">Across the street &amp; around the world</div><h3>Missions @ the Creek</h3><p>From the LOT Project in North Baton Rouge to partners in India and Northern Italy — our mission runs across campus, across the street, across the country, and across the world.</p><a class="textlink" href="missions.html">See where we serve →</a></div>
-  <div><div class="eye">Cheerfully &amp; regularly</div><h3>Give @ the Creek</h3><p>Give online in about a minute, in person on Sunday, or by mail. Every gift is recorded by the church treasurer for your year-end statement.</p><a class="textlink" href="give.html">Give →</a></div>
-  <div><div class="eye">In your pocket</div><h3>Home @ the Creek</h3><p>Our app: this week's schedule, prayer requests, giving, and a way to connect. Scan the card in the pew or tap here, then add it to your home screen.</p><a class="textlink" href="{APP}">Get the app →</a></div>
-</div></section>
-
-<section class="band"><div class="wrap word-l">
-  <blockquote>"Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age."</blockquote>
-  <cite>Matthew 28:19–20</cite>
+<section class="band"><div class="wrap cols3 lines">
+  <div data-rv><div class="eye">Across the street &amp; around the world</div><h3>Missions @ the Creek</h3><p>From the LOT Project in North Baton Rouge to partners in India and Northern Italy — our mission runs across campus, across the street, across the country, and across the world.</p><a class="textlink" href="missions.html">See where we serve →</a></div>
+  <div data-rv data-d="1"><div class="eye">Cheerfully &amp; regularly</div><h3>Give @ the Creek</h3><p>Give online in about a minute, in person on Sunday, or by mail. Every gift is recorded by the church treasurer for your year-end statement.</p><a class="textlink" href="give.html">Give →</a></div>
+  <div data-rv data-d="2"><div class="eye">In your pocket</div><h3>Home @ the Creek</h3><p>Our app: this week's schedule, prayer requests, giving, and a way to connect. Scan the card in the pew or tap here, then add it to your home screen.</p><a class="textlink" href="{APP}">Get the app →</a></div>
 </div></section>
 """)
 

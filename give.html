@@ -7,7 +7,13 @@
 <meta name="description" content="Give to Bluff Creek Baptist Church online, in person, or by mail.">
 <meta property="og:title" content="Give — Bluff Creek Baptist Church">
 <meta property="og:description" content="Give to Bluff Creek Baptist Church online, in person, or by mail.">
-<meta property="og:image" content="https://www.bluffcreekbaptistchurch.org/assets/icon-512.png">
+<meta property="og:image" content="https://www.bluffcreekbaptistchurch.org/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bluffcreekbaptistchurch.org/give.html">
+<meta property="og:site_name" content="Bluff Creek Baptist Church">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#3C5A45">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -18,18 +24,27 @@
 
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="index.html"><img src="assets/logo.png" alt="Bluff Creek Baptist Church"></a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top"><div class="wrap">
+  <a class="brand" href="index.html">
+    <img class="lg-light" src="assets/logo-white.png" alt="Bluff Creek Baptist Church">
+    <img class="lg-dark" src="assets/logo.png" alt="" aria-hidden="true">
+  </a>
   <button class="burger" aria-label="Menu" aria-expanded="false" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="main" id="nav" aria-label="Primary"><a href="visit.html">Plan a Visit</a><a href="about.html">Who We Are</a><a href="ministries.html">Ministries</a><a href="missions.html">Missions</a><a href="times.html">When We Meet</a><a href="give.html" aria-current="page">Give</a><a href="watch.html">Watch</a><a href="contact.html">Contact</a><a class="cta" href="https://app.bluffcreekbaptistchurch.org/">Get the app</a></nav>
 </div></header>
-<main class="wrap">
+<section class="page-hero">
+  <div class="shot"><img src="assets/photos/land-snow.jpg" alt="Snow and sunset over the treeline in East Feliciana Parish" style="object-position:center 55%" fetchpriority="high"></div>
+  <div class="wm" aria-hidden="true">63</div>
+  <div class="wrap">
+    <div class="eye">Cheerfully &amp; regularly</div>
+    <h1>Give @ the Creek.</h1>
+    <p class="lead">Your giving sustains worship, discipleship, missions, and the care of our people and our community. Every gift is recorded by the church treasurer for your year-end statement.</p>
+  </div>
+</section>
 
-<section class="sec">
-  <div class="eye">Cheerfully &amp; regularly</div>
-  <h1>Give @ the Creek.</h1>
-  <p class="lead">Your giving sustains worship, discipleship, missions, and the care of our people and our community. Every gift is recorded by the church treasurer for your year-end statement.</p>
-  <div class="grid g3" style="margin-top:20px">
+<main class="wrap" id="main">
+<section class="sec"><div class="grid g3" style="margin-top:20px">
     <div class="card" style="border-top:4px solid var(--wheat)"><h3>Online</h3><p>Secure giving by card, Apple Pay, or Link — any amount, in about a minute.</p><a class="btn" href="https://buy.stripe.com/9B600j6Q68IFgK8h13bo400" target="_blank" rel="noopener">Give online</a></div>
     <div class="card"><h3>In person</h3><p>Checks or cash in the offering during any service. Contact cards go in the same plate.</p></div>
     <div class="card"><h3>By mail</h3><p>Checks payable to Bluff Creek Baptist Church<br>1706 Highway 63<br>Clinton, LA 70722</p></div>
@@ -52,5 +67,18 @@
     <div class="fine"><span>1706 Highway 63 · Clinton, Louisiana 70722 · <a href="tel:+12252187902" style="display:inline;padding:0">(225) 218-7902</a> · <a href="mailto:bluffcreekbaptist@gmail.com" style="display:inline;padding:0">bluffcreekbaptist@gmail.com</a></span><span>© 2026 Bluff Creek Baptist Church · "Go therefore and make disciples of all nations." Matthew 28:19</span></div>
   </div>
 </footer>
+<script>
+(function(){
+  var top=document.getElementById('top');
+  var onScroll=function(){ (window.scrollY>28) ? top.classList.add('solid') : top.classList.remove('solid'); };
+  onScroll(); addEventListener('scroll',onScroll,{passive:true});
+  var els=[].slice.call(document.querySelectorAll('[data-rv]'));
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in')}); return;
+  }
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){ if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} })},{rootMargin:'0px 0px -12% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
