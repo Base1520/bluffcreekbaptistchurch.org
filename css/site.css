@@ -100,6 +100,17 @@ section.sec{padding:46px 0 10px}
 .sched tr:last-child td,.sched tr:last-child th{border-bottom:0}
 .tablewrap{overflow-x:auto}
 
+/* shared events feed */
+.events-band{background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.event-feed{border-top:1px solid var(--line)}
+.event-row{display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.event-row time{font-family:"Bitter",serif;font-size:28px;font-weight:600;line-height:1;color:var(--pine);font-variant-numeric:tabular-nums}
+.event-row time span{display:block;margin-bottom:5px;font-family:"Nunito Sans",sans-serif;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat)}
+.event-row h3{font-size:19px;margin:0 0 3px}
+.event-row p{font-size:14.5px;color:var(--ink2);margin:0}
+.events-inline{margin-top:34px}
+@media (min-width:760px){.event-feed{display:grid;grid-template-columns:repeat(3,1fr)}.event-row{grid-template-columns:58px 1fr;padding:22px 24px;border-right:1px solid var(--line)}.event-row:first-child{padding-left:0}.event-row:last-child{padding-right:0;border-right:0}}
+
 /* faq / visit */
 .faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0;margin-bottom:10px;box-shadow:var(--shadow)}
 .faq summary{cursor:pointer;list-style:none;padding:16px 20px;font-family:"Bitter",serif;font-weight:600;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
