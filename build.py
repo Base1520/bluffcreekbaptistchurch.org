@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://www.bluffcreekbaptistchurch.org"
 APP = "https://app.bluffcreekbaptistchurch.org/"
 GIVE = "https://buy.stripe.com/9B600j6Q68IFgK8h13bo400"
-WATCH = "https://www.youtube.com/@bluffcreekbaptistchurch"
+WATCH = "https://www.facebook.com/bluffcreekbaptist"  # live stream is on Facebook (no YouTube channel yet)
 EMAIL = "bluffcreekbaptist@gmail.com"
 PHONE = "(225) 218-7902"; PHONE_TEL = "+12252187902"
 YEAR = datetime.date.today().year
@@ -55,7 +55,7 @@ def layout(slug, title, desc, body, extra_head=""):
       <div class="byline"><img class="la63" src="assets/la63.svg" alt="">1706 · LA 63 · Clinton</div>
     </div>
     <div><h4>Come see us</h4><a href="visit.html">Plan a visit</a><a href="times.html">When we meet</a><a href="about.html">Who we are</a><a href="beliefs.html">What we believe</a><a href="membership.html">Becoming a member</a></div>
-    <div><h4>The Creek</h4><a href="ministries.html">Ministries @ the Creek</a><a href="missions.html">Missions @ the Creek</a><a href="give.html">Give</a><a href="watch.html">Watch</a><a href="contact.html">Contact</a><a href="{APP}">Home @ the Creek — the app</a></div>
+    <div><h4>The Creek</h4><a href="ministries.html">Ministries @ the Creek</a><a href="missions.html">Missions @ the Creek</a><a href="give.html">Give</a><a href="watch.html">Watch</a><a href="contact.html">Contact</a><a href="{APP}">Home @ the Creek — the app</a><h4 style="margin-top:16px">Follow</h4><a href="https://www.facebook.com/bluffcreekbaptist" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/bluffcreekbaptistchurch/" target="_blank" rel="noopener">Instagram</a><a href="https://www.instagram.com/bluffcreekstudents/" target="_blank" rel="noopener">Students on Instagram</a><a href="webcal://p24-caldav.icloud.com/published/2/MjgxNDIwMTA5MjgxNDIwMZkrrqg7P_e_uOJSEuneGS4QT-quA4OE5lbjyAKZifNVcV3yYLBvdcwT4okvZF-44VCzkvYBgUEuOzihC5igIm4">Subscribe to our calendar</a></div>
     <div class="fine"><span>1706 Highway 63 · Clinton, Louisiana 70722 · <a href="tel:{PHONE_TEL}" style="display:inline;padding:0">{PHONE}</a> · <a href="mailto:{EMAIL}" style="display:inline;padding:0">{EMAIL}</a></span><span>© {YEAR} Bluff Creek Baptist Church · "Go therefore and make disciples of all nations." Matthew 28:19</span></div>
   </div>
 </footer>
@@ -237,7 +237,7 @@ PAGES["times"] = ("When We Meet", "Service and meeting times at Bluff Creek Bapt
   </table></div>
   <div class="grid g2" style="margin-top:22px">
     <div class="card"><div class="eye">In your pocket</div><h3>The week, in the app</h3><p>This week's schedule and events, updated as they change — plus prayer, giving, and a way to connect.</p><p><a href="{APP}">Open Home @ the Creek →</a></p></div>
-    <div class="card"><div class="eye">First time?</div><h3>Plan a visit</h3><p>Where to park, where to go, and what to expect — all the honest answers.</p><p><a href="visit.html">Plan a visit →</a></p></div>
+    <div class="card"><div class="eye">On your calendar</div><h3>Subscribe to the church calendar</h3><p>Every service, meeting, and event — straight into the calendar on your phone or computer, updated automatically.</p><p><a href="webcal://p24-caldav.icloud.com/published/2/MjgxNDIwMTA5MjgxNDIwMZkrrqg7P_e_uOJSEuneGS4QT-quA4OE5lbjyAKZifNVcV3yYLBvdcwT4okvZF-44VCzkvYBgUEuOzihC5igIm4">Subscribe →</a> · <a href="visit.html">Plan a visit →</a></p></div>
   </div>
 </section>
 """)
@@ -322,7 +322,7 @@ PAGES["watch"] = ("Watch", "Watch Bluff Creek Baptist Church online — Sunday w
   <h1>Watch the Creek.</h1>
   <p class="lead">Sunday morning worship streams live at <b>10:15a</b>, and past services are there any time.</p>
   <div class="grid g2" style="margin-top:20px">
-    <div class="panel"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Live &amp; on demand</div><h3>Bluff Creek on YouTube</h3><p>Subscribe and turn on notifications so Sunday finds you wherever you are.</p><a class="btn" href="{WATCH}" target="_blank" rel="noopener">Watch on YouTube</a></div>
+    <div class="panel"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Live &amp; on demand</div><h3>Bluff Creek live on Facebook</h3><p>Sunday morning worship streams live on our Facebook page, and past services are there any time. Follow the page so Sunday finds you wherever you are.</p><a class="btn" href="{WATCH}" target="_blank" rel="noopener">Watch on Facebook</a></div>
     <div class="card"><h3>What you'll hear</h3><p>Theologically rich hymns, prayer, a word for the kids, and a 30–40 minute expositional message straight from the text — the same service we have in the room.</p><p><a href="visit.html">Then come see us in person →</a></p></div>
   </div>
 </section>
