@@ -315,13 +315,17 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 
 /* The opening introduces the church before practical visit details. */
 .homestead-welcome{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:660px;padding:72px 28px 66px;text-align:center}
-.homestead-welcome::after{content:"";position:absolute;right:-200px;bottom:34px;width:720px;height:180px;z-index:-1;opacity:.055;background:url("../assets/creek-gold.png") center/contain no-repeat;pointer-events:none}
 .homestead-welcome .eye{margin:0 0 26px}
 .homestead-welcome h1{color:var(--pine);font-family:"Bitter",Georgia,serif;font-size:clamp(44px,4.8vw,64px);font-weight:600;line-height:1.06;letter-spacing:-.02em;margin:0}
 .homestead-welcome .welcome-creek{width:170px;height:auto;margin:23px 0 22px}
 .homestead-welcome .welcome-intro{max-width:51ch;font-size:18px;line-height:1.7;color:var(--ink2);margin:0}
 .homestead-welcome .actions{justify-content:center;gap:16px;margin-top:30px}
-.homestead-welcome .welcome-location{font-size:12px;color:var(--ink2);margin:26px 0 0}
+/* The unchanged state marker is a small, useful local signature. */
+.route-marker{display:block;flex:0 0 auto;height:auto;filter:none}
+.homestead-welcome .welcome-location{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--ink2);margin:25px 0 0;text-decoration:none;border-radius:6px}
+.welcome-location .route-marker{width:24px}
+.welcome-location .location-arrow{color:var(--pine);font-size:15px;letter-spacing:0}
+.welcome-location:hover>span:not(.location-arrow){text-decoration:underline;text-underline-offset:4px}
 .editorial .homestead-welcome .btn{box-shadow:0 8px 24px rgba(40,33,20,.06)}
 .editorial .homestead-welcome .btn.ghost{box-shadow:none}
 .editorial .first-visit .sunday-strip{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(40,33,20,.06);margin-bottom:42px}
@@ -332,7 +336,6 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .visit-times h2{font-size:30px}
 @media(max-width:760px){
   .homestead-welcome{min-height:610px;padding:48px 0}
-  .homestead-welcome::after{width:400px;right:-200px;bottom:20px}
   .homestead-welcome .eye{font-size:10px;letter-spacing:.12em}
   .homestead-welcome h1{font-size:44px;line-height:1.07}
   .homestead-welcome .welcome-creek{width:140px;margin:22px 0}
@@ -375,7 +378,9 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .tile-link{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);align-self:stretch;display:flex;justify-content:space-between;gap:12px;font-size:12px;font-weight:800;color:var(--pine)}
 .week-grid{display:grid;grid-template-columns:.85fr 1.4fr;gap:90px;align-items:start}
 .week-intro>p:not(.eye){color:var(--ink2);font-size:16px;margin:19px 0 15px}
-.wednesday-note{display:flex;flex-direction:column;gap:5px;margin-top:34px;border-left:2px solid var(--wheat);padding-left:16px}
+.wednesday-note{display:flex;align-items:center;gap:13px;margin-top:34px}
+.wednesday-note .route-marker{width:20px}
+.wednesday-note>div{display:flex;flex-direction:column;gap:5px}
 .wednesday-note b{font-family:"Bitter",serif;font-size:18px;letter-spacing:-.03em}
 .wednesday-note span{font-size:12px;color:var(--ink2)}
 .editorial .event-feed{margin:0}
@@ -409,7 +414,9 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .wayfinding{margin:0;min-width:0;position:relative}
 .wayfinding picture{display:block;position:relative;background:var(--pine)}
 .wayfinding picture::after{content:"";position:absolute;inset:0;background:rgba(60,90,69,.24);pointer-events:none}
-.wayfinding img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:left center;filter:grayscale(.42) saturate(.68) brightness(.86);box-shadow:none;border-radius:0}
+.wayfinding .wayfinding-photo{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:left center;filter:grayscale(.42) saturate(.68) brightness(.86);box-shadow:none;border-radius:0}
+.route-byline{display:inline-flex;align-items:center;gap:10px}
+.route-byline .route-marker{width:20px}
 .wayfinding figcaption{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding:17px 0;font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:800;color:var(--ink2)}
 .wayfinding figcaption a{font-size:11px;text-transform:none;letter-spacing:0;text-underline-offset:4px}
 .editorial .next-steps{padding:55px 0}

@@ -1,6 +1,12 @@
 # Website verification
 
-## Current Homestead restoration
+## Current LA 63 refinement
+
+The original highway marker now appears in the welcome’s location link (24px), the Wednesday “6 on the 63” note (20px), and the church-photo address caption (20px). The unchanged SVG keeps its natural square aspect ratio and has no CSS color filter. The faint welcome background flourish was removed.
+
+Targeted browser checks at 1440, 520, 375, and 320 pixels found no horizontal overflow or broken loaded images, no numeric service times in the opening viewport, and a clean address caption at the narrowest width. The welcome location link reaches Contact. Desktop, phone, Wednesday, and address-caption screenshots were reviewed; the homepage PR previews were refreshed. Build and diff checks pass.
+
+## Homestead restoration baseline
 
 The homepage and Plan a Visit page now introduce the church and welcome visitors before showing numeric service times. Browser verification at 1440, 520, and 320 pixels confirms no numeric service times in either opening viewport, no horizontal overflow, Bitter/Nunito Sans, the original ivory/pine/gold palette, and a rounded gold primary action. About and Ministries were checked for consistent typography and color at phone width.
 

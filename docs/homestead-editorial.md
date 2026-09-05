@@ -53,6 +53,8 @@ Use the actual creek brushstroke lifted from the logo. The supplied gold asset i
 
 Use the official Louisiana 63 marker in its original green, small and near an address. Typical sizes are 20–24px by an address, 28–34px in the app header, or 0.75–1.25 inches in print. It is never another logo. The consistent byline is **1706 · LA 63 · Clinton**. A Bitter “63” watermark may be used at 5–8% opacity, below about 9%, away from body text; allow only one quiet highway reference per surface.
 
+On the homepage, the marker appears at 24px in the welcome’s location link, at 20px beside “6 on the 63,” and at 20px in the church-photo address caption. Keep the welcome background clear so the small location detail remains distinctive. Use the unchanged SVG without filters, borders, or a badge container; do not add a second marker or watermark to the same section.
+
 ## Surfaces and buttons
 
 Use an 8-point spacing grid, with 4-point adjustments where needed. Ivory grounds and white cards are the default.
