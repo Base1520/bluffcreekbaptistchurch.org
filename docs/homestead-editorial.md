@@ -1,64 +1,112 @@
-# Homestead — editorial edition
+# Bluff Creek Baptist Church — Homestead
 
-A proposed evolution of Bluff Creek Baptist Church’s existing identity, prepared for review on `codex/homestead-editorial`. The public website is the first application. The existing wordmark, original creek brushstroke, ministry names, and Louisiana 63 marker are preserved.
+This guide applies the original **BCBC — Brand Kit (Homestead) · v1.0**, selected on September 3, 2026. That canonical kit remains the source of truth for the website, Home @ the Creek, ministry materials, and church documents.
 
-![Desktop homepage preview](previews/home-desktop.png)
+## The welcome
 
-[Phone homepage preview](previews/home-phone.png)
+**Welcome home to the Creek.**
 
-## The idea
+Lead the homepage with the church’s familiar identity and a plain, warm welcome. Keep service times, upcoming events, and first-visit details easy to find farther down the homepage and on Plan a Visit. Use the church’s approved beliefs and ministry descriptions. Do not introduce a new tagline, wordmark, or font family.
 
-**Deep roots. Open doors.** A country church with a confident, welcoming presence. Scripture and the church family carry the message. Spacious type, warm paper colors, restrained gold, and the actual creek mark carry the design.
+[Desktop homepage preview](previews/home-desktop.png) · [Phone homepage preview](previews/home-phone.png)
 
-Use “Rooted in the Word. Growing together.” as supporting copy. “Welcome home.” is a welcome, not a membership requirement. Keep the established theological and ministry descriptions intact.
+## Color
 
-## The visual system
-
-| Role | Value | Use |
+| Role | Name | Hex |
 | --- | --- | --- |
-| Ivory | `#F5EFE3` | Main ground; leave generous open space |
-| Pine | `#3C5A45` | Primary buttons, headings, occasional feature panel |
-| Wheat | `#B08636` | Original creek and decorative accents |
-| Dark gold | `#826021` | Small gold text on ivory or white |
-| Ink | `#221F1A` | Body and display text |
-| Soft ink | `#5E574C` | Supporting copy |
-| White | `#FFFFFF` | Forms and supporting surfaces |
-| Moss / Creek blue / Clay | `#6B8F5E` / `#557A82` / `#A8573E` | Ministry accents, borders, and occasional details |
-| Sign green | `#006B54` | Existing official Louisiana 63 marker only |
+| Main ground | Ivory | `#F5EFE3` |
+| Cards and surfaces | White | `#FFFFFF` |
+| Primary brand color; headings and secondary buttons | Pine | `#3C5A45` |
+| Original creek; one primary action per screen; accents | Wheat / Gold | `#B08636` |
+| Rare emphasis; Missions accent | Clay | `#A8573E` |
+| Text and wordmark | Ink | `#221F1A` |
+| Chips and icon wells | Pine tint | `#EAF0EA` |
+| Official Louisiana 63 marker only | Sign green | `#006B54` |
 
-**Bitter 600** leads with generous size and tight tracking. **Bitter 500 italic** adds one warm phrase. **Nunito Sans** handles body, labels, navigation, and forms. Body text remains comfortably readable; small uppercase text is reserved for short labels.
+Supporting colors: soft text `#5E574C`, faint text `#938A79`, border `#E4DAC8`, wheat tint `#F6EED9`, and pine deep `#2E4636`. Ministry accents also include moss `#6B8F5E` and creek blue `#557A82`.
 
-Use the supplied wordmark at its original proportions, black on ivory or reversed on pine. The script belongs to the wordmark only. Use the existing gold creek PNG, never a substitute line. Keep highway markers small, by addresses. Avoid shadows, rounded pills, texture overlays, competing logos, and photo-dependent headlines.
+Aim for roughly **62% ivory, 16% white, 12% pine, 7% gold, and 3% clay**. Light colors lead. Sign green belongs to the official highway marker alone.
 
-## A ministry family
+**Accessibility implementation note:** darker gold `#826021` may be used for readable small text on ivory or white. It is a contrast adjustment, separate from the canonical palette. The real gold creek and wheat primary button stay `#B08636`.
 
-`[Ministry] @ the Creek` uses the same type and gold creek underline. Ministry accent changes the supporting border, not the wordmark. **Kidz** always uses the z. Youth uses creek blue; Kidz uses moss; Missions uses clay. No separate mascots or new ministry logos.
+## Typography
 
-## Photography
+**Bitter 600** is the display and heading face; use 700 sparingly. **Nunito Sans 400–800** is the body and interface face. The script in the existing wordmark is never used as a separate font.
 
-Use a photograph when it answers a question: where to turn, who someone will meet, what the church is actually like. The homepage uses the existing sign photograph for wayfinding; About uses existing staff portraits. Photographs recede through subtle desaturation and pine overlays.
+| Level | Canonical scale |
+| --- | --- |
+| Display | 44px / 1.02 |
+| Title | 30px / 1.06 |
+| Heading | 22px |
+| Subhead | 17px |
+| Body | 16px / 1.6 |
+| Small | 14px |
+| Label | 11px, uppercase, 0.14em tracking |
 
-No new identifiable people, minors, or field-ministry photographs are introduced. Original files remain untouched. Responsive derivatives strip metadata and do not enlarge small source images. Future photography should come from the church with publication permission, not generic worship stock images.
+Keep headlines in sentence case, balance their wrapping, and keep body copy to about 65 characters per line. Labels are short; times and tables use tabular figures.
 
-## Consistency beyond the website
+## Wordmark, creek, and highway marker
 
-- **Weekly update:** one clear Bitter title, the date, a short opening paragraph, then service times and three upcoming items. Use the same pine action button and link wording as the website.
-- **Social graphics:** generous ivory or pine ground, one headline, one original creek, and one useful action. Put the date and location on event posts; keep essential details out of tiny captions.
-- **Sunday slides and stream:** the same wordmark, Bitter heading, Nunito Sans supporting type, and gold creek. Use approved service titles; do not invent sermon series artwork or speakers.
-- **Policies and forms:** ivory cover, black wordmark, pine headings, clear owner/version/date fields. Document body pages should favor white backgrounds and legible black text.
-- **Staff signatures:** church name, role, approved church contact, website. Keep the mark small and the message readable without images.
-- **Creek Office:** apply the same tokens and typography when the separate admin portal is reviewed. This website PR does not activate its authentication or storage.
+The existing wordmark never changes. Use it black on ivory or white, or reversed on pine, at its natural proportions. Minimum width is 120px or 1.25 inches; leave clear space equal to the capital B’s height. Do not recolor, shadow, outline, stretch, rotate, or separate its parts.
 
-These are reuse directions, not changes to accounts, live templates, or canonical church records.
+Use the actual creek brushstroke lifted from the logo. The supplied gold asset is the default for about 90% of uses. Pine is secondary on white; ivory can be used quietly on pine or ink. Never redraw the creek or replace it with a generic wave. It points right, is at least 48px wide, and appears once per screen at full strength. It can underline a ministry lockup, divide a section, or appear as a quiet hero texture.
+
+Use the official Louisiana 63 marker in its original green, small and near an address. Typical sizes are 20–24px by an address, 28–34px in the app header, or 0.75–1.25 inches in print. It is never another logo. The consistent byline is **1706 · LA 63 · Clinton**. A Bitter “63” watermark may be used at 5–8% opacity, below about 9%, away from body text; allow only one quiet highway reference per surface.
+
+## Surfaces and buttons
+
+Use an 8-point spacing grid, with 4-point adjustments where needed. Ivory grounds and white cards are the default.
+
+- Inputs and chips: **12px radius**.
+- Cards: **16–18px radius**.
+- Hero surfaces: **22px radius**.
+- Phone frames: **30–44px radius**.
+- Buttons: **13px radius**, Nunito Sans 800.
+- Border: **1px `#E4DAC8`**.
+- Warm shadow: **`0 8px 24px rgba(40,33,20,.06)`**.
+
+Use **one wheat primary button per screen**, pine secondary buttons, and ghost tertiary buttons. Use readable text on each surface. Icons, when needed, are 2px line icons in pine within pine-tint wells.
+
+## One ministry family
+
+The single construction is **`[Ministry] @ the Creek`**. Set the lockup in Bitter 600, with the `@` in wheat italic and the original gold creek beneath it, left-aligned at about 60% of the text width. Ministries differ by accent color only.
+
+| Lockup | Accent |
+| --- | --- |
+| Church @ the Creek | Pine `#3C5A45` |
+| Worship @ the Creek | Wheat `#B08636` |
+| Kidz @ the Creek | Moss `#6B8F5E` |
+| Youth @ the Creek | Creek blue `#557A82` |
+| Missions @ the Creek | Clay `#A8573E` |
+| Home @ the Creek | Ink `#221F1A` |
+
+**Kidz** always keeps the z. Do not create new ministry logos, icons, or mascots, and do not use `@` outside a ministry lockup.
+
+## Voice and photography
+
+The voice is warm, plain, and invitational: a neighbor holding the door. Use the approved welcome, **“Welcome home to the Creek.”** Keep useful details specific. Use *students*, *give*, and the established ministry names. Avoid hype and formal invitation language.
+
+Photographs support the welcome when they help someone recognize a place or person. The current homepage uses the existing sign photograph for wayfinding; About uses existing staff portraits. Photography stays visually subdued. No new identifiable people, minors, or field-ministry photographs are introduced. Original files remain untouched; responsive derivatives strip metadata and never enlarge small originals.
+
+## Applying the kit elsewhere
+
+- **Weekly update:** the original wordmark, a Bitter title, a short opening paragraph, useful dates, and one wheat primary action.
+- **Social graphics:** an ivory or pine ground, a clear headline, the original creek, and readable date/location information where relevant.
+- **Sunday slides and stream:** the same wordmark, Bitter headings, Nunito Sans supporting text, and gold creek. Use approved service titles and imagery.
+- **Policies and forms:** the wordmark, pine headings, white body pages, and clear owner, version, and date fields. Use approved church information only.
+- **Staff signatures:** church name, role, approved church contact, and website; keep the mark small and text readable without images.
+- **Creek Office:** use the same original kit when the separate admin portal is reviewed. This website work does not activate its authentication or storage.
+
+These are application guidelines. Creating or changing live templates, accounts, or church records remains separate work.
 
 ## Maintaining the website
 
-Edit page content in `build.py`, shared structure in `css/site.css`, and the editorial design in `css/polish.css`. Run `python3 build.py`; do not edit generated HTML. The normal build needs only Python’s standard library.
+Edit page content in `build.py`, shared structure in `css/site.css`, and refinements in `css/polish.css`. Run `python3 build.py`; do not hand-edit the generated HTML. The normal build uses Python’s standard library.
 
-The calendar continues to read the app-owned `events.json`. Keep its verified dated occurrences current; this design does not invent future dates or connect the Google approvals CSV. When dates expire, visitors get the weekly meeting schedule.
+The calendar reads the app-owned `events.json`. Keep verified dated occurrences current; this work does not invent future dates or connect the Google approvals CSV. Build and browser validation use America/Chicago. Expired dates are removed, empty calendars link to the weekly schedule, and the no-JavaScript fallback shows verified weekly gathering times.
 
-When an approved source photo changes, install Pillow in a local development environment and run `python3 tools/image_pipeline.py`. Commit the generated manifest and derivatives along with the source change. `image_helpers.py` emits responsive WebP sources, JPEG fallback, lazy loading, and dimensions.
+When an approved source photo changes, install Pillow in a local development environment and run `python3 tools/image_pipeline.py`. Commit the generated manifest and derivatives with the approved source change. `image_helpers.py` emits responsive WebP sources, a JPEG fallback, lazy loading, and image dimensions.
 
-Share graphics live in `assets/social/`. Run `python3 tools/social_cards.py --output /tmp/bcbc-share-cards` to create their self-contained HTML sources, then capture each in a browser at exactly 1200 × 630 after fonts load. These are occasional asset exports, separate from the normal build.
+Share graphics live in `assets/social/`. Run `python3 tools/social_cards.py --output /tmp/bcbc-share-cards` to create their self-contained HTML sources, then capture each in a browser at exactly 1200 × 630 after fonts load. These occasional exports are separate from the normal build.
 
-Run `python3 -m unittest discover -s tests` and `node --test tests/events.test.cjs`. Check the pages at desktop and phone widths before opening a PR. No merge, deployment, DNS, or account action is part of this design proposal.
+Run `python3 -m unittest discover -s tests` and `node --test tests/events.test.cjs`. Review desktop and phone layouts before opening a PR. Follow the existing branch and PR workflow; deploying, changing DNS, or activating accounts requires the user’s authorization.

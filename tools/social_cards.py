@@ -21,7 +21,7 @@ def data_image(name):
 
 
 def card(slug, title):
-    headline = 'Deep roots.<br><em>Open doors.</em>' if slug == 'index' else html.escape(title)
+    headline = 'Welcome home<br>to the Creek.' if slug == 'index' else html.escape(title)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
 <title>{html.escape(title)} — share card</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;1,500&family=Nunito+Sans:wght@600;800&display=swap">

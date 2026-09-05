@@ -277,18 +277,18 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .person .ph img[src*="cole-headshot"]{object-position:center 34%}
 
 /* ========================================================================
-   Homestead / editorial edition
-   Identity-led, image-light. Original wordmark, creek and color palette.
+   Homestead / original brand kit
+   Welcome first. Original wordmark, creek, palette and typography.
    ======================================================================== */
 .editorial{--wheat-text:#826021;--ink3:#736957;--line2:#e3d9c7;background:var(--ivory);background-image:none}
 .editorial::before{display:none}
 .editorial .wrap{max-width:1320px;padding-left:48px;padding-right:48px}
-.editorial h1,.editorial h2{letter-spacing:-.045em}
+.editorial h1,.editorial h2{letter-spacing:-.02em;text-wrap:balance}
 .editorial .eye{color:var(--wheat-text);font-size:11px;letter-spacing:.17em}
 .editorial .eye::before{width:18px;height:1px}
 .editorial em{font-weight:500}
 .editorial .micro{display:block;font-size:10px;line-height:1.5;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--ink2)}
-.editorial .btn{border-radius:3px;padding:16px 23px;box-shadow:none;gap:23px;font-size:14px;letter-spacing:0;min-height:50px}
+.editorial .btn{border-radius:13px;padding:16px 23px;box-shadow:none;gap:23px;font-size:14px;letter-spacing:0;min-height:50px}
 .editorial .btn:hover{box-shadow:none;transform:translateY(-2px)}
 .editorial .btn.ghost{border-color:var(--pine);color:var(--pine);background:transparent}
 .editorial .textlink{font-size:14px;line-height:1.7;display:inline-flex;align-items:center;gap:16px;border:0;padding:4px 0 6px}
@@ -303,34 +303,45 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .editorial .top .wrap{height:92px}
 .editorial .brand img{width:192px;height:auto;display:block}
 .editorial nav.main{gap:7px}
-.editorial nav.main a{color:var(--ink);border-radius:2px;font-size:13px;padding:13px 12px;min-height:44px;display:flex;align-items:center}
+.editorial nav.main a{color:var(--ink);border-radius:12px;font-size:13px;padding:13px 12px;min-height:44px;display:flex;align-items:center}
 .editorial nav.main a[aria-current]:not(.cta){color:var(--pine);background:transparent!important}
 .editorial nav.main a[aria-current]::after{height:1px;bottom:7px;left:12px;right:12px}
 .editorial nav.main a:not(.cta):hover{background:var(--pine-tint)}
 .editorial nav.main a.cta{padding:14px 20px;margin-left:17px;gap:18px;background:var(--pine);color:var(--ivory)}
 .editorial nav.main a.cta:hover{background:var(--pine-deep)}
 .editorial nav.main a.cta[aria-current]{background:var(--pine)!important;color:var(--ivory)}
-.editorial .burger{background:transparent;border:1px solid var(--line);border-radius:2px;color:var(--pine);align-items:center;gap:12px;min-height:46px}
+.editorial .burger{background:transparent;border:1px solid var(--line);border-radius:12px;color:var(--pine);align-items:center;gap:12px;min-height:46px}
 .editorial .burger span{font-family:"Nunito Sans",sans-serif;font-weight:800;font-size:13px}
 
-/* The welcome is a piece of the identity, not a photograph with a scrim. */
-.welcome{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center;padding:66px 0 62px}
-.welcome-copy{padding:10px 0}
-.welcome .eye{margin-bottom:29px}
-.welcome h1{font-size:clamp(60px,7.55vw,106px);font-weight:600;line-height:1.04;margin:0 0 25px;text-wrap:initial}
-.welcome h1 em{color:var(--pine);font-style:italic;white-space:nowrap}
-.welcome-intro{font-size:19px;line-height:1.65;max-width:39ch;color:var(--ink2);margin:0}
-.welcome .actions{margin-top:30px;gap:24px}
-.welcome-footnote{font-size:12px;color:var(--ink2);margin:20px 0 0}
-.welcome-art{min-height:462px;align-self:stretch;background:var(--pine);position:relative;overflow:hidden;isolation:isolate;color:var(--ivory);display:flex;flex-direction:column;justify-content:space-between;padding:27px 30px;border:1px solid var(--pine);box-shadow:12px 12px 0 -1px var(--ivory),12px 12px 0 0 var(--line)}
-.welcome-art::after{content:"";position:absolute;inset:9px;border:1px solid rgba(245,239,227,.13);pointer-events:none;z-index:-1}
-.art-top,.art-bottom{display:flex;justify-content:space-between;gap:20px;font-size:9px;font-weight:700;letter-spacing:.14em;line-height:1.6;position:relative;z-index:1}
-.art-top span:last-child,.art-bottom span:last-child{text-align:right}
-.art-top{color:#e3dfc9}
-.art-bottom{border-top:1px solid rgba(245,239,227,.28);padding-top:16px;color:#e3dfc9;letter-spacing:.08em}
-.art-creek{position:absolute;top:23%;left:-19%;width:144%;max-width:none;height:auto;opacity:.78}
-.art-title{position:relative;margin-top:auto;padding:50px 0 22px;font-family:"Bitter",Georgia,serif;font-size:clamp(51px,5.35vw,74px);line-height:.99;letter-spacing:-.05em;color:var(--ivory)}
-.art-title em{font-style:italic}
+/* The opening introduces the church before practical visit details. */
+.homestead-welcome{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:660px;padding:72px 28px 66px;text-align:center}
+.homestead-welcome::after{content:"";position:absolute;right:-200px;bottom:34px;width:720px;height:180px;z-index:-1;opacity:.055;background:url("../assets/creek-gold.png") center/contain no-repeat;pointer-events:none}
+.homestead-welcome .eye{margin:0 0 26px}
+.homestead-welcome h1{color:var(--pine);font-family:"Bitter",Georgia,serif;font-size:clamp(44px,4.8vw,64px);font-weight:600;line-height:1.06;letter-spacing:-.02em;margin:0}
+.homestead-welcome .welcome-creek{width:170px;height:auto;margin:23px 0 22px}
+.homestead-welcome .welcome-intro{max-width:51ch;font-size:18px;line-height:1.7;color:var(--ink2);margin:0}
+.homestead-welcome .actions{justify-content:center;gap:16px;margin-top:30px}
+.homestead-welcome .welcome-location{font-size:12px;color:var(--ink2);margin:26px 0 0}
+.editorial .homestead-welcome .btn{box-shadow:0 8px 24px rgba(40,33,20,.06)}
+.editorial .homestead-welcome .btn.ghost{box-shadow:none}
+.editorial .first-visit .sunday-strip{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(40,33,20,.06);margin-bottom:42px}
+.editorial .field input,.editorial .field textarea{border-radius:12px}
+.visit-quicklinks{font-size:14px;margin:0 0 24px}
+.visit-quicklinks a{text-underline-offset:4px}
+.visit-times{margin-top:56px}
+.visit-times h2{font-size:30px}
+@media(max-width:760px){
+  .homestead-welcome{min-height:610px;padding:48px 0}
+  .homestead-welcome::after{width:400px;right:-200px;bottom:20px}
+  .homestead-welcome .eye{font-size:10px;letter-spacing:.12em}
+  .homestead-welcome h1{font-size:44px;line-height:1.07}
+  .homestead-welcome .welcome-creek{width:140px;margin:22px 0}
+  .homestead-welcome .welcome-intro{font-size:16px;max-width:35ch}
+  .homestead-welcome .actions{gap:12px;flex-wrap:wrap;margin-top:26px}
+  .editorial .homestead-welcome .btn{padding:15px 18px;gap:16px;min-height:48px;font-size:13px}
+  .editorial .first-visit .sunday-strip{padding:22px;margin-bottom:34px}
+}
+@media(max-width:380px){.homestead-welcome h1{font-size:38px}.homestead-welcome .actions{flex-direction:column;align-items:stretch}.homestead-welcome .btn{justify-content:center}}
 .sunday-strip{display:grid;grid-template-columns:1.15fr .8fr .9fr 1.15fr;gap:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0 26px;align-items:center}
 .sunday-strip>div+div,.sunday-location{border-left:1px solid var(--line);padding-left:26px}
 .sunday-strip .micro{margin-bottom:7px}
@@ -344,15 +355,15 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 /* Rhythm, scale, and short paths into church life. */
 .editorial .band{padding:86px 0}
 .editorial .band+.band{padding-top:86px}
-.editorial .band h2{font-size:clamp(36px,4vw,53px);line-height:1.1}
+.editorial .band h2{font-size:clamp(30px,3.4vw,44px);line-height:1.1}
 .editorial .sec-h{margin-bottom:32px}
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px}
 .story-grid .prose{max-width:51ch}
 .story-grid .prose p{font-size:16px;line-height:1.8}
 .story-grid .prose .story-lead{font-family:"Bitter",serif;font-size:23px;line-height:1.5;color:var(--pine);letter-spacing:-.02em;margin-bottom:16px}
-.ministry-band{background:#fffcf6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ministry-band{background:var(--ivory);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .ministry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.ministry-tile{--accent:var(--pine);display:flex;flex-direction:column;align-items:flex-start;min-height:320px;text-decoration:none;color:var(--ink);padding:29px 28px 23px;background:var(--ivory);border-top:3px solid var(--accent);transition:background .2s,transform .2s}
+.ministry-tile{--accent:var(--pine);display:flex;flex-direction:column;align-items:flex-start;min-height:320px;text-decoration:none;color:var(--ink);padding:29px 28px 23px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:18px;box-shadow:0 8px 24px rgba(40,33,20,.06);transition:background .2s,transform .2s}
 .ministry-tile.kidz{--accent:var(--moss)}
 .ministry-tile.youth{--accent:var(--creekblue)}
 .ministry-tile:hover{background:var(--pine-tint);transform:translateY(-4px)}
@@ -377,7 +388,7 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .events-empty{padding:28px 0;color:var(--ink2)}
 .word-band{background:var(--pine);color:var(--ivory)}
 .word-grid{display:grid;grid-template-columns:1fr .85fr;gap:90px;align-items:center}
-.editorial .word-band h2{font-size:clamp(42px,4.6vw,66px);color:var(--ivory);line-height:1.09;margin-bottom:25px}
+.editorial .word-band h2{font-size:clamp(34px,4vw,48px);color:var(--ivory);line-height:1.09;margin-bottom:25px}
 .editorial .word-band .eye{color:#dfcea3}
 .word-heading .creek{width:170px;height:auto;opacity:.85}
 .word-copy>p{font-size:18px;color:#eee8d9;line-height:1.75;max-width:44ch}
@@ -414,11 +425,11 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .breadcrumb{display:block;color:var(--ink2);font-size:11px;text-decoration:none;margin-bottom:36px}
 .breadcrumb span{padding-left:20px;color:var(--wheat-text)}
 .interior-heading .eye{display:flex}
-.interior-heading h1{font-size:clamp(42px,5.2vw,72px);max-width:19ch;line-height:1.06;color:var(--pine);margin:0 0 24px}
+.interior-heading h1{font-size:clamp(36px,4.5vw,56px);max-width:19ch;line-height:1.06;color:var(--pine);margin:0 0 24px}
 .interior-heading .lead{max-width:66ch;font-size:18px;line-height:1.8;margin-bottom:0}
 .heading-creek{width:110px;height:auto;margin-top:30px;opacity:.8}
 .editorial .sec{margin:42px 0 68px}
-.editorial .card,.editorial .panel{border-radius:2px;box-shadow:none}
+.editorial .card,.editorial .panel{border-radius:18px;box-shadow:0 8px 24px rgba(40,33,20,.06);border:1px solid var(--line)}
 .editorial .card:hover{transform:none;box-shadow:none}
 .editorial .card .eye{color:var(--wheat-text)}
 .editorial .person{align-items:flex-start}
@@ -441,7 +452,7 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .editorial .field label{display:block;font-size:12px;font-weight:800;margin-bottom:7px;color:var(--ink2)}
 .editorial .ok[hidden]{display:none}
 .editorial .ok{font-size:14px;color:var(--pine);border-left:2px solid var(--wheat);padding:15px;margin-top:15px}
-.editorial .embed{background:var(--pine);border-radius:2px;box-shadow:none}
+.editorial .embed{background:var(--pine);border-radius:22px;box-shadow:none}
 .editorial footer{background:var(--pine-deep);padding:64px 0 26px;color:#eee8d9}
 .editorial footer .wm{display:none}
 .editorial footer .tex{display:none}
@@ -454,7 +465,7 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 
 @media(min-width:1041px) and (max-width:1200px){.editorial nav.main{gap:0}.editorial nav.main a{padding:13px 9px}.editorial nav.main a.cta{margin-left:4px}.editorial .brand img{width:170px}}
 @media(max-width:1040px){
-  .editorial nav.main{display:none;left:24px;right:24px;top:80px;border-radius:3px;max-height:calc(100dvh - 100px);overflow-y:auto;box-shadow:0 12px 25px rgba(34,31,26,.08)}
+  .editorial nav.main{display:none;left:24px;right:24px;top:80px;border-radius:16px;max-height:calc(100dvh - 100px);overflow-y:auto;box-shadow:0 12px 25px rgba(34,31,26,.08)}
   .editorial nav.main.open{display:flex}
   .editorial nav.main a{font-size:16px;padding:14px 18px}
   .editorial nav.main a.cta{margin:8px 0 0;justify-content:space-between}

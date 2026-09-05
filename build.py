@@ -173,28 +173,14 @@ def lock(name, color="var(--wheat)", size=24):
 PAGES = {}
 
 # ---------------- HOME ----------------
-PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Louisiana. Rooted in the Word, growing together, with room for your family. Sunday School 9:00a; worship 10:15a.", f"""
-<section class="welcome" aria-labelledby="welcome-title">
-  <div class="welcome-copy">
-    <p class="eye">A country church · Clinton, Louisiana</p>
-    <h1 id="welcome-title">Deep roots.<br><em>Open doors.</em></h1>
-    <p class="welcome-intro">Rooted in the Word. Growing together.<br>A church family with room for yours.</p>
-    <div class="actions"><a class="btn pine" href="visit.html">Plan your first Sunday <span aria-hidden="true">↗</span></a><a class="textlink" href="watch.html">Watch a service <span aria-hidden="true">↗</span></a></div>
-    <p class="welcome-footnote">Come as you are. We mean it.</p>
-  </div>
-  <div class="welcome-art" aria-hidden="true">
-    <div class="art-top"><span>BLUFF CREEK<br>BAPTIST CHURCH</span><span>CLINTON,<br>LOUISIANA</span></div>
-    <img class="art-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
-    <div class="art-title">Welcome<br><em>home.</em></div>
-    <div class="art-bottom"><span>ROOTED IN THE WORD</span><span>COME AS YOU ARE</span></div>
-  </div>
-</section>
-
-<section class="sunday-strip" aria-label="Sunday service times and location">
-  <div class="sunday-label"><span class="micro">Make yourself at home</span><b>See you Sunday.</b></div>
-  <div><span class="micro">Sunday School</span><b>9:00 <small>AM</small></b></div>
-  <div><span class="micro">Morning worship</span><b>10:15 <small>AM</small></b></div>
-  <a class="sunday-location" href="contact.html"><img src="assets/la63.svg" width="28" height="32" alt=""><span>1706 Highway 63<br><strong>Clinton, Louisiana <span aria-hidden="true">↗</span></strong></span></a>
+PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Louisiana. Rooted in the Word, growing together, with room for your family.", f"""
+<section class="homestead-welcome" aria-labelledby="welcome-title">
+  <p class="eye">Bluff Creek Baptist Church</p>
+  <h1 id="welcome-title">Welcome home<br>to the Creek.</h1>
+  <img class="welcome-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
+  <p class="welcome-intro">A country church on Highway 63, rooted in the Word and walking together as one family in Christ.</p>
+  <div class="actions"><a class="btn" href="about.html">Get to know us <span aria-hidden="true">↗</span></a><a class="btn ghost" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a></div>
+  <p class="welcome-location">Clinton, Louisiana</p>
 </section>
 
 <section class="band story-band"><div class="wrap story-grid">
@@ -221,7 +207,14 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   <div class="word-copy"><p>Theologically rich hymns. Time in prayer. A word for the kids. A message that opens the Bible and walks through the text.</p><p class="word-time">Sunday worship · 10:15a</p><a class="btn" href="watch.html"><span class="play-symbol" aria-hidden="true">▶</span> Watch with us</a><a class="word-secondary" href="beliefs.html">What we believe <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
-<section class="band first-visit"><div class="wrap visit-grid">
+<section class="band first-visit"><div class="wrap">
+<section class="sunday-strip" aria-label="Sunday service times and location">
+  <div class="sunday-label"><span class="micro">Make yourself at home</span><b>See you Sunday.</b></div>
+  <div><span class="micro">Sunday School</span><b>9:00 <small>AM</small></b></div>
+  <div><span class="micro">Morning worship</span><b>10:15 <small>AM</small></b></div>
+  <a class="sunday-location" href="contact.html"><img src="assets/la63.svg" width="28" height="32" alt=""><span>1706 Highway 63<br><strong>Clinton, Louisiana <span aria-hidden="true">↗</span></strong></span></a>
+</section>
+</div><div class="wrap visit-grid">
   <div><p class="eye">First stop on the 63</p><h2>Your first Sunday,<br>made simple.</h2><p class="lead">A few things to know.<br>A warm welcome when you get here.</p><a class="btn pine" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a></div>
   <div class="faq">
     <details><summary>Where do I park?</summary><div class="a"><p>Use either parking lot at the corner of Highways 959 and 63. Head to the fellowship building for Sunday School at 9:00a, or the sanctuary for worship at 10:15a.</p></div></details>
@@ -249,12 +242,7 @@ PAGES["visit"] = ("Plan a Visit", "Your first Sunday at Bluff Creek Baptist Chur
   <div class="eye">First stop on the 63</div>
   <h1>Plan a visit.</h1>
   <p class="lead">We want your first Sunday to feel like your tenth. Here's everything people usually wonder about — and the honest answers.</p>
-  <div class="times" style="margin:18px 0 26px">
-    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday School</small><b style="color:var(--ink)">9:00a</b></div>
-    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Worship</small><b style="color:var(--ink)">10:15a</b></div>
-    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday Evening</small><b style="color:var(--ink)">6:00p</b></div>
-    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Wednesday</small><b style="color:var(--ink)">6:00p</b></div>
-  </div>
+  <p class="visit-quicklinks"><a href="#visit-times">Service times</a><span aria-hidden="true"> · </span><a href="contact.html">Directions</a></p>
   <div class="faq">
     <details open><summary>Where do I park?</summary><div class="a"><p>We have two large parking lots. The church sits at the corner of Highways 959 and 63 — you can get to a lot from either side.</p></div></details>
     <details><summary>What time do I arrive?</summary><div class="a"><p>Sunday School starts at 9:00 for all ages. Our Sunday morning service begins at 10:15, the Sunday evening service at 6:00, and Wednesday night at 6:00. Kids' and youth activities start at various times — see <a href="ministries.html">Ministries</a> for all the ways they can plug in.</p></div></details>
@@ -266,6 +254,14 @@ PAGES["visit"] = ("Plan a Visit", "Your first Sunday at Bluff Creek Baptist Chur
     <details><summary>What is the service like?</summary><div class="a"><p>We're a pretty traditional Southern Baptist church. In a normal service we sing theologically rich, doctrinally sound hymns, spend time in prayer, have a special word for our children (with treats!), and then our pastor preaches a 30–40 minute expositional message straight from the text. If your kids are headed to the nursery, they can go to the back foyer after the children's time.</p></div></details>
     <details><summary>What happens after the service?</summary><div class="a"><p>That's your call — but we'll probably be hanging out until they turn the lights off on us. People will want to meet you; our folks are genuinely charming and genuinely want to know you. Fill out a contact card and drop it in the offering, and our pastor will reach out during the week. He'd love to meet you for coffee — or his family would love to share a meal with yours.</p></div></details>
   </div>
+  <section class="visit-times" id="visit-times" aria-labelledby="visit-times-heading"><h2 id="visit-times-heading">When we gather.</h2>
+  <div class="times" style="margin:18px 0 26px">
+    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday School</small><b style="color:var(--ink)">9:00a</b></div>
+    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Worship</small><b style="color:var(--ink)">10:15a</b></div>
+    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday Evening</small><b style="color:var(--ink)">6:00p</b></div>
+    <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Wednesday</small><b style="color:var(--ink)">6:00p</b></div>
+  </div>
+  </section>
   <div class="panel" style="margin-top:26px"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Before you come</div><h3>Tell us you're coming — or just show up.</h3><p>Either way is perfect. If you'd like someone watching for you at the door, send a note and we'll be there.</p><a class="btn" href="contact.html">Say hello</a> <a class="btn ghost" href="{APP}" style="margin-left:8px">Get the app</a></div>
 </section>
 """)
