@@ -270,3 +270,8 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .person>div:last-child{min-width:0}
 .person b{display:block;font-size:19px;letter-spacing:-.01em;margin-bottom:2px}
 @media (prefers-reduced-motion:reduce){.person .ph img,.person:hover .ph img{transition:none;transform:none}}
+
+/* ---------- focal point for the dedication portrait in the round avatar ----
+   The staff circle crops center by default, which would land on the girls'
+   dresses. Aim it at Cole's face instead. */
+.person .ph img[src*="cole-headshot"]{object-position:center 34%}

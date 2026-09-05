@@ -308,7 +308,7 @@ PAGES["about"] = ("Who We Are", "The mission, vision, and people of Bluff Creek 
 <section class="sec">
   <div class="sec-h"><div><div class="eye">The people</div><h2>Our staff &amp; team</h2></div></div>
   <div class="grid g3">
-    {person("Cole Permenter","Senior Pastor","Pastor of Bluff Creek since 2015 — and our youth pastor before that (2012–14). Louisiana Tech (Communication) and New Orleans Baptist Theological Seminary (M.Div.). Married to Rikki; dad to Hudson and Magnolia. Retired MMA fighter, surfer, golfer, scuba diver, woodworker. He'd love to meet you for coffee.","cole-permenter.jpg")}
+    {person("Cole Permenter","Senior Pastor","Pastor of Bluff Creek since 2015 — and our youth pastor before that (2012–14). Louisiana Tech (Communication) and New Orleans Baptist Theological Seminary (M.Div.). Married to Rikki; dad to Hudson and Magnolia. Retired MMA fighter, surfer, golfer, scuba diver, woodworker. He'd love to meet you for coffee.","cole-headshot.jpg")}
     {person("Julie Stevens","Children's Time · Kidz @ the Creek","A Clinton native, married to Joey for 20+ years, mom to Jackson and D'Lanie, and principal of Central Intermediate School. Julie leads the children's time in our services.",initials="JS")}
     {person("Ashleigh Pierce","Kidz @ the Creek Director","Ashleigh leads Kidz @ the Creek. Daughter of a former youth minister, married to Denver, and mom to Berlin, Ryker, Ruth, and Gabriel.","ashleigh-pierce.jpg")}
     {person("Janice McNabb","Church Secretary","Born and raised in Bluff Creek, married to Allen since 1978, mom to Alison and Jamie — and more than 30 years of faithful service keeping this church running.","janice-mcnabb.jpg",tall=True)}
