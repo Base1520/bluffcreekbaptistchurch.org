@@ -314,16 +314,17 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .editorial .burger span{font-family:"Nunito Sans",sans-serif;font-weight:800;font-size:13px}
 
 /* The opening introduces the church before practical visit details. */
-.homestead-welcome{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:660px;padding:72px 28px 66px;text-align:center}
+.homestead-welcome{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:660px;margin:32px 0 0;padding:64px 44px 80px;text-align:center;border:1px solid var(--line);border-radius:22px}
+/* The official marker belongs to the frame, clear of the welcome copy. */
+.welcome-place{position:absolute;inset:0;z-index:-1;overflow:hidden;border-radius:inherit;pointer-events:none}
+.welcome-place img{position:absolute;right:-55px;bottom:-24px;width:220px;height:auto;opacity:.08;filter:none}
 .homestead-welcome .eye{margin:0 0 26px}
 .homestead-welcome h1{color:var(--pine);font-family:"Bitter",Georgia,serif;font-size:clamp(44px,4.8vw,64px);font-weight:600;line-height:1.06;letter-spacing:-.02em;margin:0}
 .homestead-welcome .welcome-creek{width:170px;height:auto;margin:23px 0 22px}
 .homestead-welcome .welcome-intro{max-width:51ch;font-size:18px;line-height:1.7;color:var(--ink2);margin:0}
 .homestead-welcome .actions{justify-content:center;gap:16px;margin-top:30px}
-/* The unchanged state marker is a small, useful local signature. */
-.route-marker{display:block;flex:0 0 auto;height:auto;filter:none}
-.homestead-welcome .welcome-location{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--ink2);margin:25px 0 0;text-decoration:none;border-radius:6px}
-.welcome-location .route-marker{width:24px}
+/* Place names interrupt the same fine rule throughout the page. */
+.homestead-welcome .welcome-location{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0 24px;background:var(--ivory);font-size:11px;font-weight:700;letter-spacing:.09em;white-space:nowrap;color:var(--ink2);text-decoration:none;border-radius:6px}
 .welcome-location .location-arrow{color:var(--pine);font-size:15px;letter-spacing:0}
 .welcome-location:hover>span:not(.location-arrow){text-decoration:underline;text-underline-offset:4px}
 .editorial .homestead-welcome .btn{box-shadow:0 8px 24px rgba(40,33,20,.06)}
@@ -335,7 +336,8 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .visit-times{margin-top:56px}
 .visit-times h2{font-size:30px}
 @media(max-width:760px){
-  .homestead-welcome{min-height:610px;padding:48px 0}
+  .homestead-welcome{min-height:610px;margin:24px -12px 0;padding:48px 12px 68px}
+  .homestead-welcome .welcome-location{padding:0 14px;font-size:10px;gap:10px}
   .homestead-welcome .eye{font-size:10px;letter-spacing:.12em}
   .homestead-welcome h1{font-size:44px;line-height:1.07}
   .homestead-welcome .welcome-creek{width:140px;margin:22px 0}
@@ -344,6 +346,7 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
   .editorial .homestead-welcome .btn{padding:15px 18px;gap:16px;min-height:48px;font-size:13px}
   .editorial .first-visit .sunday-strip{padding:22px;margin-bottom:34px}
 }
+@media(max-width:1040px){.welcome-place{display:none}}
 @media(max-width:380px){.homestead-welcome h1{font-size:38px}.homestead-welcome .actions{flex-direction:column;align-items:stretch}.homestead-welcome .btn{justify-content:center}}
 .sunday-strip{display:grid;grid-template-columns:1.15fr .8fr .9fr 1.15fr;gap:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0 26px;align-items:center}
 .sunday-strip>div+div,.sunday-location{border-left:1px solid var(--line);padding-left:26px}
@@ -378,11 +381,12 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .tile-link{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);align-self:stretch;display:flex;justify-content:space-between;gap:12px;font-size:12px;font-weight:800;color:var(--pine)}
 .week-grid{display:grid;grid-template-columns:.85fr 1.4fr;gap:90px;align-items:start}
 .week-intro>p:not(.eye){color:var(--ink2);font-size:16px;margin:19px 0 15px}
-.wednesday-note{display:flex;align-items:center;gap:13px;margin-top:34px}
-.wednesday-note .route-marker{width:20px}
-.wednesday-note>div{display:flex;flex-direction:column;gap:5px}
+.wednesday-note{margin-top:34px;max-width:350px}
+.place-rule{display:flex;align-items:center;gap:16px}
+.place-rule::before,.place-rule::after{content:"";height:1px;background:var(--line);flex:1}
+.place-rule::before{flex:0 0 28px}
 .wednesday-note b{font-family:"Bitter",serif;font-size:18px;letter-spacing:-.03em}
-.wednesday-note span{font-size:12px;color:var(--ink2)}
+.wednesday-note>span{display:block;margin:9px 0 0 44px;font-size:12px;color:var(--ink2)}
 .editorial .event-feed{margin:0}
 .editorial .event-row{grid-template-columns:78px 1fr;padding:26px 2px;gap:23px;transition:background .2s}
 .editorial .event-row:hover{padding-left:2px;background:none}
@@ -415,10 +419,11 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .wayfinding picture{display:block;position:relative;background:var(--pine)}
 .wayfinding picture::after{content:"";position:absolute;inset:0;background:rgba(60,90,69,.24);pointer-events:none}
 .wayfinding .wayfinding-photo{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:left center;filter:grayscale(.42) saturate(.68) brightness(.86);box-shadow:none;border-radius:0}
-.route-byline{display:inline-flex;align-items:center;gap:10px}
-.route-byline .route-marker{width:20px}
-.wayfinding figcaption{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding:17px 0;font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:800;color:var(--ink2)}
-.wayfinding figcaption a{font-size:11px;text-transform:none;letter-spacing:0;text-underline-offset:4px}
+.wayfinding figcaption{display:flex;justify-content:space-between;align-items:center;gap:16px;position:relative;margin-top:24px;font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:800;color:var(--ink2)}
+.wayfinding figcaption::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:var(--line)}
+.wayfinding figcaption>span,.wayfinding figcaption>a{position:relative;background:#fffcf6}
+.wayfinding figcaption>span{padding-right:12px}
+.wayfinding figcaption a{padding-left:12px;font-size:11px;text-transform:none;letter-spacing:0;text-underline-offset:4px}
 .editorial .next-steps{padding:55px 0}
 .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
 .next-grid>a{color:var(--ink);text-decoration:none;border-top:1px solid var(--line);padding:24px 27px 5px 0;position:relative}

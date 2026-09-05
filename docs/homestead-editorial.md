@@ -53,7 +53,9 @@ Use the actual creek brushstroke lifted from the logo. The supplied gold asset i
 
 Use the official Louisiana 63 marker in its original green, small and near an address. Typical sizes are 20–24px by an address, 28–34px in the app header, or 0.75–1.25 inches in print. It is never another logo. The consistent byline is **1706 · LA 63 · Clinton**. A Bitter “63” watermark may be used at 5–8% opacity, below about 9%, away from body text; allow only one quiet highway reference per surface.
 
-On the homepage, the marker appears at 24px in the welcome’s location link, at 20px beside “6 on the 63,” and at 20px in the church-photo address caption. Keep the welcome background clear so the small location detail remains distinctive. Use the unchanged SVG without filters, borders, or a badge container; do not add a second marker or watermark to the same section.
+On the homepage, Highway 63 is part of the composition. A single fine border with 22px corners holds the welcome; the address interrupts its bottom edge as a directions link. The unchanged official SVG appears once as a 220px background texture at 8% opacity, cropped off the lower-right corner, clear of the text and buttons. Hide that texture at narrower widths where there is no empty side space. The gold creek remains the main signature.
+
+Carry the same relationship through the page: “6 on the 63” interrupts a short rule in the weekly introduction, and the church-photo address and directions sit within a ruled caption. Repeat alignment, spacing, and address typography rather than adding miniature signs beside each item. Do not tint, filter, redraw, or outline the official marker, or turn the layout into a road map.
 
 ## Surfaces and buttons
 

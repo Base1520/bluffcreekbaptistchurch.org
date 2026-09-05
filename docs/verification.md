@@ -1,10 +1,10 @@
 # Website verification
 
-## Current LA 63 refinement
+## Current integrated Highway 63 treatment
 
-The original highway marker now appears in the welcome’s location link (24px), the Wednesday “6 on the 63” note (20px), and the church-photo address caption (20px). The unchanged SVG keeps its natural square aspect ratio and has no CSS color filter. The faint welcome background flourish was removed.
+The centered welcome sits in a single rounded frame. Its address link interrupts the bottom border, while the original highway SVG appears at 8% opacity in the empty lower-right corner. The marker remains square, unfiltered, and clipped within the frame; it hides at 1040px and below where the side space is needed for content. The Wednesday note and church-photo caption use matching rules and address typography without added icons.
 
-Targeted browser checks at 1440, 520, 375, and 320 pixels found no horizontal overflow or broken loaded images, no numeric service times in the opening viewport, and a clean address caption at the narrowest width. The welcome location link reaches Contact. Desktop, phone, Wednesday, and address-caption screenshots were reviewed; the homepage PR previews were refreshed. Build and diff checks pass.
+Targeted browser checks at 1440, 1100, 1040, 768, 520, 375, and 320 pixels found no horizontal overflow, broken loaded images, or numeric service times in the opening viewport. The marker stays clear of text and buttons. The address link reaches Contact, and its keyboard focus outline is visible on desktop and narrow phones. The Wednesday rule and photo caption fit at 320px. Desktop, phone, tablet, and detail screenshots were reviewed, and homepage PR previews were refreshed. Static build and diff checks pass; the original marker asset is unchanged.
 
 ## Homestead restoration baseline
 

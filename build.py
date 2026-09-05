@@ -175,12 +175,13 @@ PAGES = {}
 # ---------------- HOME ----------------
 PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Louisiana. Rooted in the Word, growing together, with room for your family.", f"""
 <section class="homestead-welcome" aria-labelledby="welcome-title">
+  <div class="welcome-place" aria-hidden="true"><img src="assets/la63.svg" alt="" width="220" height="220"></div>
   <p class="eye">Bluff Creek Baptist Church</p>
   <h1 id="welcome-title">Welcome home<br>to the Creek.</h1>
   <img class="welcome-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
   <p class="welcome-intro">A country church on Highway 63, rooted in the Word and walking together as one family in Christ.</p>
   <div class="actions"><a class="btn" href="about.html">Get to know us <span aria-hidden="true">↗</span></a><a class="btn ghost" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a></div>
-  <a class="welcome-location" href="contact.html" aria-label="1706 · LA 63 · Clinton — find your way here"><img class="route-marker" src="assets/la63.svg" alt="" width="24" height="24"><span>1706 · LA 63 · Clinton</span><span class="location-arrow" aria-hidden="true">↗</span></a>
+  <a class="welcome-location" href="contact.html" aria-label="1706 · LA 63 · Clinton — find your way here"><span>1706 · LA 63 · Clinton</span><span class="location-arrow" aria-hidden="true">↗</span></a>
 </section>
 
 <section class="band story-band"><div class="wrap story-grid">
@@ -198,7 +199,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
 </div></section>
 
 <section class="band week-band"><div class="wrap week-grid">
-  <div class="week-intro"><p class="eye">Gather with us</p><h2>This week<br> at the Creek.</h2><p>Make a little room<br>for life together.</p><a class="textlink" href="times.html">All service &amp; meeting times <span aria-hidden="true">↗</span></a><div class="wednesday-note"><img class="route-marker" src="assets/la63.svg" alt="" width="20" height="20"><div><b>6 on the 63</b><span>Wednesday prayer &amp; youth · 6:00p</span></div></div></div>
+  <div class="week-intro"><p class="eye">Gather with us</p><h2>This week<br> at the Creek.</h2><p>Make a little room<br> for life together.</p><a class="textlink" href="times.html">All service &amp; meeting times <span aria-hidden="true">↗</span></a><div class="wednesday-note"><div class="place-rule"><b>6 on the 63</b></div><span>Wednesday prayer &amp; youth · 6:00p</span></div></div>
   <div class="event-feed" data-events-feed="3">{event_rows()}</div>
 </div></section>
 
@@ -226,7 +227,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
 
 <section class="band home-letter"><div class="wrap letter-grid">
   <div><p class="eye">A note from our pastor</p><h2>Come as you are.<br>We mean it.</h2><div class="prose"><p>Suit or Wranglers, overalls off the tractor or camo off the stand—you’ll fit right in. Bring your kids into the service or use the nursery; either way, you’re welcome here.</p><p>I’d love to sit across a table from you with a cup of coffee and hear your story.</p><p class="sig">— Cole Permenter, Pastor</p></div><a class="textlink" href="contact.html">Say hello <span aria-hidden="true">↗</span></a></div>
-  <figure class="wayfinding">{responsive_image("sign.jpg", "The brick church sign and sanctuary at Bluff Creek", "(max-width: 880px) 100vw, 500px", "wayfinding-photo")}<figcaption><span class="route-byline"><img class="route-marker" src="assets/la63.svg" alt="" width="20" height="20">1706 · LA 63 · Clinton</span><a href="contact.html">Find your way here <span aria-hidden="true">↗</span></a></figcaption></figure>
+  <figure class="wayfinding">{responsive_image("sign.jpg", "The brick church sign and sanctuary at Bluff Creek", "(max-width: 880px) 100vw, 500px", "wayfinding-photo")}<figcaption><span>1706 · LA 63 · Clinton</span><a href="contact.html">Find your way here <span aria-hidden="true">↗</span></a></figcaption></figure>
 </div></section>
 
 <section class="band next-steps"><div class="wrap">
