@@ -10,6 +10,8 @@ Lead the homepage with the church’s familiar identity and a plain, warm welcom
 
 The homepage opens with an atmospheric chapel photograph and one primary visit action, followed by a concise heading and prose section on ivory, compact ministry rows, and a contrasting worship feature. [Design rationale and research](homepage-design-rationale.md) records the sources, limits, and reasons for these choices.
 
+The homepage navigation sits in a rounded ivory panel over the photograph, with space around its edges. The photo continues behind the panel instead of ending at a full-width header boundary. The panel stays available while scrolling, adapts to phones, and returns to normal document flow when JavaScript is unavailable so every navigation link remains accessible.
+
 [Desktop homepage preview](previews/home-desktop.png) · [Phone homepage preview](previews/home-phone.png)
 
 ## Color

@@ -115,13 +115,18 @@ def layout(slug, title, desc, body, extra_head=""):
 <link rel="stylesheet" href="css/polish.css">
 <noscript><style>
 #cform{{display:none}}
+.editorial.page-index .top{{margin-bottom:0;background:var(--ivory)}}
+.editorial.page-index .home-hero-grid{{min-height:590px;padding-top:64px}}
 @media(max-width:1040px){{
   .editorial .top{{position:static}}
   .editorial .top .wrap{{height:auto;min-height:82px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}}
+  .editorial.page-index .top .wrap{{height:auto;min-height:68px;padding-top:14px;padding-bottom:14px}}
+  .editorial.page-index nav.main{{max-height:none}}
   .editorial .burger{{display:none}}
   .editorial nav.main{{display:flex;position:static;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;overflow:visible;border:0;box-shadow:none;padding:0}}
   .editorial nav.main a.cta{{margin:0}}
 }}
+@media(max-width:760px){{.editorial.page-index .home-hero-grid{{padding-top:156px}}}}
 </style></noscript>
 {structured_data}
 {extra_head}
