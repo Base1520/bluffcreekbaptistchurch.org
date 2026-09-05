@@ -34,5 +34,5 @@ Constraints: genuinely transparent alpha background, no white/cream/colored back
 
 ## Website use
 
-Use `worship-bible.webp` as a decorative image, with empty alt text (or a CSS background), rendered at low opacity beneath the section’s heading. Preserve the 3:2 canvas and transparency. Readable Scripture and all actual church copy remain HTML text. The full-resolution PNG stays with the review deliverables; this repository contains the optimized asset and its provenance.
+Use `worship-bible.webp` as a decorative image, with empty alt text (or a CSS background), rendered at low opacity on the right side of the worship section. Preserve the 3:2 canvas and transparency. Readable Scripture and all actual church copy remain HTML text. The full-resolution PNG stays with the review deliverables; this repository contains the optimized asset and its provenance.
 

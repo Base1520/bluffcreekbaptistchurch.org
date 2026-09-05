@@ -102,7 +102,7 @@ Photographs support the welcome when they help someone recognize a place or pers
 
 About uses existing staff portraits. Photography stays visually subdued. No new identifiable people, minors, or field-ministry photographs are introduced. Original files remain untouched; responsive derivatives strip metadata and never enlarge small originals.
 
-The worship feature uses a generated, photographic-style open-Bible illustration with a genuinely transparent background. It is a quiet decorative layer under the pine surface and headline, with no people or embedded readable quotation. Keep the original 3:2 proportions, empty alt text, low opacity, and lazy loading. The [asset provenance and exact prompt](../assets/illustrations/README.md) accompany the optimized WebP; actual church photography remains separately sourced.
+The worship feature uses a generated, photographic-style open-Bible illustration with a genuinely transparent background. It is a quiet decorative layer on the right side of the pine worship section, with no people or embedded readable quotation. Keep the original 3:2 proportions, empty alt text, low opacity, and lazy loading. The [asset provenance and exact prompt](../assets/illustrations/README.md) accompany the optimized WebP; actual church photography remains separately sourced.
 
 ## Applying the kit elsewhere
 
