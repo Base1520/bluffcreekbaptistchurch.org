@@ -108,8 +108,9 @@ def layout(slug, title, desc, body, extra_head=""):
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="{SITE}/{'' if slug=='index' else slug+'.html'}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="preload" href="assets/fonts/bitter-latin-normal-v42.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-sans-latin-normal-v19.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/polish.css">
 <noscript><style>
@@ -174,28 +175,42 @@ PAGES = {}
 
 # ---------------- HOME ----------------
 PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Louisiana. Rooted in the Word, growing together, with room for your family.", f"""
-<section class="homestead-welcome" aria-labelledby="welcome-title">
-  <div class="welcome-place" aria-hidden="true"><img src="assets/la63.svg" alt="" width="220" height="220"></div>
-  <p class="eye">Bluff Creek Baptist Church</p>
-  <h1 id="welcome-title">Welcome home<br>to the Creek.</h1>
-  <img class="welcome-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
-  <p class="welcome-intro">A country church on Highway 63, rooted in the Word and walking together as one family in Christ.</p>
-  <div class="actions"><a class="btn" href="about.html">Get to know us <span aria-hidden="true">↗</span></a><a class="btn ghost" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a></div>
-  <a class="welcome-location" href="contact.html" aria-label="1706 · LA 63 · Clinton — find your way here"><span>1706 · LA 63 · Clinton</span><span class="location-arrow" aria-hidden="true">↗</span></a>
+<section class="home-hero" aria-labelledby="welcome-title">
+  <div class="home-hero-photo" aria-hidden="true">{responsive_image("hero-church.jpg", "", "100vw", "welcome-photo", loading="eager")}</div>
+  <div class="wrap home-hero-grid"><div class="home-hero-copy">
+    <p class="eye">Bluff Creek Baptist Church</p>
+    <h1 id="welcome-title">Welcome home<br>to the Creek.</h1>
+    <img class="welcome-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
+    <p class="welcome-intro">A country church on Highway 63, rooted in the Word and walking together as one family in Christ.</p>
+    <div class="actions"><a class="btn" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#church-family">Meet our church <span aria-hidden="true">↓</span></a></div>
+  </div></div>
 </section>
 
-<section class="band story-band"><div class="wrap story-grid">
-  <div><p class="eye">This is Bluff Creek</p><h2>A country church.<br>A church family.</h2></div>
-  <div class="prose"><p class="story-lead">We exist to glorify God<br>and enjoy Him forever.</p><p>We’re a traditional Southern Baptist church on Highway 63. You’ll hear hymns with deep roots, prayer from the heart, and preaching straight from Scripture. And after the service? We’ll probably still be talking.</p><a class="textlink" href="about.html">Get to know us <span aria-hidden="true">↗</span></a></div>
+<div class="home-wayline"><div class="wrap">
+  <a class="home-address" href="contact.html"><img src="assets/la63.svg" alt="" width="32" height="32"><span><b>1706 · LA 63 · Clinton</b><span>A little way down the road. A place to call home.</span></span><span class="wayline-arrow" aria-hidden="true">↗</span></a>
+  <a class="home-scroll" href="#church-family">Discover life at the Creek <span aria-hidden="true">↓</span></a>
+</div></div>
+
+<section class="band home-story" id="church-family" aria-labelledby="church-family-title">
+  <div class="home-story-backdrop" aria-hidden="true">{responsive_image("sign.jpg", "", "(max-width: 760px) 100vw, 62vw", "home-story-photo")}</div>
+  <div class="wrap home-story-grid">
+    <div class="home-story-heading"><p class="eye">This is Bluff Creek</p><h2 id="church-family-title">A country church.<br>A church family.</h2><p class="home-roots">Rooted here, on Highway 63.</p></div>
+    <div class="home-story-copy"><p class="home-purpose">We exist to glorify God<br>and enjoy Him forever.</p><p>We’re a traditional Southern Baptist church. You’ll hear hymns with deep roots, prayer from the heart, and preaching straight from Scripture.</p><p>And after the service? We’ll probably still be talking.</p><a class="textlink" href="about.html">Get to know our church <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>
+
+<section class="band home-belong" id="find-your-place" aria-labelledby="belong-title"><div class="wrap home-belong-grid">
+  <div class="home-belong-intro"><p class="eye">Life together</p><h2 id="belong-title">A place for<br>your family.</h2><p>Little ones. Growing students. Every age and season of life. There’s a place to learn God’s Word and walk with others here.</p><a class="textlink" href="ministries.html">Explore our ministries <span aria-hidden="true">↗</span></a></div>
+  <div class="home-ministry-list">
+    <a class="home-ministry" href="ministries.html#kidz"><div><span class="micro">Birth through 5th grade</span>{lock("Kidz")}<p>A loving place for little ones to learn God’s Word.</p></div><span class="ministry-arrow" aria-hidden="true">↗</span></a>
+    <a class="home-ministry" href="ministries.html#youth"><div><span class="micro">6th through 12th grade</span>{lock("Youth")}<p>Good friends. Honest questions. Faith that grows.</p></div><span class="ministry-arrow" aria-hidden="true">↗</span></a>
+    <a class="home-ministry" href="ministries.html#adults"><div><span class="micro">Every age. Every season.</span>{lock("Adults")}<p>Open the Bible, find your class, and do life together.</p></div><span class="ministry-arrow" aria-hidden="true">↗</span></a>
+  </div>
 </div></section>
 
-<section class="band ministry-band"><div class="wrap">
-  <div class="sec-h"><div><p class="eye">Life together</p><h2>A place to grow.</h2></div><a class="textlink" href="ministries.html">Explore our ministries <span aria-hidden="true">↗</span></a></div>
-  <div class="ministry-grid">
-    <a class="ministry-tile kidz" href="ministries.html#kidz"><span class="micro">Birth through 5th grade</span>{lock("Kidz")}<p>Big or small, your kids are welcome here. A loving place to learn God’s Word.</p><span class="tile-link">Meet Kidz @ the Creek <span aria-hidden="true">↗</span></span></a>
-    <a class="ministry-tile youth" href="ministries.html#youth"><span class="micro">6th through 12th grade</span>{lock("Youth")}<p>Good friends. Honest questions. Faith that grows through the week.</p><span class="tile-link">Meet Youth @ the Creek <span aria-hidden="true">↗</span></span></a>
-    <a class="ministry-tile adults" href="ministries.html#adults"><span class="micro">Every age. Every season.</span>{lock("Adults")}<p>Find your Sunday School class, open the Bible, and walk through life together.</p><span class="tile-link">Meet Adults @ the Creek <span aria-hidden="true">↗</span></span></a>
-  </div>
+<section class="band word-band home-worship"><div class="wrap word-grid">
+  <div class="word-heading"><p class="eye">Worship @ the Creek</p><h2>Straight from<br>the Word.</h2><img class="creek" src="assets/creek-gold.png" width="372" height="93" alt=""></div>
+  <div class="word-copy"><p>Theologically rich hymns. Time in prayer. A word for the kids. A message that opens the Bible and walks through the text.</p><p class="word-time">Sunday worship · 10:15a</p><a class="btn" href="watch.html"><span class="play-symbol" aria-hidden="true">▶</span> Watch with us</a><a class="word-secondary" href="beliefs.html">What we believe <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
 <section class="band week-band"><div class="wrap week-grid">
@@ -203,31 +218,22 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   <div class="event-feed" data-events-feed="3">{event_rows()}</div>
 </div></section>
 
-<section class="band word-band"><div class="wrap word-grid">
-  <div class="word-heading"><p class="eye">Worship @ the Creek</p><h2>Straight from<br><em>the Word.</em></h2><img class="creek" src="assets/creek-gold.png" width="372" height="93" alt=""></div>
-  <div class="word-copy"><p>Theologically rich hymns. Time in prayer. A word for the kids. A message that opens the Bible and walks through the text.</p><p class="word-time">Sunday worship · 10:15a</p><a class="btn" href="watch.html"><span class="play-symbol" aria-hidden="true">▶</span> Watch with us</a><a class="word-secondary" href="beliefs.html">What we believe <span aria-hidden="true">↗</span></a></div>
-</div></section>
-
-<section class="band first-visit"><div class="wrap">
-<section class="sunday-strip" aria-label="Sunday service times and location">
-  <div class="sunday-label"><span class="micro">Make yourself at home</span><b>See you Sunday.</b></div>
-  <div><span class="micro">Sunday School</span><b>9:00 <small>AM</small></b></div>
-  <div><span class="micro">Morning worship</span><b>10:15 <small>AM</small></b></div>
-  <a class="sunday-location" href="contact.html"><img src="assets/la63.svg" width="28" height="32" alt=""><span>1706 Highway 63<br><strong>Clinton, Louisiana <span aria-hidden="true">↗</span></strong></span></a>
-</section>
-</div><div class="wrap visit-grid">
-  <div><p class="eye">First stop on the 63</p><h2>Your first Sunday,<br>made simple.</h2><p class="lead">A few things to know.<br>A warm welcome when you get here.</p><a class="btn pine" href="visit.html">Plan a visit <span aria-hidden="true">↗</span></a></div>
+<section class="band first-visit home-visit" aria-labelledby="first-visit-title"><div class="wrap visit-grid">
+  <div><p class="eye">First stop on the 63</p><h2 id="first-visit-title">Your first Sunday,<br>made simple.</h2><p class="lead">A few things to know.<br>A warm welcome when you get here.</p><a class="btn pine" href="visit.html">Plan your first visit <span aria-hidden="true">↗</span></a></div>
   <div class="faq">
     <details><summary>Where do I park?</summary><div class="a"><p>Use either parking lot at the corner of Highways 959 and 63. Head to the fellowship building for Sunday School at 9:00a, or the sanctuary for worship at 10:15a.</p></div></details>
     <details><summary>What about my kids?</summary><div class="a"><p>Your kids are welcome in worship. We also have a nursery during Sunday School and both Sunday services. Use it as much or as little as you like.</p></div></details>
     <details><summary>Do I need to dress up?</summary><div class="a"><p>Jeans, boots, or Sunday best—you’ll fit right in. Comfortable is what matters.</p></div></details>
     <details><summary>What is the service like?</summary><div class="a"><p>Hymns, prayer, a special word for the children, and a 30–40 minute message straight from Scripture. We’re a traditional Southern Baptist church, and we’d love to meet you.</p></div></details>
   </div>
-</div></section>
-
-<section class="band home-letter"><div class="wrap letter-grid">
-  <div><p class="eye">A note from our pastor</p><h2>Come as you are.<br>We mean it.</h2><div class="prose"><p>Suit or Wranglers, overalls off the tractor or camo off the stand—you’ll fit right in. Bring your kids into the service or use the nursery; either way, you’re welcome here.</p><p>I’d love to sit across a table from you with a cup of coffee and hear your story.</p><p class="sig">— Cole Permenter, Pastor</p></div><a class="textlink" href="contact.html">Say hello <span aria-hidden="true">↗</span></a></div>
-  <figure class="wayfinding">{responsive_image("sign.jpg", "The brick church sign and sanctuary at Bluff Creek", "(max-width: 880px) 100vw, 500px", "wayfinding-photo")}<figcaption><span>1706 · LA 63 · Clinton</span><a href="contact.html">Find your way here <span aria-hidden="true">↗</span></a></figcaption></figure>
+</div><div class="wrap">
+  <section class="sunday-strip" aria-label="Sunday service times and location">
+    <div class="sunday-label"><span class="micro">Make yourself at home</span><b>See you Sunday.</b></div>
+    <div><span class="micro">Sunday School</span><b>9:00 <small>AM</small></b></div>
+    <div><span class="micro">Morning worship</span><b>10:15 <small>AM</small></b></div>
+    <a class="sunday-location" href="contact.html"><span>1706 Highway 63<br><strong>Find your way here <span aria-hidden="true">↗</span></strong></span></a>
+  </section>
+  <aside class="home-pastor-note"><p class="eye">A note from our pastor</p><blockquote>“I’d love to sit across a table from you with a cup of coffee and hear your story.”</blockquote><p>— Cole Permenter, Pastor</p><a class="textlink" href="contact.html">Say hello <span aria-hidden="true">↗</span></a></aside>
 </div></section>
 
 <section class="band next-steps"><div class="wrap">

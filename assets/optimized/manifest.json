@@ -65,6 +65,51 @@
       ],
       "width": 400
     },
+    "hero-church.jpg": {
+      "fallback": {
+        "bytes": 37973,
+        "height": 538,
+        "src": "assets/optimized/hero-church-fallback.jpg",
+        "width": 960
+      },
+      "height": 1345,
+      "source": "assets/photos/hero-church.jpg",
+      "source_bytes": 248399,
+      "source_sha256": "337752f9473f58e2a033be8f3fa74df8c359b4335fdbe3aaf7dc11f529951e66",
+      "webp": [
+        {
+          "bytes": 2922,
+          "height": 179,
+          "src": "assets/optimized/hero-church-320.webp",
+          "width": 320
+        },
+        {
+          "bytes": 7602,
+          "height": 359,
+          "src": "assets/optimized/hero-church-640.webp",
+          "width": 640
+        },
+        {
+          "bytes": 14240,
+          "height": 538,
+          "src": "assets/optimized/hero-church-960.webp",
+          "width": 960
+        },
+        {
+          "bytes": 32276,
+          "height": 807,
+          "src": "assets/optimized/hero-church-1440.webp",
+          "width": 1440
+        },
+        {
+          "bytes": 59474,
+          "height": 1076,
+          "src": "assets/optimized/hero-church-1920.webp",
+          "width": 1920
+        }
+      ],
+      "width": 2400
+    },
     "jackie-brian.jpg": {
       "fallback": {
         "bytes": 33701,
@@ -172,9 +217,9 @@
     }
   },
   "totals": {
-    "all_generated_bytes": 2135474,
-    "mobile_640_webp_bytes": 207830,
-    "source_bytes": 1210401
+    "all_generated_bytes": 2289961,
+    "mobile_640_webp_bytes": 215432,
+    "source_bytes": 1458800
   },
   "version": 1
 }

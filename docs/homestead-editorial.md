@@ -8,6 +8,8 @@ This guide applies the original **BCBC — Brand Kit (Homestead) · v1.0**, sele
 
 Lead the homepage with the church’s familiar identity and a plain, warm welcome. Keep service times, upcoming events, and first-visit details easy to find farther down the homepage and on Plan a Visit. Use the church’s approved beliefs and ministry descriptions. Do not introduce a new tagline, wordmark, or font family.
 
+The homepage opens with an atmospheric chapel photograph and one primary visit action, followed by a concise heading and prose section on ivory, compact ministry rows, and a contrasting worship feature. [Design rationale and research](homepage-design-rationale.md) records the sources, limits, and reasons for these choices.
+
 [Desktop homepage preview](previews/home-desktop.png) · [Phone homepage preview](previews/home-phone.png)
 
 ## Color
@@ -33,6 +35,8 @@ Aim for roughly **62% ivory, 16% white, 12% pine, 7% gold, and 3% clay**. Light 
 
 **Bitter 600** is the display and heading face; use 700 sparingly. **Nunito Sans 400–800** is the body and interface face. The script in the existing wordmark is never used as a separate font.
 
+The exact Bitter and Nunito Sans faces are hosted locally through `css/fonts.css`. Their original files and official SIL Open Font Licenses are included in `assets/fonts/`; see the [font provenance](../assets/fonts/README.md). This removes external font stylesheet requests while preserving the typography.
+
 | Level | Canonical scale |
 | --- | --- |
 | Display | 44px / 1.02 |
@@ -43,7 +47,7 @@ Aim for roughly **62% ivory, 16% white, 12% pine, 7% gold, and 3% clay**. Light 
 | Small | 14px |
 | Label | 11px, uppercase, 0.14em tracking |
 
-Keep headlines in sentence case, balance their wrapping, and keep body copy to about 65 characters per line. Labels are short; times and tables use tabular figures.
+The website welcome adapts the display size from 38px on the narrowest phones to 76px on wide screens to maintain a clear headline/body hierarchy. This is a responsive application of the original type family, not a new font system. Keep headlines in sentence case, balance their wrapping, and keep body copy to about 65 characters per line. Labels are short; times and tables use tabular figures.
 
 ## Wordmark, creek, and highway marker
 
@@ -53,9 +57,9 @@ Use the actual creek brushstroke lifted from the logo. The supplied gold asset i
 
 Use the official Louisiana 63 marker in its original green, small and near an address. Typical sizes are 20–24px by an address, 28–34px in the app header, or 0.75–1.25 inches in print. It is never another logo. The consistent byline is **1706 · LA 63 · Clinton**. A Bitter “63” watermark may be used at 5–8% opacity, below about 9%, away from body text; allow only one quiet highway reference per surface.
 
-On the homepage, Highway 63 is part of the composition. A single fine border with 22px corners holds the welcome; the address interrupts its bottom edge as a directions link. The unchanged official SVG appears once as a 220px background texture at 8% opacity, cropped off the lower-right corner, clear of the text and buttons. Hide that texture at narrower widths where there is no empty side space. The gold creek remains the main signature.
+On the homepage, the LA 63 marker anchors the full-width wayfinding bar immediately after the photographic welcome. The unchanged 32px marker, address, and directions form one useful group. The bar also points toward the church introduction; it separates the opening from the story without turning service times into the first impression.
 
-Carry the same relationship through the page: “6 on the 63” interrupts a short rule in the weekly introduction, and the church-photo address and directions sit within a ruled caption. Repeat alignment, spacing, and address typography rather than adding miniature signs beside each item. Do not tint, filter, redraw, or outline the official marker, or turn the layout into a road map.
+“6 on the 63” continues in the weekly introduction. Keep the highway thread tied to location and church life. Do not tint, filter, redraw, or outline the official marker, or scatter it through ministry links as decoration.
 
 ## Surfaces and buttons
 
@@ -90,7 +94,9 @@ The single construction is **`[Ministry] @ the Creek`**. Set the lockup in Bitte
 
 The voice is warm, plain, and invitational: a neighbor holding the door. Use the approved welcome, **“Welcome home to the Creek.”** Keep useful details specific. Use *students*, *give*, and the established ministry names. Avoid hype and formal invitation language.
 
-Photographs support the welcome when they help someone recognize a place or person. The current homepage uses the existing sign photograph for wayfinding; About uses existing staff portraits. Photography stays visually subdued. No new identifiable people, minors, or field-ministry photographs are introduced. Original files remain untouched; responsive derivatives strip metadata and never enlarge small originals.
+Photographs support the welcome when they help someone recognize a place or person. The homepage uses the existing graded chapel photograph for its opening. The shorter church story pairs a heading with prose in two columns; the existing sign photograph is a faint decorative background beneath an ivory wash, with no figure or caption. The texture occupies the left 62% at 14% opacity on desktop and the top half at 12% opacity on phones. It carries no essential information and is hidden from assistive technology.
+
+About uses existing staff portraits. Photography stays visually subdued. No new identifiable people, minors, or field-ministry photographs are introduced. Original files remain untouched; responsive derivatives strip metadata and never enlarge small originals.
 
 ## Applying the kit elsewhere
 

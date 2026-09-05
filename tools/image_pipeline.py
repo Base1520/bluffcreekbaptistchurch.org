@@ -21,6 +21,7 @@ from PIL import Image, ImageOps, __version__ as PILLOW_VERSION
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCES = (
     "sign.jpg",
+    "hero-church.jpg",
     "cole-headshot.jpg",
     "ashleigh-pierce.jpg",
     "janice-mcnabb.jpg",
