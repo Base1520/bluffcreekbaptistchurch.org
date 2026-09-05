@@ -215,8 +215,10 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </div></section>
 
-<section class="band word-band home-worship"><div class="wrap word-grid">
-  <div class="word-heading"><p class="eye">Worship @ the Creek</p><h2>Straight from<br>the Word.</h2><img class="creek" src="assets/creek-gold.png" width="372" height="93" alt=""></div>
+<section class="band word-band home-worship" id="worship" aria-labelledby="worship-title">
+  <div class="worship-backdrop" aria-hidden="true"><img src="assets/illustrations/worship-bible.webp" alt="" width="1200" height="800" loading="lazy" decoding="async"></div>
+  <div class="wrap word-grid">
+  <div class="word-heading"><p class="eye">Worship @ the Creek</p><h2 id="worship-title">Straight from<br>the Word.</h2><img class="creek" src="assets/creek-gold.png" width="372" height="93" alt=""></div>
   <div class="word-copy"><p>Theologically rich hymns. Time in prayer. A word for the kids. A message that opens the Bible and walks through the text.</p><p class="word-time">Sunday worship · 10:15a</p><a class="btn" href="watch.html"><span class="play-symbol" aria-hidden="true">▶</span> Watch with us</a><a class="word-secondary" href="beliefs.html">What we believe <span aria-hidden="true">↗</span></a></div>
 </div></section>
 
