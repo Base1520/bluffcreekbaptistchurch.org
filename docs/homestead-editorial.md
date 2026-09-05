@@ -12,7 +12,13 @@ The homepage opens with an atmospheric chapel photograph and one primary visit a
 
 The homepage navigation sits in a rounded ivory panel over the photograph, with space around its edges. The photo continues behind the panel instead of ending at a full-width header boundary. The panel stays available while scrolling, adapts to phones, and returns to normal document flow when JavaScript is unavailable so every navigation link remains accessible.
 
+The rounded navigation panel continues across the interior pages. Plan a Visit opens with a welcome over a faint chapel background, a direct directions action, and an arrival-guide anchor. Three short arrival steps precede the original detailed FAQs, which sit beside a personal invitation on desktop and beneath it on phones. Service times remain accessible through an opening text link and a dedicated section farther down.
+
+Watch opens with the original typography and a pine panel using the existing transparent Bible illustration. A gold link opens YouTube directly; a secondary button optionally loads an inline player. The channel link remains visible in every state, including without JavaScript. Schedule information follows the opening, and the page makes no claim that a service is currently live or that recordings are available.
+
 [Desktop homepage preview](previews/home-desktop.png) · [Phone homepage preview](previews/home-phone.png)
+
+[Plan a Visit preview](previews/visit-desktop.png) · [Watch preview](previews/watch-desktop.png)
 
 ## Color
 
@@ -125,4 +131,6 @@ When an approved source photo changes, install Pillow in a local development env
 
 Share graphics live in `assets/social/`. Run `python3 tools/social_cards.py --output /tmp/bcbc-share-cards` to create their self-contained HTML sources, then capture each in a browser at exactly 1200 × 630 after fonts load. These occasional exports are separate from the normal build.
 
-Run `python3 -m unittest discover -s tests` and `node --test tests/events.test.cjs`. Review desktop and phone layouts before opening a PR. Follow the existing branch and PR workflow; deploying, changing DNS, or activating accounts requires the user’s authorization.
+The optional Watch player is in `js/watch.js`. It creates no iframe until a visitor asks to load it, uses `autoplay=0`, prevents duplicate loads, and offers retry guidance without inferring stream availability from an iframe load event. The existing channel-based live-stream shortcut remains an optional attempt; direct YouTube live/channel links remain the reliable navigation fallback. A future approved video ID can use YouTube’s documented video embed format. No API keys or build-time network checks are required. See [YouTube’s player reference](https://developers.google.com/youtube/player_parameters) and [iframe event limitations](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#error_and_load_event_behavior).
+
+Run `python3 -m unittest discover -s tests` and `node --test tests/*.test.cjs`. Review desktop and phone layouts before opening a PR. Follow the existing branch and PR workflow; deploying, changing DNS, or activating accounts requires the user’s authorization.

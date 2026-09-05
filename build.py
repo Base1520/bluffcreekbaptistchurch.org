@@ -254,11 +254,32 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
 
 # ---------------- PLAN A VISIT ----------------
 PAGES["visit"] = ("Plan a Visit", "Your first Sunday at Bluff Creek Baptist Church — where to park, when to arrive, what to do with your kids, and what the service is like.", f"""
-<section class="sec">
-  <div class="eye">First stop on the 63</div>
-  <h1>Plan a visit.</h1>
-  <p class="lead">We want your first Sunday to feel like your tenth. Here's everything people usually wonder about — and the honest answers.</p>
-  <p class="visit-quicklinks"><a href="#visit-times">Service times</a><span aria-hidden="true"> · </span><a href="contact.html">Directions</a></p>
+<section class="visitor-hero">
+  <div class="visitor-place" aria-hidden="true">{responsive_image("hero-church.jpg", "", "(max-width: 760px) 100vw, 60vw", "visitor-place-photo", loading="eager")}</div>
+  <a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a>
+  <div class="visitor-hero-copy">
+    <p class="eye">First stop on the 63</p>
+    <h1>Come as you are.<br>Find your place.</h1>
+    <img class="visitor-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
+    <p class="lead">We want your first Sunday to feel like your tenth. Come with your questions, bring your family, and make yourself at home.</p>
+    <div class="actions"><a class="btn" href="https://maps.apple.com/?q=1706+Highway+63,+Clinton,+LA+70722" target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span></a><a class="textlink" href="#what-to-expect">What to expect <span aria-hidden="true">↓</span></a></div>
+    <a class="visitor-times-link" href="#visit-times">Looking for service times?</a>
+  </div>
+</section>
+
+<section class="band visitor-arrival" id="what-to-expect" aria-labelledby="arrival-title"><div class="wrap">
+  <p class="eye">Your first Sunday</p><h2 id="arrival-title">A little less wondering.<br>A little more welcome.</h2>
+  <ol class="arrival-steps">
+    <li><span class="arrival-number" aria-hidden="true">01</span><h3>Pull on in.</h3><p>We're at the corner of Highways 959 and 63. We have two parking lots, with access from either highway.</p></li>
+    <li><span class="arrival-number" aria-hidden="true">02</span><h3>Make yourself at home.</h3><p>For worship, head to the sanctuary and use any door. For Sunday School, start at the fellowship building — the “little sanctuary” on the right.</p></li>
+    <li><span class="arrival-number" aria-hidden="true">03</span><h3>Bring the whole family.</h3><p>Kids are welcome in the service, and a nursery is available for little ones. Choose what works for your family. We've all been there.</p></li>
+  </ol>
+</div></section>
+
+<section class="visitor-questions" aria-labelledby="visitor-questions-title">
+  <div class="visitor-question-intro"><p class="eye">The honest answers</p><h2 id="visitor-questions-title">You're welcome<br>to wonder.</h2><p>Here's what people usually ask before their first visit.</p>
+    <aside class="visitor-invitation"><h3>Tell us you're coming.<br>Or just show up.</h3><p>Either way is perfect. If you'd like someone watching for you at the door, send a note and we'll be there.</p><a class="textlink" href="contact.html">Say hello <span aria-hidden="true">↗</span></a></aside>
+  </div>
   <div class="faq">
     <details open><summary>Where do I park?</summary><div class="a"><p>We have two large parking lots. The church sits at the corner of Highways 959 and 63 — you can get to a lot from either side.</p></div></details>
     <details><summary>What time do I arrive?</summary><div class="a"><p>Sunday School starts at 9:00 for all ages. Our Sunday morning service begins at 10:15, the Sunday evening service at 6:00, and Wednesday night at 6:00. Kids' and youth activities start at various times — see <a href="ministries.html">Ministries</a> for all the ways they can plug in.</p></div></details>
@@ -270,16 +291,18 @@ PAGES["visit"] = ("Plan a Visit", "Your first Sunday at Bluff Creek Baptist Chur
     <details><summary>What is the service like?</summary><div class="a"><p>We're a pretty traditional Southern Baptist church. In a normal service we sing theologically rich, doctrinally sound hymns, spend time in prayer, have a special word for our children (with treats!), and then our pastor preaches a 30–40 minute expositional message straight from the text. If your kids are headed to the nursery, they can go to the back foyer after the children's time.</p></div></details>
     <details><summary>What happens after the service?</summary><div class="a"><p>That's your call — but we'll probably be hanging out until they turn the lights off on us. People will want to meet you; our folks are genuinely charming and genuinely want to know you. Fill out a contact card and drop it in the offering, and our pastor will reach out during the week. He'd love to meet you for coffee — or his family would love to share a meal with yours.</p></div></details>
   </div>
-  <section class="visit-times" id="visit-times" aria-labelledby="visit-times-heading"><h2 id="visit-times-heading">When we gather.</h2>
+</section>
+
+<section class="band visitor-gather" id="visit-times" aria-labelledby="visit-times-heading"><div class="wrap">
+  <div class="visitor-gather-heading"><div><p class="eye">There's a place for you</p><h2 id="visit-times-heading">When we gather.</h2></div><a class="textlink" href="times.html">See the whole week <span aria-hidden="true">↗</span></a></div>
   <div class="times" style="margin:18px 0 26px">
     <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday School</small><b style="color:var(--ink)">9:00a</b></div>
     <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Worship</small><b style="color:var(--ink)">10:15a</b></div>
     <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Sunday Evening</small><b style="color:var(--ink)">6:00p</b></div>
     <div class="t" style="background:var(--surface);border-color:var(--line)"><small style="color:var(--wheat)">Wednesday</small><b style="color:var(--ink)">6:00p</b></div>
   </div>
-  </section>
-  <div class="panel" style="margin-top:26px"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Before you come</div><h3>Tell us you're coming — or just show up.</h3><p>Either way is perfect. If you'd like someone watching for you at the door, send a note and we'll be there.</p><a class="btn" href="contact.html">Say hello</a> <a class="btn ghost" href="{APP}" style="margin-left:8px">Get the app</a></div>
-</section>
+  <p class="visitor-location"><img src="assets/la63.svg" alt="" width="32" height="32">1706 Highway 63 · Clinton, Louisiana <a href="https://maps.apple.com/?q=1706+Highway+63,+Clinton,+LA+70722" target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span></a></p>
+</div></section>
 """)
 
 # ---------------- WHO WE ARE ----------------
@@ -451,17 +474,26 @@ PAGES["give"] = ("Give", "Give to Bluff Creek Baptist Church online, in person, 
 """)
 
 # ---------------- WATCH ----------------
-PAGES["watch"] = ("Watch", "Watch Bluff Creek Baptist Church online — Sunday worship live.", f"""
-<section class="sec">
-  <div class="eye">Can't make it in person?</div>
-  <h1>Watch the Creek.</h1>
-  <p class="lead">Sunday morning worship streams live at <b>10:15a</b>, and past services are there any time.</p>
-  {('<div class="embed" style="margin-top:20px"><iframe src="https://www.youtube.com/embed/live_stream?channel='+YT_CHANNEL_ID+'&autoplay=0" title="Bluff Creek Baptist Church — live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>') if YT_CHANNEL_ID else ''}
-  <div class="grid g2" style="margin-top:20px">
-    <div class="panel"><img class="sign" src="assets/la63.svg" alt="" aria-hidden="true"><div class="eye">Live &amp; on demand</div><h3>{"Bluff Creek on YouTube" if YT_CHANNEL_ID else "Bluff Creek live on Facebook"}</h3><p>{"Subscribe and turn on notifications so Sunday finds you wherever you are." if YT_CHANNEL_ID else "Sunday morning worship streams live on our Facebook page, and past services are there any time. Follow the page so Sunday finds you wherever you are."}</p><a class="btn" href="{WATCH}" target="_blank" rel="noopener">{"Watch on YouTube" if YT_CHANNEL_ID else "Watch on Facebook"}</a>{('<p class="small" style="margin-top:12px"><a href="'+FACEBOOK+'" target="_blank" rel="noopener">Also on Facebook →</a></p>') if YT_CHANNEL_ID else ''}</div>
-    <div class="card"><h3>What you'll hear</h3><p>Theologically rich hymns, prayer, a word for the kids, and a 30–40 minute expositional message straight from the text — the same service we have in the room.</p><p><a href="visit.html">Then come see us in person →</a></p></div>
-  </div>
+PAGES["watch"] = ("Watch", "Join Bluff Creek Baptist Church for Sunday worship online — hymns, prayer, and a message straight from the Bible.", f"""
+<section class="watch-opening">
+  <a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a>
+  <div class="watch-heading"><div><p class="eye">Worship with us</p><h1>Watch the Creek.</h1></div><p class="lead">Hymns, prayer, and a message straight from the Bible. Join us for worship wherever Sunday finds you.</p></div>
+  <section class="watch-player" data-watch-player data-watch-channel="{YT_CHANNEL_ID}" aria-labelledby="watch-player-title">
+    <div class="watch-art" aria-hidden="true"><img src="assets/illustrations/worship-bible.webp" alt="" width="1200" height="800"></div>
+    <div class="watch-player-intro"><p class="eye">Rooted in Scripture</p><h2 id="watch-player-title">Straight from<br>the Word.</h2><img class="visitor-creek" src="assets/creek-gold.png" alt="" width="372" height="93"><p>The same worship we share in the room,<br class="watch-wide-break"> with an invitation to join us here.</p></div>
+    <div class="actions"><a class="btn" href="{WATCH}" target="_blank" rel="noopener">{"Watch on YouTube" if YT_CHANNEL_ID else "Watch on Facebook"} <span aria-hidden="true">↗</span></a><button type="button" class="watch-load" data-watch-load hidden aria-controls="watch-frame" aria-describedby="watch-help">Load player here</button></div>
+    <div id="watch-frame" class="watch-frame" data-watch-mount hidden aria-busy="false"></div>
+    <div class="watch-player-help"><p id="watch-help">{'Use the player controls to start watching, or open YouTube directly.' if YT_CHANNEL_ID else 'Visit our Facebook page to watch.'}</p><p data-watch-status role="status" aria-live="polite" aria-atomic="true">{'If no service appears, check the church channel for available videos.' if YT_CHANNEL_ID else ''}</p>
+      {('<a href="https://www.youtube.com/channel/'+YT_CHANNEL_ID+'" target="_blank" rel="noopener">Browse the church channel <span aria-hidden="true">↗</span></a>') if YT_CHANNEL_ID else ''}
+    </div>
+  </section>
 </section>
+
+<section class="watch-next" aria-labelledby="watch-next-title">
+  <div><p class="eye">Sunday morning</p><h2 id="watch-next-title">Gather with us.</h2><p>Morning worship begins at <b>10:15a</b>. Online or in the sanctuary, expect theologically rich hymns, prayer, a word for the kids, and a 30–40 minute expositional message straight from the text.</p><a class="textlink" href="beliefs.html">What we believe <span aria-hidden="true">↗</span></a></div>
+  <div class="watch-visit"><p class="eye">There’s a seat for you</p><h2>Then come say hello.</h2><p>We'd love to meet you in person. Find your way here, see what to expect, and bring your family.</p><a class="textlink" href="visit.html">Plan your first visit <span aria-hidden="true">↗</span></a><p class="watch-social"><a href="{FACEBOOK}" target="_blank" rel="noopener">Keep up with the Creek on Facebook <span aria-hidden="true">↗</span></a></p></div>
+</section>
+{('<script src="js/watch.js" defer></script>') if YT_CHANNEL_ID else ''}
 """)
 
 # ---------------- CONTACT ----------------
