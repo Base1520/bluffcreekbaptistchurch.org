@@ -3,48 +3,77 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<base href="/">
+<script>
+(function(){
+  if(location.hostname.endsWith('.github.io')){
+    document.querySelector('base').setAttribute('href','/bluffcreekbaptistchurch.org/');
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.setAttribute('href',location.pathname+location.search+link.getAttribute('href'));
+    });
+  });
+})();
+</script>
 <title>Page not found — Bluff Creek Baptist Church</title>
 <meta name="description" content="That page isn&#x27;t on the 63.">
 <meta property="og:title" content="Page not found — Bluff Creek Baptist Church">
 <meta property="og:description" content="That page isn&#x27;t on the 63.">
-<meta property="og:image" content="https://www.bluffcreekbaptistchurch.org/assets/og.jpg">
+<meta property="og:image" content="https://www.bluffcreekbaptistchurch.org/assets/social/index.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.bluffcreekbaptistchurch.org/404.html">
 <meta property="og:site_name" content="Bluff Creek Baptist Church">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:alt" content="Page not found — Bluff Creek Baptist Church, Clinton, Louisiana">
 <meta name="theme-color" content="#3C5A45">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://www.bluffcreekbaptistchurch.org/404.html">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="preload" href="assets/fonts/bitter-latin-normal-v42.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-sans-latin-normal-v19.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/polish.css">
+<noscript><style>
+#cform{display:none}
+.editorial.page-index .top{margin-bottom:0;background:var(--ivory)}
+.editorial.page-index .home-hero-grid{min-height:590px;padding-top:64px}
+@media(max-width:1040px){
+  .editorial .top{position:static}
+  .editorial .top .wrap{height:auto;min-height:82px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+  .editorial.page-index .top .wrap{height:auto;min-height:68px;padding-top:14px;padding-bottom:14px}
+  .editorial.page-index nav.main{max-height:none}
+  .editorial .burger{display:none}
+  .editorial nav.main{display:flex;position:static;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;overflow:visible;border:0;box-shadow:none;padding:0}
+  .editorial nav.main a.cta{margin:0}
+}
+@media(max-width:760px){.editorial.page-index .home-hero-grid{padding-top:156px}}
+</style></noscript>
+
 
 </head>
-<body>
+<body class="editorial page-404">
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" id="top"><div class="wrap">
-  <a class="brand" href="index.html">
-    <img class="lg-light" src="assets/logo-white.png" alt="Bluff Creek Baptist Church">
-    <img class="lg-dark" src="assets/logo.png" alt="" aria-hidden="true">
+  <a class="brand" href="index.html" aria-label="Bluff Creek Baptist Church — home">
+    <img src="assets/logo.png" alt="" width="930" height="192">
   </a>
-  <button class="burger" aria-label="Menu" aria-expanded="false" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <nav class="main" id="nav" aria-label="Primary"><a href="visit.html">Plan a Visit</a><a href="about.html">Who We Are</a><a href="ministries.html">Ministries</a><a href="missions.html">Missions</a><a href="times.html">When We Meet</a><a href="give.html">Give</a><a href="watch.html">Watch</a><a href="contact.html">Contact</a><a class="cta" href="https://app.bluffcreekbaptistchurch.org/">Get the app</a></nav>
+  <button class="burger" aria-label="Menu" aria-controls="nav" aria-expanded="false"><span>Menu</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav class="main" id="nav" aria-label="Primary"><a href="about.html">Our Church</a><a href="ministries.html">Find Your Place</a><a href="times.html">This Week</a><a href="watch.html">Watch</a><a href="give.html">Give</a><a class="cta" href="visit.html">Plan a Visit <span aria-hidden="true">↗</span></a></nav>
 </div></header>
-<section class="page-hero">
-  <div class="shot"><img src="assets/photos/road.jpg" alt="A gravel lot off Highway 63" style="object-position:center 50%" fetchpriority="high"></div>
-  <div class="wm" aria-hidden="true">63</div>
-  <div class="wrap">
-    <div class="eye">Hmm</div>
-    <h1>That page isn't on the 63.</h1>
-    <p class="lead">The link may be old. Try the menu — or head home.</p>
-  </div>
+<main class="wrap" id="main" tabindex="-1">
+<section class="interior-heading">
+  <a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a>
+  <div class="eye">Hmm</div>
+  <h1>That page isn't on the 63.</h1>
+<p class="lead">The link may be old. Try the menu — or head home.</p>
+  <img class="heading-creek" src="assets/creek-gold.png" alt="" width="372" height="93">
 </section>
 
-<main class="wrap" id="main">
 <section class="sec"><p><a class="btn" href="index.html">Back home</a></p></section>
 
 </main>
@@ -53,7 +82,7 @@
   <img class="tex" src="assets/creek-ivory.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div>
-      <img class="logo" src="assets/logo-white.png" alt="Bluff Creek Baptist Church">
+      <img class="logo" src="assets/logo-white.png" alt="Bluff Creek Baptist Church" width="1500" height="309" loading="lazy">
       <p style="color:#e6ddc7;max-width:34ch;font-size:15px">A country church on Highway 63 — rooted in the Word, sharing Christ with our community and the world, walking together as one family in Him.</p>
       <div class="byline"><img class="la63" src="assets/la63.svg" alt="">1706 · LA 63 · Clinton</div>
     </div>
@@ -65,14 +94,12 @@
 <script>
 (function(){
   var top=document.getElementById('top');
-  var onScroll=function(){ (window.scrollY>28) ? top.classList.add('solid') : top.classList.remove('solid'); };
-  onScroll(); addEventListener('scroll',onScroll,{passive:true});
-  var els=[].slice.call(document.querySelectorAll('[data-rv]'));
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){
-    els.forEach(function(e){e.classList.add('in')}); return;
-  }
-  var io=new IntersectionObserver(function(en){en.forEach(function(x){ if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} })},{rootMargin:'0px 0px -12% 0px',threshold:.08});
-  els.forEach(function(e){io.observe(e)});
+  var button=top.querySelector('.burger'),nav=document.getElementById('nav');
+  function closeMenu(){nav.classList.remove('open');button.setAttribute('aria-expanded','false');}
+  button.addEventListener('click',function(){var open=nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open));});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))closeMenu();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();button.focus();}});
+  document.addEventListener('click',function(e){if(!top.contains(e.target))closeMenu();});
 })();
 </script>
 </body>
