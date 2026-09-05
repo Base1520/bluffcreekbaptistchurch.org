@@ -1,0 +1,180 @@
+{
+  "encoder": {
+    "jpeg_quality": 82,
+    "pillow": "12.3.0",
+    "webp_quality": 78
+  },
+  "images": {
+    "ashleigh-pierce.jpg": {
+      "fallback": {
+        "bytes": 118308,
+        "height": 533,
+        "src": "assets/optimized/ashleigh-pierce-fallback.jpg",
+        "width": 800
+      },
+      "height": 533,
+      "source": "assets/photos/ashleigh-pierce.jpg",
+      "source_bytes": 133098,
+      "source_sha256": "f3fcd59d8fe623c0b5dc0101b0c4247995f5329a1e5e8aec41392dc51412c2e9",
+      "webp": [
+        {
+          "bytes": 18384,
+          "height": 213,
+          "src": "assets/optimized/ashleigh-pierce-320.webp",
+          "width": 320
+        },
+        {
+          "bytes": 56720,
+          "height": 426,
+          "src": "assets/optimized/ashleigh-pierce-640.webp",
+          "width": 640
+        },
+        {
+          "bytes": 85974,
+          "height": 533,
+          "src": "assets/optimized/ashleigh-pierce-800.webp",
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "cole-headshot.jpg": {
+      "fallback": {
+        "bytes": 26144,
+        "height": 400,
+        "src": "assets/optimized/cole-headshot-fallback.jpg",
+        "width": 400
+      },
+      "height": 400,
+      "source": "assets/photos/cole-headshot.jpg",
+      "source_bytes": 40443,
+      "source_sha256": "9ad1baf92ca0fd16678577eb3d4f963a457e84c3f4cecf1dab9fcbdffd068843",
+      "webp": [
+        {
+          "bytes": 10070,
+          "height": 320,
+          "src": "assets/optimized/cole-headshot-320.webp",
+          "width": 320
+        },
+        {
+          "bytes": 12892,
+          "height": 400,
+          "src": "assets/optimized/cole-headshot-400.webp",
+          "width": 400
+        }
+      ],
+      "width": 400
+    },
+    "jackie-brian.jpg": {
+      "fallback": {
+        "bytes": 33701,
+        "height": 563,
+        "src": "assets/optimized/jackie-brian-fallback.jpg",
+        "width": 303
+      },
+      "height": 563,
+      "source": "assets/photos/jackie-brian.jpg",
+      "source_bytes": 37179,
+      "source_sha256": "a5bc1e46d4f03e8ddcca3494c6f4fff7de6f274b09000d36078955075878364d",
+      "webp": [
+        {
+          "bytes": 20138,
+          "height": 563,
+          "src": "assets/optimized/jackie-brian-303.webp",
+          "width": 303
+        }
+      ],
+      "width": 303
+    },
+    "janice-mcnabb.jpg": {
+      "fallback": {
+        "bytes": 183287,
+        "height": 1279,
+        "src": "assets/optimized/janice-mcnabb-fallback.jpg",
+        "width": 960
+      },
+      "height": 1599,
+      "source": "assets/photos/janice-mcnabb.jpg",
+      "source_bytes": 327120,
+      "source_sha256": "81fece027809dfcc86fc0c6330051a3452e920cc2ef111a5e43f7a6cc75a5ab8",
+      "webp": [
+        {
+          "bytes": 17200,
+          "height": 426,
+          "src": "assets/optimized/janice-mcnabb-320.webp",
+          "width": 320
+        },
+        {
+          "bytes": 53538,
+          "height": 853,
+          "src": "assets/optimized/janice-mcnabb-640.webp",
+          "width": 640
+        },
+        {
+          "bytes": 104888,
+          "height": 1279,
+          "src": "assets/optimized/janice-mcnabb-960.webp",
+          "width": 960
+        },
+        {
+          "bytes": 155826,
+          "height": 1599,
+          "src": "assets/optimized/janice-mcnabb-1200.webp",
+          "width": 1200
+        }
+      ],
+      "width": 1200
+    },
+    "sign.jpg": {
+      "fallback": {
+        "bytes": 169558,
+        "height": 540,
+        "src": "assets/optimized/sign-fallback.jpg",
+        "width": 960
+      },
+      "height": 1125,
+      "source": "assets/photos/sign.jpg",
+      "source_bytes": 672561,
+      "source_sha256": "3866a90f2b995c46100cb09d2fe41eee324dfe6e5a318bf847c309baf0b1b0d0",
+      "webp": [
+        {
+          "bytes": 15082,
+          "height": 180,
+          "src": "assets/optimized/sign-320.webp",
+          "width": 320
+        },
+        {
+          "bytes": 64542,
+          "height": 360,
+          "src": "assets/optimized/sign-640.webp",
+          "width": 640
+        },
+        {
+          "bytes": 148948,
+          "height": 540,
+          "src": "assets/optimized/sign-960.webp",
+          "width": 960
+        },
+        {
+          "bytes": 323580,
+          "height": 810,
+          "src": "assets/optimized/sign-1440.webp",
+          "width": 1440
+        },
+        {
+          "bytes": 516694,
+          "height": 1080,
+          "src": "assets/optimized/sign-1920.webp",
+          "width": 1920
+        }
+      ],
+      "width": 2000
+    }
+  },
+  "totals": {
+    "all_generated_bytes": 2135474,
+    "mobile_640_webp_bytes": 207830,
+    "source_bytes": 1210401
+  },
+  "version": 1
+}
