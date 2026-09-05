@@ -563,7 +563,9 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .home-story-copy>p{font-size:18px;line-height:1.8;color:var(--ink2);margin:0 0 18px;max-width:42ch}
 .home-story-copy .home-purpose{font:600 28px/1.5 "Bitter",Georgia,serif;color:var(--pine);letter-spacing:-.02em;margin-bottom:24px}
 .home-story-copy .textlink{margin-top:8px}
-.home-belong{background:var(--wheat-tint,#F6EED9);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.home-belong{isolation:isolate;overflow:hidden;background:var(--wheat-tint,#F6EED9);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.home-family-route{position:absolute;z-index:-1;left:max(-64px,calc((100vw - 1320px)/2 - 64px));bottom:-12%;width:min(48vw,640px);opacity:.06;pointer-events:none;user-select:none}
+.home-family-route img{display:block;width:100%;height:auto;filter:none}
 .home-belong-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}
 .editorial .home-belong h2{font-size:clamp(34px,3.6vw,52px)}
 .home-belong-intro>p:not(.eye){font-size:18px;line-height:1.8;color:var(--ink2);max-width:34ch;margin:24px 0}
@@ -617,6 +619,7 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
   .home-story-heading .eye{margin-bottom:18px}
   .editorial .home-story-heading h2{font-size:36px}
   .home-story-grid,.home-belong-grid{grid-template-columns:1fr;gap:30px}
+  .home-family-route{left:auto;right:-16%;top:32px;bottom:auto;width:68%;max-width:400px;opacity:.05}
   .home-roots{margin-top:22px}
   .home-story-copy>p{font-size:16px;line-height:1.8}
   .home-story-copy .home-purpose{font-size:24px;margin-bottom:20px}

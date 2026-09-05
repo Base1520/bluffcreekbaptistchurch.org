@@ -199,7 +199,9 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
-<section class="band home-belong" id="find-your-place" aria-labelledby="belong-title"><div class="wrap home-belong-grid">
+<section class="band home-belong" id="find-your-place" aria-labelledby="belong-title">
+  <div class="home-family-route" aria-hidden="true"><img src="assets/la63.svg" alt="" width="360" height="360"></div>
+  <div class="wrap home-belong-grid">
   <div class="home-belong-intro"><p class="eye">Life together</p><h2 id="belong-title">A place for<br>your family.</h2><p>Little ones. Growing students. Every age and season of life. There’s a place to learn God’s Word and walk with others here.</p><a class="textlink" href="ministries.html">Explore our ministries <span aria-hidden="true">↗</span></a></div>
   <div class="home-ministry-list">
     <a class="home-ministry" href="ministries.html#kidz"><div><span class="micro">Birth through 5th grade</span>{lock("Kidz")}<p>A loving place for little ones to learn God’s Word.</p></div><span class="ministry-arrow" aria-hidden="true">↗</span></a>

@@ -59,6 +59,8 @@ Use the official Louisiana 63 marker in its original green, small and near an ad
 
 On the homepage, the LA 63 marker anchors the full-width wayfinding bar immediately after the photographic welcome. The unchanged 32px marker, address, and directions form one useful group. The bar also points toward the church introduction; it separates the opening from the story without turning service times into the first impression.
 
+The original highway SVG also appears once as a faint background in “A place for your family”: 6% opacity at the lower left on desktop, and 5% in the upper-right corner on phones. Scale the background with the section: 48% of viewport width up to 640px on desktop, and 68% of section width up to 400px on phones. Preserve its square proportions. The section clips the artwork, and the image is decorative, noninteractive, and hidden from assistive technology. Its original color and proportions remain unchanged.
+
 “6 on the 63” continues in the weekly introduction. Keep the highway thread tied to location and church life. Do not tint, filter, redraw, or outline the official marker, or scatter it through ministry links as decoration.
 
 ## Surfaces and buttons
