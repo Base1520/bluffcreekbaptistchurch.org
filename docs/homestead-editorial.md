@@ -125,7 +125,7 @@ These are application guidelines. Creating or changing live templates, accounts,
 
 Edit page content in `build.py`, shared structure in `css/site.css`, and refinements in `css/polish.css`. Run `python3 build.py`; do not hand-edit the generated HTML. The normal build uses Python’s standard library.
 
-The calendar combines the app-owned `events.json` with the published Approved Google calendar sheet. The identical app/site consumer expands the verified weekly rhythm and third-Tuesday WMU, then applies approved additions, changes, and cancellations. America/Chicago determines the date and elapsed start times. Source status explains unavailable updates; the no-JavaScript fallback shows verified weekly gathering times. See [calendar maintenance](calendar-maintenance.md) for the approval workflow and local synchronization command.
+The church’s iCloud calendar supplies public event dates. A curated importer removes personal metadata and unreviewed titles before producing the shared JSON and calendar download. Both surfaces show the import date and stale/offline status; cancellations and recurring exceptions come from iCloud. The user confirmed Yoga at 3:45 p.m. and WMU at 5 p.m. The current candidate contains a dated snapshot; automatic refresh awaits the prepared backend’s activation. See [calendar maintenance](calendar-maintenance.md).
 
 When an approved source photo changes, install Pillow in a local development environment and run `python3 tools/image_pipeline.py`. Commit the generated manifest and derivatives with the approved source change. `image_helpers.py` emits responsive WebP sources, a JPEG fallback, lazy loading, and image dimensions.
 

@@ -1,5 +1,14 @@
 # Website verification
 
+## iCloud calendar — September 6, 2026
+
+The user supplied the view-only church iCloud calendar and confirmed its Yoga 3:45 p.m. / WMU 5 p.m. times. Those times now agree in the public app, When We Meet and Ministries. The candidate contains 94 curated public occurrences through December 4, with a matching sanitized ICS download. Original personal reminders, attendees, organizer/contact fields, descriptions, raw IDs, attachments, source URL and private/unreviewed records are excluded from the repositories. The temporary raw source was removed after conversion.
+
+Both surfaces use the identical iCloud snapshot consumer. It handles ongoing timed/all-day spans, real recurrence exceptions and cancellations, source timestamps, cache age, valid empty responses and expired horizons. An older cache or former Google feed cannot restore removed occurrences. The Google form remains request intake; approved edits now belong in iCloud. Automatic refresh is prepared in the app repository’s read-only server adapter and remains unactivated.
+
+Current gate: 20 Python and 28 Node tests pass, generator/reference/diff checks pass, and app-side public/importer/HTTP suites pass. The parser and HTTP checks use synthetic fixtures; the real supplied source was read only and produced the curated snapshot. No new Lighthouse or engagement result is claimed. Editing invitations remain controlled by the calendar owner through Apple, independently of Creek Office login.
+
+
 ## Launch preparation — September 6, 2026
 
 The approved homepage and visitor design remain intact. The public calendar now shares one consumer with Home @ the Creek: verified recurring gatherings from the app JSON, plus the published Approved Google CSV for additions, changes, and cancellations. Date/title matching deduplicates changes; cancellations remove only the selected occurrence. Central time excludes elapsed starts. Unknown times remain explicitly unconfirmed. Public field whitelisting and text-only rendering prevent private notes or HTML from entering event cards.
@@ -83,4 +92,4 @@ Historical comparison of `origin/main` at `bc7513c` and the first implementation
 
 ## Review boundaries
 
-No merge, deployment, main push, DNS, account, giving-destination, or private-data changes. The approved Google CSV integration is now included as described in the September 6 section. Activation of the separate Creek Office portal remains pending. Future calendar occurrences derive only from the verified recurring schedule; special events are never invented.
+No merge, deployment, main push, DNS, account, giving-destination, or private-data changes. The later iCloud section supersedes the earlier Google CSV publication workflow. Activation of the separate Creek Office portal remains pending. Future calendar occurrences derive only from the verified recurring schedule; special events are never invented.

@@ -35,6 +35,8 @@ def start_minutes(value):
 def expand_recurring(data, today=None, horizon=42):
     """Render the same verified weekday/ordinal rules used by the shared JS feed."""
     today = today or church_today()
+    if data.get("source") == "icloud":
+        return upcoming_events(data.get("events", []), today)
     events = {}
     def key(event):
         return (event["when"], " ".join(event["title"].lower().split()))
@@ -74,11 +76,40 @@ def upcoming_events(events, today=None):
         except ValueError:
             continue
         minutes = start_minutes(event["time"])
-        if day < today or minutes is None:
+        all_day = event.get("allDay") is True
+        if minutes is None and event["time"] != "Time to be confirmed" and not (all_day and event["time"] == "All day"):
+            continue
+        end_day = None
+        if "endsAt" in event:
+            try:
+                if all_day:
+                    end_day = datetime.date.fromisoformat(event["endsAt"])
+                    if end_day <= day:
+                        continue
+                else:
+                    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z", event["endsAt"]):
+                        continue
+                    end_day = datetime.datetime.fromisoformat(event["endsAt"]).astimezone(CHURCH_TIMEZONE).date()
+                    if end_day < day:
+                        continue
+            except (ValueError, TypeError):
+                continue
+        if day < today and not (end_day and (end_day > today if all_day else end_day >= today)):
             continue
         accepted.append(event)
     # Stable for simultaneous events: preserve the calendar editor's feed order.
-    return sorted(accepted, key=lambda event: (event["when"], start_minutes(event["time"])))
+    return sorted(accepted, key=lambda event: (event["when"], -1 if event.get("allDay") else start_minutes(event["time"]) if start_minutes(event["time"]) is not None else 1440))
+
+
+def event_time_label(event):
+    if not event.get("endsAt"):
+        return event["time"]
+    if event.get("allDay"):
+        last = datetime.date.fromisoformat(event["endsAt"]) - datetime.timedelta(days=1)
+        return "All day" if last.isoformat() == event["when"] else f"All day · through {last:%b} {last.day}"
+    end = datetime.datetime.fromisoformat(event["endsAt"]).astimezone(CHURCH_TIMEZONE)
+    end_time = f"{end.hour % 12 or 12}:{end.minute:02d}{'p' if end.hour >= 12 else 'a'}"
+    return f'{event["time"]}–{end_time}' if end.date().isoformat() == event["when"] else f'{event["time"]} · through {end:%b} {end.day} {end_time}'
 
 
 def render_event_rows(events, limit=3, today=None):
@@ -89,7 +120,7 @@ def render_event_rows(events, limit=3, today=None):
         rows.append(
             f'<article class="event-row"><time datetime="{event["when"]}">'
             f'<span>{weekday}</span>{day.day}</time><div><h3>{html.escape(event["title"])}'
-            f'</h3><p>{html.escape(event["time"])} · {html.escape(event["where"])}</p></div></article>'
+            f'</h3><p>{html.escape(event_time_label(event))} · {html.escape(event["where"])}</p></div></article>'
         )
     # Without JavaScript, show the verified weekly schedule. Dated static HTML
     # cannot stay current forever when no new build occurs.

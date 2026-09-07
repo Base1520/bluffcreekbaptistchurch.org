@@ -34,7 +34,7 @@
     time.appendChild(document.createTextNode(String(date.getUTCDate())));
     var detail = element(document, 'div');
     detail.appendChild(element(document, 'h3', event.title));
-    detail.appendChild(element(document, 'p', event.time + ' · ' + event.where));
+    detail.appendChild(element(document, 'p', calendar.eventTimeLabel(event) + ' · ' + event.where));
     row.appendChild(time);
     row.appendChild(detail);
     return row;
@@ -53,18 +53,15 @@
     if (!feeds.length) return Promise.resolve();
     var today = churchToday(now), minutes = calendar.churchMinutes(now);
     var fallback = calendar.expandFeed(calendar.DEFAULT_FEED, today).filter(function (event) {
-      var start = startMinutes(event.time);
-      return event.when > today || start === null || start >= minutes;
+      return calendar.isUpcoming(event, today, minutes);
     });
     feeds.forEach(function (feed) { feed.setAttribute('aria-live', 'polite'); render(document, feed, fallback); });
-    return calendar.load({ jsonUrl: url, csvUrl: csvUrl || calendar.CSV_URL, fetcher: fetcher, now: now }).then(function (result) {
+    var config = typeof window !== 'undefined' && window.CREEK_PUBLIC_CALENDAR || {};
+    if (config.endpoint) document.querySelectorAll('[data-calendar-download]').forEach(function (link) { link.href = config.endpoint + '?format=ics'; });
+    return calendar.load({ jsonUrl: url, csvUrl: csvUrl || calendar.CSV_URL, calendarUrl:config.endpoint || '', fetcher: fetcher, now: now }).then(function (result) {
       feeds.forEach(function (feed) { render(document, feed, result.events); });
       document.querySelectorAll('[data-events-status]').forEach(function (status) {
-        status.textContent = result.sources.community === 'unavailable'
-          ? 'Regular gatherings are shown. Community updates are temporarily unavailable.'
-          : result.sources.community === 'cache'
-            ? 'Showing saved calendar updates. Recent changes need an internet connection.'
-            : 'All times Central. Approved updates may take a few minutes to appear.';
+        status.textContent = calendar.statusText(result);
       });
       return result;
     });

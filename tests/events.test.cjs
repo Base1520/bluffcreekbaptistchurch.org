@@ -1,6 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const events = require('../js/events.js');
+const calendar = require('../js/calendar-feed.js');
+const snapshot = rows => ({source:'icloud',synced_at:calendar.DEFAULT_FEED.synced_at,valid_until:calendar.DEFAULT_FEED.valid_until,events:rows,recurring:[]});
 
 const event = (overrides = {}) => ({when: '2026-09-06', time: '9:00a', title: 'Sunday School', where: 'Fellowship Building', tag: 'Weekly', ...overrides});
 
@@ -47,16 +49,16 @@ function fixture(rows) {
 }
 const now = new Date('2026-09-06T13:00:00Z'); // Sept 6 at 8am in Clinton.
 
-test('failed requests replace expired build rows with the current verified recurring rhythm', async () => {
+test('failed requests replace expired build rows with the curated iCloud snapshot', async () => {
   const {document, feed} = fixture([event({when:'2026-09-05'}), event()]);
   await events.initialize(document, '/events.json', () => Promise.reject(new Error('offline')), now);
   assert.equal(feed.querySelectorAll('.event-row').length, 3);
-  assert.equal(feed.querySelector('time[datetime]').getAttribute('datetime'), '2026-09-06');
-  assert.equal(feed.children[0].children[1].children[0].textContent, 'Sunday School');
+  assert.ok(feed.querySelectorAll('time[datetime]').every(node => node.getAttribute('datetime') >= '2026-09-06'));
+  assert.ok(calendar.DEFAULT_FEED.events.some(row => row.title === feed.children[0].children[1].children[0].textContent));
 });
 
 test('valid empty feed shows a weekly schedule link without restoring old dated rows', async () => {
-  for (const fetcher of [() => Promise.resolve({ok: true, json: async () => ({events: []})})]) {
+  for (const fetcher of [() => Promise.resolve({ok: true, json: async () => snapshot([])})]) {
     const {document, feed} = fixture([event({when:'2026-09-05'})]);
     await events.initialize(document, '/events.json', fetcher, now);
     assert.equal(feed.querySelectorAll('.event-row').length, 0);
@@ -68,24 +70,27 @@ test('valid empty feed shows a weekly schedule link without restoring old dated 
 test('successful refresh replaces fallback with sorted literal text, including hostile text', async () => {
   const {document, feed} = fixture([event({title:'Build fallback'})]);
   const hostile = '<img src=x onerror="alert(1)">';
-  await events.initialize(document, '/events.json', async () => ({ok:true, json: async () => ({events:[event({time:'6:00p'}), event({title:hostile})]})}), now);
+  await events.initialize(document, '/events.json', async () => ({ok:true, json: async () => snapshot([event({time:'6:00p'}), event({title:hostile})])}), now);
   assert.equal(feed.querySelectorAll('.event-row').length, 2);
   assert.equal(feed.children[0].children[1].children[0].textContent, hostile);
   assert.equal(feed.children[0].children[1].children[0].children.length, 0);
   assert.equal(feed.getAttribute('aria-live'), 'polite');
 });
 
-test('malformed JSON shape uses verified rhythm instead of stale build text', async () => {
+test('malformed JSON retains curated iCloud events instead of stale build text', async () => {
   const {document, feed} = fixture([event({title:'Build fallback'})]);
   await events.initialize(document, '/events.json', async () => ({ok:true, json: async () => ({unexpected: []})}), now);
-  assert.equal(feed.children[0].children[1].children[0].textContent, 'Sunday School');
+  assert.notEqual(feed.children[0].children[1].children[0].textContent, 'Build fallback');
+  assert.ok(calendar.DEFAULT_FEED.events.some(row => row.title === feed.children[0].children[1].children[0].textContent));
 });
 
-test('approved CSV cancellation and change reach the rendered website feed', async () => {
-  const {document, feed} = fixture([]);
-  await events.initialize(document, 'base', async url => url === 'base'
-    ? {ok:true,json:async()=>({events:[event(),event({time:'10:15a',title:'Sunday Worship'})]})}
-    : {ok:true,text:async()=> 'Title,Date,Start,Location,Type\nSunday School,9/6/2026,,,Cancel an event\nSunday Worship,9/6/2026,11:00 AM,Sanctuary,Change an existing event'}, now, 'approved');
+test('changed and cancelled iCloud occurrences replace the rendered feed without a Google overlay', async () => {
+  const {document, feed} = fixture([event(),event({title:'Sunday Worship'})]);
+  const calls=[];
+  await events.initialize(document, 'base', async url => {
+    calls.push(url);return {ok:true,json:async()=>snapshot([event({time:'11:00a',title:'Sunday Worship',where:'Sanctuary'})])};
+  }, now, 'approved');
+  assert.deepEqual(calls,['base']);
   assert.equal(feed.querySelectorAll('.event-row').length,1);
   assert.equal(feed.children[0].children[1].children[0].textContent,'Sunday Worship');
   assert.equal(feed.children[0].children[1].children[1].textContent,'11:00a · Sanctuary');

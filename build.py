@@ -29,7 +29,7 @@ NAV = [("about","Our Church"),("ministries","Find Your Place"),
 def event_rows(events=EVENTS_FALLBACK, limit=3):
     return render_event_rows(events, limit)
 
-EVENTS_SCRIPT = f'<script src="js/calendar-feed.js" defer></script><script src="js/events.js" data-events-url="{html.escape(EVENTS_URL, quote=True)}" data-events-csv-url="{html.escape(EVENTS_CSV_URL, quote=True)}" defer></script>'
+EVENTS_SCRIPT = f'<script src="js/calendar-config.js" defer></script><script src="js/calendar-feed.js" defer></script><script src="js/events.js" data-events-url="{html.escape(EVENTS_URL, quote=True)}" data-events-csv-url="{html.escape(EVENTS_CSV_URL, quote=True)}" defer></script>'
 
 # Interior headings use the brand itself; photos are reserved for useful wayfinding.
 HEAD_RE = re.compile(
@@ -380,18 +380,19 @@ PAGES["times"] = ("When We Meet", "Service and meeting times at Bluff Creek Bapt
   <div class="tablewrap"><table class="sched">
     <tr><th>Sunday</th><td><b>9:00–10:00a</b> Sunday School — all ages (fellowship building)<br><b>10:15–11:30a</b> Morning worship (sanctuary)<br><b>5:30–7:00p</b> Youth discipleship (fellowship building)<br><b>6:00–7:00p</b> Evening service (sanctuary)</td></tr>
     <tr><th>Monday</th><td><b>6:30–8:00p</b> Women's Bible study — currently walking through Esther (contact Rikki for the location)</td></tr>
-    <tr><th>Tuesday</th><td><b>5:00–5:45p</b> Yoga @ the Creek (fellowship building) · <b>3rd Tuesday, 6:00p</b> WMU (fellowship hall)</td></tr>
+    <tr><th>Tuesday</th><td><b>3:45–4:30p</b> Yoga @ the Creek (fellowship building) · <b>3rd Tuesday, 5:00p</b> WMU (fellowship hall)</td></tr>
     <tr><th>Wednesday</th><td><b>6:00–6:30p</b> Prayer meeting (sanctuary)<br><b>6:00–8:00p</b> Youth @ the Creek — MDWK (fellowship building) · <span class="chip gold">6 on the 63</span></td></tr>
-    <tr><th>Thursday</th><td><b>5:00–5:45p</b> Yoga @ the Creek (fellowship building)</td></tr>
+    <tr><th>Thursday</th><td><b>3:45–4:30p</b> Yoga @ the Creek (fellowship building)</td></tr>
   </table></div>
   <div class="events-inline">
     <div class="sec-h"><div><div class="eye">Coming up</div><h2>This week at the Creek</h2></div></div>
     <div class="event-feed" data-events-feed="3">{event_rows()}</div>
   <p class="calendar-source" data-events-status>All times Central.</p>
-  <div class="calendar-invitation"><div><h3>Have something for the calendar?</h3><p>Add or change an event — an admin approves it before it shows.</p></div><a class="textlink" href="{EVENTS_FORM_URL}" target="_blank" rel="noopener">Add an event <span aria-hidden="true">↗</span></a></div>
+  <div class="calendar-invitation"><div><h3>Have something for the calendar?</h3><p>Request an addition or change for the church to review.</p></div><a class="textlink" href="{EVENTS_FORM_URL}" target="_blank" rel="noopener">Request an event <span aria-hidden="true">↗</span></a></div>
+  <p class="calendar-source"><a data-calendar-download href="calendar.ics" download="bluff-creek-calendar.ics">Download calendar</a> · A copy of the dates currently listed.</p>
   </div>
   <div class="grid g2" style="margin-top:22px">
-    <div class="card"><div class="eye">In your pocket</div><h3>The week, in the app</h3><p>This week's schedule and events, updated as they change — plus prayer, giving, and a way to connect.</p><p><a href="{APP}">Open Home @ the Creek →</a></p></div>
+    <div class="card"><div class="eye">In your pocket</div><h3>The week, in the app</h3><p>Upcoming gatherings, prayer, giving, and a way to connect — with the calendar’s latest update date shown.</p><p><a href="{APP}">Open Home @ the Creek →</a></p></div>
     <div class="card"><div class="eye">On your calendar</div><h3>Subscribe to the church calendar</h3><p>Every service, meeting, and event — straight into the calendar on your phone or computer, updated automatically.</p><p><a href="webcal://p24-caldav.icloud.com/published/2/MjgxNDIwMTA5MjgxNDIwMZkrrqg7P_e_uOJSEuneGS4QT-quA4OE5lbjyAKZifNVcV3yYLBvdcwT4okvZF-44VCzkvYBgUEuOzihC5igIm4">Subscribe →</a> · <a href="visit.html">Plan a visit →</a></p></div>
   </div>
 </section>
@@ -418,8 +419,8 @@ PAGES["ministries"] = ("Ministries @ the Creek", "Kidz, Youth, Adults, Women, WM
     <div class="card"><h3>Sunday School · 9:00a</h3><p>A Men's class, a Ladies' class, two Adult classes, and a Young Adults class (coffee provided) — no age stipulations, all in the fellowship building. Find one that fits.</p><p class="small">Young adults: contact Rikki at <a href="mailto:riikkipermenter@gmail.com">riikkipermenter@gmail.com</a>.</p></div>
     <div class="card"><h3>Women's study · Mondays 6:30p</h3><p>Our women meet to dive into Scripture together — right now, the book of Esther. Contact Rikki for the location.</p></div>
     <div class="card"><h3>Wednesday prayer · 6:00p</h3><p>The heartbeat of the week: the church gathers in the sanctuary to pray, Wednesdays 6:00–6:30.</p></div>
-    <div class="card">{lock("Yoga","var(--pine)",20)}<p>We're trying to be the best stewards of our bodies we can. A beginners' class — stretching and a gentle flow led by Leslie Barnes — <b>Tuesdays &amp; Thursdays, 5:00–5:45p</b> in the fellowship hall. $5; bring a mat or towel. All ages and abilities welcome.</p></div>
-    <div class="card"><h3>WMU · 3rd Tuesdays 6:00p</h3><p>Our Women's Missionary Union meets monthly to fellowship, eat, pray, study Scripture, and take on hands-on missions projects. Fellowship hall — come join them.</p></div>
+    <div class="card">{lock("Yoga","var(--pine)",20)}<p>We're trying to be the best stewards of our bodies we can. A beginners' class — stretching and a gentle flow led by Leslie Barnes — <b>Tuesdays &amp; Thursdays, 3:45–4:30p</b> in the fellowship hall. $5; bring a mat or towel. All ages and abilities welcome.</p></div>
+    <div class="card"><h3>WMU · 3rd Tuesdays 5:00p</h3><p>Our Women's Missionary Union meets monthly to fellowship, eat, pray, study Scripture, and take on hands-on missions projects. Fellowship hall — come join them.</p></div>
     <div class="card">{lock("Worship","var(--wheat)",20)}<p>Theologically rich, doctrinally sound hymns, led by a team of musicians every Sunday. All musical talents welcome — come sing or play with us.</p></div>
   </div>
 </section>
