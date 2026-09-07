@@ -1,5 +1,17 @@
 # Website verification
 
+## Launch preparation — September 6, 2026
+
+The approved homepage and visitor design remain intact. The public calendar now shares one consumer with Home @ the Creek: verified recurring gatherings from the app JSON, plus the published Approved Google CSV for additions, changes, and cancellations. Date/title matching deduplicates changes; cancellations remove only the selected occurrence. Central time excludes elapsed starts. Unknown times remain explicitly unconfirmed. Public field whitelisting and text-only rendering prevent private notes or HTML from entering event cards.
+
+The verified schedule expands 42 days ahead instead of ending with the old September 17 seed. Python and JavaScript parity checks cover September, later autumn, daylight-saving transition, and a leap-year boundary. A sync command in the app repository updates its embedded fallback and both website files together. The When We Meet page now links directly to the existing submission form; no form or sheet was changed.
+
+The September 6 public-site audit reports mobile Lighthouse **100 Accessibility / 100 SEO**, all 26 local paths/assets/fragments resolving, and all 12 public pages fitting at 375 pixels with one h1, loaded images, and no uncaught page errors. These two Lighthouse scores were measured before the small calendar update; no new performance or engagement claim is made. Subsequent focused calendar browser checks at 1440/375 show the real feed's same next three events, working submission destination, and no overflow. Synthetic additions, edits, cancellations, hostile HTML strings, and a 160-character unbroken title were checked locally, including 320 pixels. Later-date offline fallback contains current recurring rows, never expired seed rows. The published CSV currently has valid headers and zero approved data rows; HTTP 200/CORS is verified read-only.
+
+Final local gate: 20 Python tests and 22 Node tests pass, including ten shared calendar tests and existing Watch checks. Build, local reference checks, and diff hygiene pass. The calendar maintenance guide records how to cancel/rename events and the limits of offline updates. Creek Office is a separate private staff calendar and does not silently publish its records.
+
+No deployment, main push, DNS/account change, external message, or personal records were introduced. The corresponding app PR must be reviewed and released first so the canonical recurring JSON is available. The staff backend still requires separate approval and hosted verification.
+
 ## Visitor pages — September 5, 2026
 
 Plan a Visit now leads with a warm introduction and direct directions, followed by three arrival steps, a personal invitation, the nine original FAQs, and service times. Watch replaces the eager black embed with an original-brand pine panel and the existing transparent Bible illustration. The rounded ivory navigation panel now continues across the site; the homepage keeps its approved composition.
@@ -71,4 +83,4 @@ Historical comparison of `origin/main` at `bc7513c` and the first implementation
 
 ## Review boundaries
 
-No merge, deployment, main push, DNS, account, giving-destination, or private-data changes. Google CSV calendar integration and activation of the separate Creek Office portal remain separate work. Calendar dates are not automatically invented or rolled forward.
+No merge, deployment, main push, DNS, account, giving-destination, or private-data changes. The approved Google CSV integration is now included as described in the September 6 section. Activation of the separate Creek Office portal remains pending. Future calendar occurrences derive only from the verified recurring schedule; special events are never invented.

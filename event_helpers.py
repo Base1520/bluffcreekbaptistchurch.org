@@ -32,6 +32,31 @@ def start_minutes(value):
     return (int(hour) % 12 + (12 if period.lower() == "p" else 0)) * 60 + int(minute or 0)
 
 
+def expand_recurring(data, today=None, horizon=42):
+    """Render the same verified weekday/ordinal rules used by the shared JS feed."""
+    today = today or church_today()
+    events = {}
+    def key(event):
+        return (event["when"], " ".join(event["title"].lower().split()))
+    for rule in data.get("recurring", []):
+        weekday, ordinal = rule.get("weekday"), rule.get("ordinal")
+        if type(weekday) is not int or not 0 <= weekday <= 6:
+            continue
+        if ordinal is not None and (type(ordinal) is not int or not 1 <= ordinal <= 5):
+            continue
+        for offset in range(max(1, min(horizon, 93))):
+            day = today + datetime.timedelta(days=offset)
+            if (day.weekday() + 1) % 7 != weekday or (ordinal and (day.day - 1) // 7 + 1 != ordinal):
+                continue
+            event = {k: rule[k] for k in ("title", "time", "where", "tag") if k in rule}
+            event["when"] = day.isoformat()
+            if upcoming_events([event], today):
+                events[key(event)] = event
+    for event in upcoming_events(data.get("events", []), today):
+        events[key(event)] = event
+    return upcoming_events(list(events.values()), today)
+
+
 def upcoming_events(events, today=None):
     today = today or church_today()
     if not isinstance(events, list):

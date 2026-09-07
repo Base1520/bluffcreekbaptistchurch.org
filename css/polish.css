@@ -663,6 +663,14 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 @media(prefers-reduced-motion:reduce){.ministry-arrow{transition:none}}
 
 /* Visitor pages: welcome, a short arrival path, then practical detail. */
+.calendar-source{font-size:13px;line-height:1.7;color:var(--ink2);margin:18px 0 0;max-width:64ch}
+.editorial .event-row>div{min-width:0}
+.editorial .event-row h3,.editorial .event-row p{overflow-wrap:anywhere}
+.calendar-invitation{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:26px;margin-top:30px}
+.editorial .calendar-invitation h3{font-size:23px;margin:0 0 10px}
+.calendar-invitation p{font-size:15px;line-height:1.75;color:var(--ink2);margin:0}
+.calendar-invitation .textlink{flex-shrink:0}
+@media(max-width:760px){.calendar-invitation{display:block}.calendar-invitation .textlink{margin-top:18px}}
 .visitor-hero{position:relative;isolation:isolate;padding:32px 0 76px}
 .visitor-hero .breadcrumb,.watch-opening .breadcrumb{margin:0 0 36px}
 .visitor-place{position:absolute;z-index:-1;inset:0 -48px 0 auto;width:67%;overflow:hidden;opacity:.26;pointer-events:none}

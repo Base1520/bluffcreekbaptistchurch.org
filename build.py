@@ -2,9 +2,9 @@
 """Bluff Creek Baptist Church — static site generator (Homestead kit).
 Run:  python3 build.py   → writes *.html into this folder. Content lives below; layout is shared.
 """
-import os, html, datetime, re
+import os, html, datetime, re, json
 from image_helpers import responsive_image
-from event_helpers import render_event_rows
+from event_helpers import render_event_rows, expand_recurring
 from seo_helpers import schema_json, generate_redirects
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://www.bluffcreekbaptistchurch.org"
@@ -17,17 +17,11 @@ EMAIL = "bluffcreekbaptist@gmail.com"
 PHONE = "(225) 218-7902"; PHONE_TEL = "+12252187902"
 YEAR = datetime.date.today().year
 EVENTS_URL = "https://app.bluffcreekbaptistchurch.org/events.json"
-EVENTS_FALLBACK = [
-    {"when":"2026-09-06","time":"9:00a","title":"Sunday School","where":"Fellowship Building","tag":"Weekly"},
-    {"when":"2026-09-06","time":"10:15a","title":"Sunday Worship","where":"Sanctuary","tag":"Weekly"},
-    {"when":"2026-09-06","time":"5:30p","title":"Youth discipleship","where":"Fellowship Building","tag":"Weekly"},
-    {"when":"2026-09-06","time":"6:00p","title":"Evening service","where":"Sanctuary","tag":"Weekly"},
-    {"when":"2026-09-07","time":"6:30p","title":"Women’s Bible study","where":"Contact church office for location","tag":"Weekly"},
-    {"when":"2026-09-08","time":"5:00p","title":"Yoga @ the Creek","where":"Fellowship Building","tag":"Weekly"},
-    {"when":"2026-09-09","time":"6:00p","title":"Prayer meeting","where":"Sanctuary","tag":"Weekly"},
-    {"when":"2026-09-09","time":"6:00p","title":"Youth @ the Creek — MDWK","where":"Fellowship Building","tag":"Weekly"},
-    {"when":"2026-09-10","time":"5:00p","title":"Yoga @ the Creek","where":"Fellowship Building","tag":"Weekly"},
-]
+EVENTS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSYntD_RzVFtEbbz8r-IP-tQ8YvHYnrpgsCi-xRdnmQ6bEMMQd9Mryrn7UYZpyMBklrszUMrDr2fda7/pub?gid=0&single=true&output=csv"
+EVENTS_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfcjsMhQHqRClov1oXBgkhCP_tcvWKtQyPltvYVLyVzSkj1Kg/viewform"
+with open(os.path.join(ROOT, "data", "events-fallback.json"), encoding="utf-8") as schedule_file:
+    EVENTS_FALLBACK = expand_recurring(json.load(schedule_file))
+
 
 NAV = [("about","Our Church"),("ministries","Find Your Place"),
        ("times","This Week"),("watch","Watch"),("give","Give")]
@@ -35,7 +29,7 @@ NAV = [("about","Our Church"),("ministries","Find Your Place"),
 def event_rows(events=EVENTS_FALLBACK, limit=3):
     return render_event_rows(events, limit)
 
-EVENTS_SCRIPT = f'<script src="js/events.js" data-events-url="{html.escape(EVENTS_URL, quote=True)}" defer></script>'
+EVENTS_SCRIPT = f'<script src="js/calendar-feed.js" defer></script><script src="js/events.js" data-events-url="{html.escape(EVENTS_URL, quote=True)}" data-events-csv-url="{html.escape(EVENTS_CSV_URL, quote=True)}" defer></script>'
 
 # Interior headings use the brand itself; photos are reserved for useful wayfinding.
 HEAD_RE = re.compile(
@@ -225,6 +219,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
 <section class="band week-band"><div class="wrap week-grid">
   <div class="week-intro"><p class="eye">Gather with us</p><h2>This week<br> at the Creek.</h2><p>Make a little room<br> for life together.</p><a class="textlink" href="times.html">All service &amp; meeting times <span aria-hidden="true">↗</span></a><div class="wednesday-note"><div class="place-rule"><b>6 on the 63</b></div><span>Wednesday prayer &amp; youth · 6:00p</span></div></div>
   <div class="event-feed" data-events-feed="3">{event_rows()}</div>
+  <p class="calendar-source" data-events-status>All times Central.</p>
 </div></section>
 
 <section class="band first-visit home-visit" aria-labelledby="first-visit-title"><div class="wrap visit-grid">
@@ -392,6 +387,8 @@ PAGES["times"] = ("When We Meet", "Service and meeting times at Bluff Creek Bapt
   <div class="events-inline">
     <div class="sec-h"><div><div class="eye">Coming up</div><h2>This week at the Creek</h2></div></div>
     <div class="event-feed" data-events-feed="3">{event_rows()}</div>
+  <p class="calendar-source" data-events-status>All times Central.</p>
+  <div class="calendar-invitation"><div><h3>Have something for the calendar?</h3><p>Add or change an event — an admin approves it before it shows.</p></div><a class="textlink" href="{EVENTS_FORM_URL}" target="_blank" rel="noopener">Add an event <span aria-hidden="true">↗</span></a></div>
   </div>
   <div class="grid g2" style="margin-top:22px">
     <div class="card"><div class="eye">In your pocket</div><h3>The week, in the app</h3><p>This week's schedule and events, updated as they change — plus prayer, giving, and a way to connect.</p><p><a href="{APP}">Open Home @ the Creek →</a></p></div>

@@ -45,17 +45,18 @@ function fixture(rows) {
   rows.forEach(row => feed.appendChild(events.eventRow(document, row)));
   return {document, feed};
 }
-const now = new Date('2026-09-07T01:00:00Z'); // Still Sept 6 in Clinton.
+const now = new Date('2026-09-06T13:00:00Z'); // Sept 6 at 8am in Clinton.
 
-test('failed request removes expired build rows while preserving current fallback', async () => {
+test('failed requests replace expired build rows with the current verified recurring rhythm', async () => {
   const {document, feed} = fixture([event({when:'2026-09-05'}), event()]);
   await events.initialize(document, '/events.json', () => Promise.reject(new Error('offline')), now);
-  assert.equal(feed.querySelectorAll('.event-row').length, 1);
+  assert.equal(feed.querySelectorAll('.event-row').length, 3);
   assert.equal(feed.querySelector('time[datetime]').getAttribute('datetime'), '2026-09-06');
+  assert.equal(feed.children[0].children[1].children[0].textContent, 'Sunday School');
 });
 
-test('valid empty feed and expired offline fallback both show a weekly schedule link', async () => {
-  for (const fetcher of [() => Promise.resolve({ok: true, json: async () => ({events: []})}), () => Promise.reject(new Error('offline'))]) {
+test('valid empty feed shows a weekly schedule link without restoring old dated rows', async () => {
+  for (const fetcher of [() => Promise.resolve({ok: true, json: async () => ({events: []})})]) {
     const {document, feed} = fixture([event({when:'2026-09-05'})]);
     await events.initialize(document, '/events.json', fetcher, now);
     assert.equal(feed.querySelectorAll('.event-row').length, 0);
@@ -74,8 +75,18 @@ test('successful refresh replaces fallback with sorted literal text, including h
   assert.equal(feed.getAttribute('aria-live'), 'polite');
 });
 
-test('malformed JSON shape preserves valid build fallback', async () => {
+test('malformed JSON shape uses verified rhythm instead of stale build text', async () => {
   const {document, feed} = fixture([event({title:'Build fallback'})]);
   await events.initialize(document, '/events.json', async () => ({ok:true, json: async () => ({unexpected: []})}), now);
-  assert.equal(feed.children[0].children[1].children[0].textContent, 'Build fallback');
+  assert.equal(feed.children[0].children[1].children[0].textContent, 'Sunday School');
+});
+
+test('approved CSV cancellation and change reach the rendered website feed', async () => {
+  const {document, feed} = fixture([]);
+  await events.initialize(document, 'base', async url => url === 'base'
+    ? {ok:true,json:async()=>({events:[event(),event({time:'10:15a',title:'Sunday Worship'})]})}
+    : {ok:true,text:async()=> 'Title,Date,Start,Location,Type\nSunday School,9/6/2026,,,Cancel an event\nSunday Worship,9/6/2026,11:00 AM,Sanctuary,Change an existing event'}, now, 'approved');
+  assert.equal(feed.querySelectorAll('.event-row').length,1);
+  assert.equal(feed.children[0].children[1].children[0].textContent,'Sunday Worship');
+  assert.equal(feed.children[0].children[1].children[1].textContent,'11:00a · Sanctuary');
 });
