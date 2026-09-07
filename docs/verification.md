@@ -1,5 +1,13 @@
 # Website verification
 
+## Curated calendar downloads — September 7, 2026
+
+The release audit found that the shared footer and When We Meet card still linked directly to the original iCloud publication. Those links now download the existing sanitized `calendar.ics` and use the `data-calendar-download` hook. The card describes a dated snapshot and asks visitors to download it again after updates; it no longer promises automatic subscription updates. No original feed or URL was fetched, copied into a fixture, or written into this note.
+
+A regression failed on the original links, then passed after the template correction and rebuild. It checks every generated template and all 26 static HTML documents, public JavaScript, JSON fallback and ICS for original iCloud publication URLs, and requires the curated download link on every page. The full local gate passes: **21 Python tests, 28 Node tests**, successful generator, one h1 per generated document, **498 local references/assets/fragments** resolving, and `git diff --check`. No new Lighthouse, browser-playback or production result is claimed.
+
+This fixes the candidate's generated pages. It does not change Git history, previously published pages, Apple calendar settings or deployment. Final content approval, real visitor-journey rehearsal, the calendar maintenance/refresh decision and authorized hosting cutover remain release gates.
+
 ## iCloud calendar — September 6, 2026
 
 The user supplied the view-only church iCloud calendar and confirmed its Yoga 3:45 p.m. / WMU 5 p.m. times. Those times now agree in the public app, When We Meet and Ministries. The candidate contains 94 curated public occurrences through December 4, with a matching sanitized ICS download. Original personal reminders, attendees, organizer/contact fields, descriptions, raw IDs, attachments, source URL and private/unreviewed records are excluded from the repositories. The temporary raw source was removed after conversion.

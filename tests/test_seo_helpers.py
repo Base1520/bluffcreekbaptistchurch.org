@@ -2,6 +2,7 @@
 
 from html.parser import HTMLParser
 import json
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -104,6 +105,25 @@ class SchemaTests(unittest.TestCase):
 class GeneratedPageTests(unittest.TestCase):
     def document(self, slug):
         return PageDocument(build.layout(slug, *build.PAGES[slug]))
+
+    def test_calendar_downloads_never_expose_the_original_publication(self):
+        raw_source = re.compile(r"(?:https?|webcal)://[^\s\"<>]*icloud\.com/published/", re.I)
+        root = Path(__file__).resolve().parents[1]
+        for slug, page in build.PAGES.items():
+            with self.subTest(page=slug):
+                rendered = build.layout(slug, *page)
+                # Report only a filename on failure, never the sensitive URL or page body.
+                self.assertFalse(bool(raw_source.search(rendered)), f"{slug}: raw calendar source link")
+                links = [attrs for tag, attrs in PageDocument(rendered).elements
+                         if tag == "a" and "data-calendar-download" in attrs]
+                self.assertTrue(links, f"{slug}: missing curated calendar download")
+                self.assertTrue(all(link.get("href") == "calendar.ics" for link in links))
+        for path in [*root.glob("*.html"), *root.glob("*/index.html")]:
+            self.assertFalse(bool(raw_source.search(path.read_text())), f"{path.name}: raw calendar source link")
+        for path in (root / "js").glob("*.js"):
+            self.assertFalse(bool(raw_source.search(path.read_text())), f"js/{path.name}: raw calendar source link")
+        for path in [root / "calendar.ics", root / "data/events-fallback.json"]:
+            self.assertFalse(bool(raw_source.search(path.read_text())), f"{path.name}: raw calendar source link")
 
     def test_contact_is_a_validated_draft_with_initially_hidden_status(self):
         elements = self.document("contact").elements
