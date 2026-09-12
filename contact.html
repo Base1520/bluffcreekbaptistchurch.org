@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script id="legacy-contact-route">
+if (location.pathname.endsWith('/contact')) {
+  location.replace('times.html' + location.search + location.hash);
+}
+</script>
 <title>Contact — Bluff Creek Baptist Church</title>
 <meta name="description" content="Find and contact Bluff Creek Baptist Church — 1706 Highway 63, Clinton, Louisiana.">
 <meta property="og:title" content="Contact — Bluff Creek Baptist Church">

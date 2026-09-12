@@ -144,6 +144,36 @@ class GeneratedPageTests(unittest.TestCase):
         self.assertTrue(all(not url.endswith("/live") for url in church["sameAs"]))
 
     @unittest.skipUnless(shutil.which("node"), "Node is needed to exercise generated JavaScript")
+    def test_legacy_bare_contact_routes_to_times_without_changing_contact_html(self):
+        scripts = [script["text"] for script in self.document("contact").scripts
+                   if script["attributes"].get("id") == "legacy-contact-route"]
+        self.assertEqual(len(scripts), 1, "Bare /contact must retain its former meeting-times destination")
+        harness = r'''
+const assert = require('node:assert/strict');
+const vm = require('node:vm');
+for (const [pathname, expected] of [
+  ['/contact', 'times.html?from=old#main'],
+  ['/bluffcreekbaptistchurch.org/contact', 'times.html?from=old#main'],
+  ['/contact.html', null],
+  ['/bluffcreekbaptistchurch.org/contact.html', null],
+  ['/contact/', null],
+  ['/contact-1', null]
+]) {
+  let destination = null;
+  vm.runInNewContext(SCRIPT, { location: {
+    pathname, search: '?from=old', hash: '#main',
+    replace(value) { destination = value; }
+  }});
+  assert.equal(destination, expected, pathname);
+  if (destination) assert.equal(
+    new URL(destination, 'https://example.org' + pathname).pathname,
+    pathname.slice(0, -'contact'.length) + 'times.html'
+  );
+}
+'''.replace("SCRIPT", json.dumps(scripts[0]))
+        subprocess.run([shutil.which("node"), "-e", harness], check=True, capture_output=True, text=True)
+
+    @unittest.skipUnless(shutil.which("node"), "Node is needed to exercise generated JavaScript")
     def test_contact_handoff_keeps_draft_and_encodes_real_line_breaks(self):
         script = next(script["text"] for script in self.document("contact").scripts
                       if "getElementById('cform')" in script["text"])
