@@ -80,12 +80,19 @@ def layout(slug, title, desc, body, extra_head=""):
   });
 })();
 </script>''' if slug == '404' else ''
+    # Pages serves contact.html for bare /contact before its legacy directory.
+    # Keep the old service-times URL while contact.html stays the contact page.
+    legacy_contact_head = '''<script id="legacy-contact-route">
+if (location.pathname.endsWith('/contact')) {
+  location.replace('times.html' + location.search + location.hash);
+}
+</script>''' if slug == 'contact' else ''
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{error_head}
+{error_head}{legacy_contact_head}
 <title>{html.escape(title)} — Bluff Creek Baptist Church</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta property="og:title" content="{html.escape(title)} — Bluff Creek Baptist Church">
