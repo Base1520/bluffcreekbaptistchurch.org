@@ -1,0 +1,37 @@
+# Homepage design rationale
+
+The homepage should feel like a distinctive, welcoming church and make a first visit easy to imagine. The Homestead composition combines authentic chapel photography, a clear invitation, readable content, and varied section sizes. It preserves Bitter, Nunito Sans, ivory, pine, gold, the original wordmark, and the approved creek artwork. The welcome comes first; the calendar and service details follow the church’s story and ministries.
+
+The same Bitter and Nunito Sans files are served locally through `css/fonts.css`, with their official licenses in `assets/fonts/`. This removes external font stylesheet requests while preserving the typography.
+
+## Reference and evidence
+
+[Squire Creek Country Club](https://www.squirecreek.com/) provides visual inspiration through broad imagery and alternating photography and text. These observations inform scale and pacing, not scientific claims about engagement. Bluff Creek uses its own church imagery, identity, language, and visitor needs.
+
+The research below distinguishes measured findings from our proposed application. None of these studies establishes a church-specific conversion formula, an ideal scroll depth, or a guaranteed reduction in bounce rate.
+
+| Evidence and its limits | Application to this homepage |
+| --- | --- |
+| **First impressions are rapid.** Lindgaard and colleagues found correlated visual-appeal ratings after brief homepage exposures, including 50 milliseconds. They measured aesthetic judgments, not a deadline at which visitors leave. [Original study](https://www.tandfonline.com/doi/abs/10.1080/01449290500330448) | Compose the opening as one recognizable scene: an atmospheric, authentic church photograph, the welcome, one gold **Plan a Visit** action, and a quieter **Meet our church** anchor. The invitation must remain legible before someone explores the details. |
+| **Clarity can support visual appeal.** Reber and colleagues review processing fluency as a contributor to aesthetic pleasure. Tuch and colleagues found that lower visual complexity and greater familiarity with a website’s form improved screenshot aesthetic ratings. These findings do not mean that the emptiest design performs best. [Fluency review](https://journals.sagepub.com/doi/abs/10.1207/S15327957PSPR0804_3), [Website experiments](https://www.sciencedirect.com/science/article/pii/S1071581912001127) | Retain familiar navigation and a simple action hierarchy. Use a substantial photograph and purposeful color fields for character. Replace equally weighted ministry cards with compact family rows, each with a recognizable ministry name, useful explanation, and clear destination. |
+| **Grouping makes relationships visible.** The Wagemans review documents proximity, continuity, similarity, and common regions as factors in perceptual grouping. This is evidence about visual organization, not a measured benefit of our particular layout. [Research review](https://pmc.ncbi.nlm.nih.gov/articles/PMC3482144/) | Keep each heading, explanation, and link together. Place the LA 63 reference within the wayfinding bar, beside the address and directions. Its role comes from that relationship; a freestanding sign added elsewhere does not explain anything new. |
+| **Whitespace has contextual meaning.** Pracejus and colleagues’ 2013 studies support culturally learned visual rhetoric more strongly than the explanation that whitespace signals expensive advertising. The source does not establish that empty space communicates quality because it costs money, or that tall web sections improve engagement. [Original paper](https://www.sciencedirect.com/science/article/pii/S0167811613000396) | Use spacing to separate ideas and make room for the welcome. Avoid long transitions that reveal no information. Show the next section’s heading or another clear continuation cue near the opening viewport. This pacing choice is a design hypothesis to inspect with visitors. |
+| **Readable type has a functional foundation.** Legge and Bigelow review how print size, visual angle, and contrast constrain fluent reading. The work does not prescribe one CSS size or prove that serif or sans-serif is universally superior. [Author-hosted review](https://legge.psych.umn.edu/sites/legge.psych.umn.edu/files/2020-08/Legge%20Bigelow%202011%20Does%20size%20matter%20for%20reading%3F%20A%20review%20of%20findings%20from%20vision%20science%20and%20typography.pdf) | Preserve Bitter and Nunito Sans. Create emphasis through a clear heading scale, short paragraphs, and readable contrast. Do not shrink important address, ministry, or action text to make the composition fit. |
+| **Color meaning depends on fit.** Bottomley and Doyle found that colors congruent with a product’s stated positioning were judged more appropriate. Their experiments concern brand logos and products, not church trust or attendance. [Original study](https://journals.sagepub.com/doi/10.1177/1470593106061263) | Keep the approved Homestead palette. Ivory supports reading; a substantial pine worship feature adds contrast; gold identifies the primary invitation. These are identity and hierarchy choices, not claims that a particular hue causes trust. |
+| **Navigation cues should match visitor goals.** Pirolli and Fu modeled navigation using the relevance of page cues to users’ information needs. Their 2003 evaluation used four users completing two tasks, so it cannot predict this homepage’s results. [Author-hosted paper](https://www.peterpirolli.com/ewExternalFiles/Pirolli-Fu%20UM2003.pdf) | Preview useful answers: what the church is like, where children and students belong, and how to visit. Use descriptive links. Each section should provide a reason to continue or a direct route to the needed information. |
+
+## Intended sequence
+
+1. **Welcome:** chapel photograph, identity, primary visit action, secondary introduction anchor, and a continuation cue.
+2. **Meet the church:** a concise, two-column heading and prose section on ivory. The existing sign photograph recedes beneath an ivory wash as decorative texture, with no figure or caption.
+3. **Find your place:** compact, clearly labeled family and ministry rows.
+4. **Worship:** a pine feature with a clear watch destination.
+5. **What is coming up:** the calendar, followed by service times, first-visit details, and integrated wayfinding.
+
+Navigation and direct links remain available throughout. Photography uses approved church assets and introduces no new people or minors.
+
+## Validation
+
+Use a brief, five-second recognition check: what place is this, what does it invite you to do, and what stood out? Treat that as a practical design test, not the Lindgaard experiment. Then ask visitors to find first-visit expectations, a relevant ministry, a worship video, and service details. Observe confusion, wrong turns, and whether labels predict their destinations. Check desktop and phone layouts, keyboard access, contrast, and reduced-motion behavior. No analytics installation or numerical engagement claim is part of this revision.
+
+Research starting points were the vault notes **Design Principles (Hierarchy, Contrast, Whitespace)** (grouping, fluency, whitespace, first impressions), **Color — Theory & Psychology** (brand fit), **Typography** (reading and measure), and **Stopping the Scroll — Hook Craft and Attention Capture** (hooks and retention). Their claims were checked against the public sources above; social-feed heuristics were not treated as homepage evidence.
