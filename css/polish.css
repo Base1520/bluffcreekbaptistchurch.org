@@ -787,3 +787,12 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
   .editorial .watch-next h2{font-size:30px}
   .watch-next p:not(.eye){font-size:16px;max-width:none}
 }
+
+/* Home announcement band — pastor's book + Oct 8 live training (2026-09-23) */
+.home-notice{background:linear-gradient(180deg,#fbf5e9 0%,var(--ivory) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.home-notice-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px 56px;align-items:start;padding:72px 0}
+.home-notice-head h2{margin:.25em 0 0;line-height:1.1}
+.home-notice-body p{margin:0 0 14px;max-width:56ch}
+.home-notice-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:0}
+.home-notice-rule{border:0;border-top:1px solid var(--line);margin:20px 0 18px;max-width:56ch}
+@media(max-width:900px){.home-notice-grid{grid-template-columns:1fr;gap:22px;padding:48px 0}}

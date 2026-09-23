@@ -205,6 +205,19 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
+<section class="band home-notice" aria-labelledby="notice-title">
+  <div class="wrap home-notice-grid">
+    <div class="home-notice-head"><p class="eye">From our pastor</p><h2 id="notice-title">The Spiritual Operator&rsquo;s Manual<br>is out.</h2></div>
+    <div class="home-notice-body">
+      <p>Pastor Cole&rsquo;s book on studying and teaching the Bible faithfully &mdash; the C.O.V.E.N.A.N.T. method, start to finish &mdash; is now available on Amazon in paperback and Kindle.</p>
+      <p class="home-notice-links"><a class="textlink" href="https://www.amazon.com/dp/B0HKG8MH8C" target="_blank" rel="noopener">Paperback <span aria-hidden="true">&#8599;</span></a> <a class="textlink" href="https://www.amazon.com/dp/B0H1WMGRVD" target="_blank" rel="noopener">Kindle <span aria-hidden="true">&#8599;</span></a></p>
+      <hr class="home-notice-rule">
+      <p><b>Free live training &mdash; Thursday, October 8 at 7:00&nbsp;PM.</b> Two hours on YouTube, walking a single passage all the way through the method. Everyone is welcome, and a seat costs nothing.</p>
+      <p class="home-notice-links"><a class="textlink" href="https://www.youtube.com/live/DizWOXc-lVs" target="_blank" rel="noopener">Watch live <span aria-hidden="true">&#8599;</span></a> <a class="textlink" href="https://www.base1520.com/covenant-training/" target="_blank" rel="noopener">Save your seat <span aria-hidden="true">&#8599;</span></a></p>
+    </div>
+  </div>
+</section>
+
 <section class="band home-belong" id="find-your-place" aria-labelledby="belong-title">
   <div class="home-family-route" aria-hidden="true"><img src="assets/la63.svg" alt="" width="360" height="360"></div>
   <div class="wrap home-belong-grid">
