@@ -211,6 +211,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
     <div class="home-notice-body">
       <p>5:00&ndash;6:30&nbsp;PM here at the church. Every kid goes home with a pumpkin, so we need a head count to reserve enough.</p>
       <p><b>Please sign up by Sunday, October&nbsp;11</b> so we can get the order in.</p>
+      <p><b>This takes the place of Sunday evening discipleship that night.</b> Come on out and bring the kids.</p>
       <p class="home-notice-links"><a class="textlink" href="https://docs.google.com/forms/d/e/1FAIpQLSf1bgiV9Oy5MeWW4108xFeXyMvoTeDj2wqsJT_8hspqbCOlZg/viewform" target="_blank" rel="noopener">Sign your kids up <span aria-hidden="true">&#8599;</span></a></p>
     </div>
   </div>
