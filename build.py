@@ -205,6 +205,17 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
+<section class="band home-notice home-notice-event" aria-labelledby="pumpkin-title">
+  <div class="wrap home-notice-grid">
+    <div class="home-notice-head"><p class="eye">For the whole church family</p><h2 id="pumpkin-title">Pumpkin Party<br>Sunday, October&nbsp;18.</h2></div>
+    <div class="home-notice-body">
+      <p>5:00&ndash;6:30&nbsp;PM here at the church. Every kid goes home with a pumpkin, so we need a head count to reserve enough.</p>
+      <p><b>Please sign up by Sunday, October&nbsp;11</b> so we can get the order in.</p>
+      <p class="home-notice-links"><a class="textlink" href="https://docs.google.com/forms/d/e/1FAIpQLSf1bgiV9Oy5MeWW4108xFeXyMvoTeDj2wqsJT_8hspqbCOlZg/viewform" target="_blank" rel="noopener">Sign your kids up <span aria-hidden="true">&#8599;</span></a></p>
+    </div>
+  </div>
+</section>
+
 <section class="band home-notice" aria-labelledby="notice-title">
   <div class="wrap home-notice-grid">
     <div class="home-notice-head"><p class="eye">From our pastor</p><h2 id="notice-title">The Spiritual Operator&rsquo;s Manual<br>is out.</h2></div>

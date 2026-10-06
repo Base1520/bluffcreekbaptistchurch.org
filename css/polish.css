@@ -796,3 +796,6 @@ footer a:focus-visible,.top a:focus-visible{outline-color:#e5c76f}
 .home-notice-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:0}
 .home-notice-rule{border:0;border-top:1px solid var(--line);margin:20px 0 18px;max-width:56ch}
 @media(max-width:900px){.home-notice-grid{grid-template-columns:1fr;gap:22px;padding:48px 0}}
+.home-notice-event{background:var(--ivory);border-bottom:0}
+.home-notice-event .home-notice-grid{padding:64px 0 56px}
+@media(max-width:900px){.home-notice-event .home-notice-grid{padding:44px 0 36px}}
