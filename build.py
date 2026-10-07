@@ -205,6 +205,17 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
+<section class="band home-notice home-notice-live" aria-labelledby="live-title">
+  <div class="wrap home-notice-grid">
+    <div class="home-notice-head"><p class="eye">Thursday night &middot; 7:00&nbsp;PM</p><h2 id="live-title">Watch Pastor Cole<br>teach, live.</h2></div>
+    <div class="home-notice-body">
+      <p>Thursday, October&nbsp;8 at 7:00&nbsp;PM. Two hours walking a single passage of Scripture all the way through, start to finish &mdash; the same way we work through a text on Sunday mornings.</p>
+      <p>It is free, and you can watch from home. Click now and YouTube will remind you when it starts.</p>
+      <p class="home-notice-links"><a class="btn" href="https://www.youtube.com/live/DizWOXc-lVs" target="_blank" rel="noopener">Watch live on YouTube <span aria-hidden="true">&#8599;</span></a></p>
+    </div>
+  </div>
+</section>
+
 <section class="band home-notice home-notice-event" aria-labelledby="pumpkin-title">
   <div class="wrap home-notice-grid">
     <div class="home-notice-head"><p class="eye">For the whole church family</p><h2 id="pumpkin-title">Pumpkin Party<br>Sunday, October&nbsp;18.</h2></div>
@@ -223,9 +234,6 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
     <div class="home-notice-body">
       <p>Pastor Cole&rsquo;s book on studying and teaching the Bible faithfully &mdash; the C.O.V.E.N.A.N.T. method, start to finish &mdash; is now available on Amazon in paperback and Kindle.</p>
       <p class="home-notice-links"><a class="textlink" href="https://www.amazon.com/dp/B0HKG8MH8C" target="_blank" rel="noopener">Paperback <span aria-hidden="true">&#8599;</span></a> <a class="textlink" href="https://www.amazon.com/dp/B0H1WMGRVD" target="_blank" rel="noopener">Kindle <span aria-hidden="true">&#8599;</span></a></p>
-      <hr class="home-notice-rule">
-      <p><b>Free live training &mdash; Thursday, October 8 at 7:00&nbsp;PM.</b> Two hours on YouTube, walking a single passage all the way through the method. Everyone is welcome, and a seat costs nothing.</p>
-      <p class="home-notice-links"><a class="textlink" href="https://www.youtube.com/live/DizWOXc-lVs" target="_blank" rel="noopener">Watch live <span aria-hidden="true">&#8599;</span></a> <a class="textlink" href="https://www.base1520.com/covenant-training/" target="_blank" rel="noopener">Save your seat <span aria-hidden="true">&#8599;</span></a></p>
     </div>
   </div>
 </section>
