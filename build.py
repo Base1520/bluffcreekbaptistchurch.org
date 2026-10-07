@@ -205,7 +205,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
-<section class="band home-notice home-notice-live" aria-labelledby="live-title">
+<section class="band home-notice home-notice-live" data-expires="2026-10-09T03:00:00Z" aria-labelledby="live-title">
   <div class="wrap home-notice-grid">
     <div class="home-notice-head"><p class="eye">Thursday night &middot; 7:00&nbsp;PM</p><h2 id="live-title">Watch Pastor Cole<br>teach, live.</h2></div>
     <div class="home-notice-body">
@@ -216,7 +216,7 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
   </div>
 </section>
 
-<section class="band home-notice home-notice-event" aria-labelledby="pumpkin-title">
+<section class="band home-notice home-notice-event" data-expires="2026-10-19T00:00:00Z" aria-labelledby="pumpkin-title">
   <div class="wrap home-notice-grid">
     <div class="home-notice-head"><p class="eye">For the whole church family</p><h2 id="pumpkin-title">Pumpkin Party<br>Sunday, October&nbsp;18.</h2></div>
     <div class="home-notice-body">
@@ -227,6 +227,16 @@ PAGES["index"] = ("Welcome home to the Creek", "A country church in Clinton, Lou
     </div>
   </div>
 </section>
+
+<script>
+/* Dated announcements remove themselves once they are over, so the page
+   never advertises something that already happened. Add
+   data-expires="<ISO 8601 UTC>" to any element to have it disappear after
+   that moment. Runs before paint, so an expired band never flashes. */
+(function(){{var n=Date.now(),b=document.querySelectorAll('[data-expires]');
+for(var i=0;i<b.length;i++){{var w=Date.parse(b[i].getAttribute('data-expires'));
+if(!isNaN(w)&&n>=w&&b[i].parentNode){{b[i].parentNode.removeChild(b[i]);}}}}}})();
+</script>
 
 <section class="band home-notice" aria-labelledby="notice-title">
   <div class="wrap home-notice-grid">
